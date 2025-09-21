@@ -1,4 +1,4 @@
-from xml.dom.minidom import Document, parse
+from xml.dom.minidom import Document, parse, parseString
 
 
 class SistemaArchivo:
@@ -16,12 +16,15 @@ class SistemaArchivo:
         except:
             print("¡¡¡ [ERROR] No se pudo leer el archivo !!!")
 
-    def analizar_xml(self):
+    def convertir_xml_a_Dom(self):
         try:
             #[1]Leer archivo texto
             texto_archivo = self.leer_archivo()
-            return texto_archivo
+            # Convertir el texto en un objeto DOM
+            dom = parseString(texto_archivo)
+            return dom
             #[/1]
-        except:
-            print("¡¡¡ [ERROR] No se pudo analizar el archivo XML !!!")
+        except Exception as e:
+            print("¡¡¡ [ERROR] No se pudo convertir a archivo DOM - XML !!!")
+            print(f"Detalles del error: {e}")
             return None
