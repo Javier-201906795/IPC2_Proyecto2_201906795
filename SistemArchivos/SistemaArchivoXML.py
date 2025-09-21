@@ -46,7 +46,9 @@ class SistemaArchivo:
                         print("#------------[Drones]-------------")
                         drone = drones.getElementsByTagName("dron")
                         for d in drone:
-                            print(d.toxml())
+                            iddron =  d.getAttribute('id')
+                            nombredron = d.getAttribute('nombre')
+                            print(f"id: {iddron} - nombre: {nombredron}")
                         print("#------------[Fin Drones]-------------")
                     print("#---------------[Fin Lista Drones XML]-------------")
 
