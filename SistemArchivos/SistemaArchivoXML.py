@@ -8,5 +8,7 @@ class SistemaArchivo:
     def leer_archivo(self):
         with open(self.ruta, 'r') as archivo:
             contenido = archivo.read()
-            print("Lectura texto XML")
+            print("> -----[ Lectura texto XML]-----")
+            print(contenido)
+            print("> -----[ Fin lectura texto XML]-----")
         return contenido
