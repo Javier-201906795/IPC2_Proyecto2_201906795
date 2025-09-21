@@ -51,7 +51,20 @@ class SistemaArchivo:
                             print(f"id: {iddron} - nombre: {nombredron}")
                         print("#------------[Fin Drones]-------------")
                     print("#---------------[Fin Lista Drones XML]-------------")
-
+                    ##########################################################
+                    print("#---------------[Lista Invernaderos XML]-------------")
+                    listainvernaderos = item.getElementsByTagName("listaInvernaderos")
+                    for invernaderos in listainvernaderos:
+                        print("#---------------[Invernaderos]-------------")
+                        #print(invernaderos.toxml())
+                        invernadero = invernaderos.getElementsByTagName("invernadero")
+                        for inv in invernadero:
+                            nombreinvernadero = inv.getAttribute('nombre')
+                            print(f"#-------------[Invernadero {nombreinvernadero}]--------------")
+                            print(inv.toxml())
+                            print(f"#-------------[Fin Invernadero {nombreinvernadero}]--------------")
+                        print("#---------------[Fin Invernaderos]-------------")
+                    print("#---------------[Fin Lista Invernaderos XML]-------------")
             else:
                 print("El objeto DOM, no se puede segmentar.")
                 return None
