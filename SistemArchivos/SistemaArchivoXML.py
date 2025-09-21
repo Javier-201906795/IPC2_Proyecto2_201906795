@@ -28,3 +28,32 @@ class SistemaArchivo:
             print("¡¡¡ [ERROR] No se pudo convertir a archivo DOM - XML !!!")
             print(f"Detalles del error: {e}")
             return None
+    
+    def segmentar_archivo(self):
+        try:
+            Dom = self.convertir_xml_a_Dom()
+            if Dom is not None:
+
+                configuracion = Dom.getElementsByTagName("configuracion")
+                for item in configuracion:
+                    print("#---------------[Configuracion XML]-------------")
+                    print(item.toxml())
+                    print("#---------------[Fin Configuracion XML]-------------")
+                    ##########################################################
+                    print("#---------------[Lista Drones XML]-------------")
+                    listadrones = item.getElementsByTagName("listaDrones")
+                    for drones in listadrones:
+                        print("#------------[Drones]-------------")
+                        drone = drones.getElementsByTagName("dron")
+                        for d in drone:
+                            print(d.toxml())
+                        print("#------------[Fin Drones]-------------")
+                    print("#---------------[Fin Lista Drones XML]-------------")
+
+            else:
+                print("El objeto DOM, no se puede segmentar.")
+                return None
+        except Exception as e:
+            print("¡¡¡ [ERROR] No se pudo segmentar el archivo !!!")
+            print(f"Detalles del error: {e}")
+            return None
