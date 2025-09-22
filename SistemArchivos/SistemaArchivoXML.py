@@ -1,9 +1,14 @@
 from xml.dom.minidom import Document, parse, parseString
 
+from Nodos.Lista import Lista
+from Nodos.Cola import Cola
+from Nodos.Clases import *
+
 
 class SistemaArchivo:
     def __init__(self, ruta):
         self.ruta = ruta
+        
 
     def leer_archivo(self):
         try:
@@ -46,6 +51,8 @@ class SistemaArchivo:
                             iddron =  d.getAttribute('id')
                             nombredron = d.getAttribute('nombre')
                             print(f"id: {iddron} - nombre: {nombredron}")
+                            #Almacenar Dron
+
                         print("#------------[Fin Drones]-------------")
                     print("#---------------[Fin Lista Drones XML]-------------")
                     ##########################################################
