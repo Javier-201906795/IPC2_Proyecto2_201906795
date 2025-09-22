@@ -85,6 +85,14 @@ class SistemaArchivo:
                                 hileraasignacion = dron.getAttribute('hilera')
                                 print(f"id: {iddronasignacion} - hilera: {hileraasignacion}")
                             print("# -------------[ Fin asignacionDrones ]-------------")
+                            print("#-----------[ PlanRiego ]-----------")
+                            planesriego = inv.getElementsByTagName('planesRiego')[0]
+                            planes = planesriego.getElementsByTagName('plan')
+                            for plan in planes:
+                                nombreplan = plan.getAttribute('nombre')
+                                colaplan = plan.firstChild.data
+                                print(f"Plan: {nombreplan} - Cola: {colaplan}")
+                            print("#-----------[ Fin PlanRiegos ]-----------")
                             print(f"#-------------[Fin Invernadero {nombreinvernadero}]--------------")
                         print("#---------------[Fin Invernaderos]-------------")
                     print("#---------------[Fin Lista Invernaderos XML]-------------")
