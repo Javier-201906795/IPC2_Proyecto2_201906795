@@ -77,6 +77,14 @@ class SistemaArchivo:
                                 print(f"Hilera: {hileraplanta} - Posicion: {posicionplanta} - Litros Agua: {litrosAgua} - Gramos Fertilizante: {gramosFertilizante} - Nombre Planta: {nombreplanta}")
                                 #print(planta.toxml())
                             print("# -------[ Fin Lista plantas ]-------")
+                            print("# -------------[ asignacionDrones ]-------------")
+                            asignacionDrones = inv.getElementsByTagName('asignacionDrones')[0]
+                            dronesAsignados = asignacionDrones.getElementsByTagName('dron')
+                            for dron in dronesAsignados:
+                                iddronasignacion = dron.getAttribute('id')
+                                hileraasignacion = dron.getAttribute('hilera')
+                                print(f"id: {iddronasignacion} - hilera: {hileraasignacion}")
+                            print("# -------------[ Fin asignacionDrones ]-------------")
                             print(f"#-------------[Fin Invernadero {nombreinvernadero}]--------------")
                         print("#---------------[Fin Invernaderos]-------------")
                     print("#---------------[Fin Lista Invernaderos XML]-------------")
