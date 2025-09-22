@@ -61,7 +61,10 @@ class SistemaArchivo:
                         for inv in invernadero:
                             nombreinvernadero = inv.getAttribute('nombre')
                             print(f"#-------------[Invernadero {nombreinvernadero}]--------------")
-                            print(inv.toxml())
+                            numeroHileras = inv.getElementsByTagName('numeroHileras')[0].firstChild.data
+                            plantasXhilera = inv.getElementsByTagName('plantasXhilera')[0].firstChild.data
+                            print("numero de hileras: ",numeroHileras)
+                            print("plantas por hilera: ",plantasXhilera)
                             print(f"#-------------[Fin Invernadero {nombreinvernadero}]--------------")
                         print("#---------------[Fin Invernaderos]-------------")
                     print("#---------------[Fin Lista Invernaderos XML]-------------")
