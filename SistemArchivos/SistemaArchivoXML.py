@@ -92,6 +92,12 @@ class SistemaArchivo:
                                 nombreplan = plan.getAttribute('nombre')
                                 colaplan = plan.firstChild.data
                                 print(f"Plan: {nombreplan} - Cola: {colaplan}")
+                                #Elimina espacios en blanco y separa por comas
+                                elementos = colaplan.split(',')
+                                for elemento in elementos:
+                                    item = elemento.strip()
+                                    print(item)
+                                
                             print("#-----------[ Fin PlanRiegos ]-----------")
                             print(f"#-------------[Fin Invernadero {nombreinvernadero}]--------------")
                         print("#---------------[Fin Invernaderos]-------------")
