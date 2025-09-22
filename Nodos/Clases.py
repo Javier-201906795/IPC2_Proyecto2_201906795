@@ -1,4 +1,4 @@
-from Lista import Lista
+from Nodos.Lista import Lista
 
 
 class InfoNodo():
