@@ -1,4 +1,4 @@
-from Nodo import Nodo
+from Nodos.Nodo import Nodo
 
 class Lista:
 
