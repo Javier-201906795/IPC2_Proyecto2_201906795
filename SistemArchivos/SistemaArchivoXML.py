@@ -65,6 +65,18 @@ class SistemaArchivo:
                             plantasXhilera = inv.getElementsByTagName('plantasXhilera')[0].firstChild.data
                             print("numero de hileras: ",numeroHileras)
                             print("plantas por hilera: ",plantasXhilera)
+                            print("# -------[ Lista plantas ]-------")
+                            listaplantas = inv.getElementsByTagName('listaPlantas')[0]
+                            plantas = listaplantas.getElementsByTagName('planta')
+                            for planta in plantas:
+                                hileraplanta = planta.getAttribute('hilera')
+                                posicionplanta = planta.getAttribute('posicion')
+                                litrosAgua = planta.getAttribute('litrosAgua')
+                                gramosFertilizante = planta.getAttribute('gramosFertilizante')
+                                nombreplanta = planta.firstChild.data
+                                print(f"Hilera: {hileraplanta} - Posicion: {posicionplanta} - Litros Agua: {litrosAgua} - Gramos Fertilizante: {gramosFertilizante} - Nombre Planta: {nombreplanta}")
+                                #print(planta.toxml())
+                            print("# -------[ Fin Lista plantas ]-------")
                             print(f"#-------------[Fin Invernadero {nombreinvernadero}]--------------")
                         print("#---------------[Fin Invernaderos]-------------")
                     print("#---------------[Fin Lista Invernaderos XML]-------------")
