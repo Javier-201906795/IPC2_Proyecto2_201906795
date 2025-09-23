@@ -47,6 +47,17 @@ class CPlanta (InfoNodo):
 
 
 ############################################################
+
+class CPlanRiego (InfoNodo):
+    def __init__ (self, nombre, colaplan):
+        self.nombre = nombre
+        self.colaplan = colaplan
+
+    def desplegar(self):
+        print(f"Nombre: {self.nombre}")
+        self.colaplan.desplegar()
+
+############################################################
 class CInvernadero (InfoNodo):
     def __init__(self, nombre, numeroHilera, plantasXHilera, ListaPlantas, ListaAsignacionDrones):
         self.nombre = nombre
