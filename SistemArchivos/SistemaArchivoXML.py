@@ -202,7 +202,7 @@ class SistemaArchivo:
                                         self.ListaPlantas = Lista()
                                         self.ListaPlanes = Lista()
                                         ColaDronesInvernadero = Cola()
-                                        self.BanderaErrores == False
+                                        self.BanderaErrores = False
                                     except Exception as e:
                                         print("!!! ERORR AL CREAR INVERNADERO !!!\n Revise si el XML esta correctamente\n",e)
                                     
