@@ -112,4 +112,15 @@ class Cnombreinvernadero (InfoNodo):
     def EsIgualALLave(self, nombre):
         return self.nombre == nombre    
 
+############################################################
+class Cnombreplan (InfoNodo):
+    def  __init__(self, nombre, opcion):
+        self.nombre = nombre
+        self.opcion = opcion
+
+    def desplegar(self):
+        print(f'Opcion: {self.opcion}) Nombre: {self.nombre}')       
+    
+    def EsIgualALLave(self, nombre):
+        return self.nombre == nombre  
          

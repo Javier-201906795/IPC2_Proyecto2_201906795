@@ -43,11 +43,11 @@ class SistemaRiegos():
             #Datos invernadero
             nombre = invernadero.valor.nombre
             ListaPlanes = invernadero.valor.ListaPlanes
-            print(nombre)
-            print("\n\n ------------- [Planes] --------------")
+            
+            #Cola nombres
+            colanombresplanes = Cola()
             #Obtener Instrucciones
             nombreplan = None
-            colaplan = None
             for i in range(0,ListaPlanes.tamano()):
                 if i <=0:
                     plan = ListaPlanes.primero
@@ -55,10 +55,9 @@ class SistemaRiegos():
                     plan = plan.siguiente
                 #Datos plan
                 nombreplan = plan.valor.nombre
-                colaplan = plan.valor.colaplan
-                print(f'\nNombre plan: {nombreplan}')
-                colaplan.desplegar()
-            print("\n\n ------------- [Fin Planes] --------------")
+                colanombresplanes.Push(Cnombreplan(nombreplan,i+1))
+            
+            return colanombresplanes
 
         except Exception as e:
             print("!!! Error al Listar Planes !!!")

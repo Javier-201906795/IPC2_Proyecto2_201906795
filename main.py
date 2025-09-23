@@ -20,6 +20,12 @@ invernaderoselecionado = input("Numero de opcion: ")
 print(invernaderoselecionado)
 #Listar Planes
 ColaLista = sistema_riego.ListarPlanes(invernaderoselecionado)
+#Imprime Planes
+for i in range(0,ColaLista.tamano()):
+    nombre = ColaLista.Pop().nombre
+#Seleccion una opcion
+planselecionado = input("Numero de opcion: ")
+print(f'plan seleccionado: {planselecionado}')
     
 
 
