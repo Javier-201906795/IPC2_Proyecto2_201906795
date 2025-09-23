@@ -10,6 +10,12 @@ class SistemaRiegos():
         self.InvernaderoSel = None
         self.PlanSel = None
 
+        self.Invnombre = None
+        self.InvnumeroHilera = None
+        self.InvplantasXHilera = None
+        self.InvListaPlantas = None
+        self.InvListaDrones = None
+
     def desplegar(self):
         self.colainvernaderos.desplegar()
 
@@ -77,6 +83,13 @@ class SistemaRiegos():
         try:
             print(f'\n>> Invernadero seleccionado: {numinv}  -  Plan seleccionado: {numplan}')
             #Reinicar valores
+            self.InvernaderoSel = None
+            self.PlanSel = None
+            self.Invnombre = None
+            self.InvnumeroHilera = None
+            self.InvplantasXHilera = None
+            self.InvListaPlantas = None
+            self.InvListaDrones = None
 
             #Obtener invernadero
             invernaderodata = None
@@ -105,6 +118,16 @@ class SistemaRiegos():
             #Almacenar informacion
             self.InvernaderoSel = invernaderodata
             self.PlanSel = Plan
+
+            print()
+
+            #Obtener Datos invernadero
+            self.Invnombre = invernaderodata.nombre
+            self.InvnumeroHilera = invernaderodata.numeroHilera
+            self.InvplantasXHilera = invernaderodata.plantasXHilera
+            self.InvListaPlantas = invernaderodata.ListaPlantas
+            self.InvListaDrones = invernaderodata.ListaDrones
+            
 
             print("\n\n")
 
