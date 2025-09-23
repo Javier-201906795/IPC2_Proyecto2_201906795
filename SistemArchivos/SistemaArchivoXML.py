@@ -10,6 +10,7 @@ class SistemaArchivo:
         self.ruta = ruta
         self.ListaDrones = Lista()
         
+        
 
     def leer_archivo(self):
         try:
@@ -64,7 +65,7 @@ class SistemaArchivo:
                     listainvernaderos = item.getElementsByTagName("listaInvernaderos")
                     for invernaderos in listainvernaderos:
                         print("#---------------[Invernaderos]-------------")
-                        #print(invernaderos.toxml())
+                        
                         invernadero = invernaderos.getElementsByTagName("invernadero")
                         for inv in invernadero:
                             nombreinvernadero = inv.getAttribute('nombre')

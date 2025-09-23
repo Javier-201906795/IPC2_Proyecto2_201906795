@@ -22,3 +22,21 @@ class CDron (InfoNodo):
 
     def EsIgualALLave(self, id):
         return self.id == id
+
+
+############################################################
+
+class CInvernadero (InfoNodo):
+    def __init__(self, nombre, numeroHilera, plantasXHilera, ListaPlantas, ListaAsignacionDrones):
+        self.nombre = nombre
+        self.numeroHilera = numeroHilera
+        self.plantasXHilera = plantasXHilera
+        self.ListaPlantas = ListaPlantas
+        self.ListaAsignacionDrones = ListaAsignacionDrones
+    
+    
+    
+    
+    
+    def EsIgualALLave(self, nombre):
+        return self.nombre == nombre
