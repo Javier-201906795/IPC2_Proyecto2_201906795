@@ -46,6 +46,8 @@ class SistemaRiegos():
             print(nombre)
             print("\n\n ------------- [Planes] --------------")
             #Obtener Instrucciones
+            nombreplan = None
+            colaplan = None
             for i in range(0,ListaPlanes.tamano()):
                 if i <=0:
                     plan = ListaPlanes.primero
