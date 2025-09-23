@@ -10,14 +10,14 @@
         <invernadero nombre="Invernadero Zacapa">
             <numeroHileras> 3 </numeroHileras>
             <plantasXhilera> 4 </plantasXhilera>
-            <listaPlantas2>
+            <listaPlantas>
                 <planta hilera="1" posicion="1" litrosAgua="1" gramosFertilizante="200"> ciprés</planta>
                 <planta hilera="1" posicion="2" litrosAgua="1" gramosFertilizante="200"> ciprés</planta>
                 <planta hilera="2" posicion="1" litrosAgua="1" gramosFertilizante="200"> ciprésitaliano </planta>
                 <planta hilera="2" posicion="4" litrosAgua="1" gramosFertilizante="200"> ciprés de tarout </planta>
                 <planta hilera="3" posicion="1" litrosAgua="1" gramosFertilizante="200"> ciprés de tarout </planta>
                 <planta hilera="3" posicion="4" litrosAgua="1" gramosFertilizante="200"> ciprés</planta>
-            </listaPlantas2>
+            </listaPlantas>
             <asignacionDrones>
                 <dron id="1" hilera="1"/>
                 <dron id="2" hilera="1"/>
