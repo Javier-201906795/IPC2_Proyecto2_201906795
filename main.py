@@ -28,9 +28,7 @@ planselecionado = input("Numero de opcion: ")
 #Obtener informacion
 sistema_riego.Obtenerinformacion(invernaderoselecionado,planselecionado)
     
-
-
-#sistema_riego.Ejecutar_tiempo(2)
+sistema_riego.Ejecutar_tiempo(2)
 
 
 
