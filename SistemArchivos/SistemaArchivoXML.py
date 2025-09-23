@@ -113,7 +113,7 @@ class SistemaArchivo:
                             for plan in planes:
                                 nombreplan = plan.getAttribute('nombre')
                                 colaplan = plan.firstChild.data
-                                print(f"Plan: {nombreplan} - Cola: {colaplan}")
+                                #print(f"Plan: {nombreplan} - Cola: {colaplan}")
                                 #Elimina espacios en blanco y separa por comas
                                 elementos = colaplan.split(',')
                                 ColaPlanesRiego = Cola()
@@ -125,7 +125,9 @@ class SistemaArchivo:
                                     #print(f'hilera: {item2hilera} - planta: {item2planta}')
                                     #Almacenar Asignacion Plan
                                     ColaPlanesRiego.Push(CAsignacionPlan(item2hilera, item2planta))
-                                ColaPlanesRiego.desplegar()  
+                                #Almacen Plan Riego
+                                planriego = CPlanRiego(nombreplan,ColaPlanesRiego)
+                                planriego.desplegar()
                             # print("primero")
                             # ColaPlanesRiego.primero.obtenerDato().desplegar()
                             # print('Pop')

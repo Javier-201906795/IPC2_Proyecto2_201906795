@@ -68,8 +68,10 @@ class CPlanRiego (InfoNodo):
         self.colaplan = colaplan
 
     def desplegar(self):
-        print(f"Nombre: {self.nombre}")
+        
+        print(f"-----[Plan Riego: {self.nombre}]----")
         self.colaplan.desplegar()
+        print(f"-----[FIN Plan Riego {self.nombre}]----")
 
 ############################################################
 class CInvernadero (InfoNodo):
