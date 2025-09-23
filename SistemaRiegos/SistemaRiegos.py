@@ -7,6 +7,8 @@ from Nodos.Clases import *
 class SistemaRiegos():
     def __init__(self, colainvernaderos):
         self.colainvernaderos = colainvernaderos
+        self.InvernaderoSel = None
+        self.PlanSel = None
 
     def desplegar(self):
         self.colainvernaderos.desplegar()
@@ -27,6 +29,10 @@ class SistemaRiegos():
             return Colanombreinv
         except Exception as e:
             print("!!! Error al listar invernaderos !!!\n",e)
+
+
+
+
 
     def ColasPlanes(self, opcion):
         try:
@@ -61,6 +67,56 @@ class SistemaRiegos():
 
         except Exception as e:
             print("!!! Error al Listar Planes !!!")
+
+
+
+
+
+
+    def Obtenerinformacion(self, numinv, numplan):
+        try:
+            print(f'\n>> Invernadero seleccionado: {numinv}  -  Plan seleccionado: {numplan}')
+            #Reinicar valores
+
+            #Obtener invernadero
+            invernaderodata = None
+            for i in range(0,int(numinv)):
+                if i <=0:
+                    invernadero = self.colainvernaderos.primero
+                else:
+                    invernadero = invernadero.siguiente
+                invernaderodata = invernadero.valor
+            invernaderodata.desplegar()
+
+            print()
+
+            #Obtener plan
+            ListaPlanes = invernaderodata.ListaPlanes
+            Plan = None
+            for i in range(0,int(numplan)):
+                if i <=0:
+                    plan = ListaPlanes.primero
+                else:
+                    plan = plan.siguiente
+                #Datos plan
+                Plan = plan.valor
+            Plan.desplegar()
+
+            #Almacenar informacion
+            self.InvernaderoSel = invernaderodata
+            self.PlanSel = Plan
+
+            print("\n\n")
+
+
+
+        except Exception as e:
+            print("!!! Error al Obtener informacion de invernadero y planes !!!\n",e)
+
+
+
+
+
 
 
     def Ejecutar_tiempo(self,tiempo):
