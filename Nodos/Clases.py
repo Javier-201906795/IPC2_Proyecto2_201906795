@@ -48,6 +48,20 @@ class CPlanta (InfoNodo):
 
 ############################################################
 
+class CAsignacionPlan (InfoNodo):
+    def __init__ (self, hilera, planta):
+        self.hilera = hilera
+        self.planta = planta
+    
+    def desplegar(self):
+        print(f"Hilera: {self.hilera} - Planta: {self.planta}")
+    
+    def EsIgualALLave(self, hilera):
+        return self.hilera == hilera
+
+
+############################################################
+
 class CPlanRiego (InfoNodo):
     def __init__ (self, nombre, colaplan):
         self.nombre = nombre

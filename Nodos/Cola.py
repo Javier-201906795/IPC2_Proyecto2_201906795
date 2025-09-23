@@ -31,7 +31,7 @@ class Cola:
     def desplegar(self):
         actual = self.primero
         while actual != None:
-            actual.obtenerInfo().desplegar()
+            actual.obtenerDato().desplegar()
             actual = actual.obtenerSiguiente()
 
     def buscar(self,item):

@@ -11,6 +11,7 @@ class SistemaArchivo:
         self.ListaDrones = Lista()
         self.ListaInvernaderos = Lista()
         self.ListaPlantas = Lista()
+        self.ColaPlanesRiego = Cola()
         
         
         
@@ -117,10 +118,18 @@ class SistemaArchivo:
                                 elementos = colaplan.split(',')
                                 for elemento in elementos:
                                     item = elemento.strip()
-                                    print(item)
+                                    item2 = item.split('-')
+                                    item2hilera = item2[0].strip()
+                                    item2planta = item2[1].strip()
+                                    #print(f'hilera: {item2hilera} - planta: {item2planta}')
+                                    #Almacenar Asignacion Plan
+                                    item3plan = CAsignacionPlan(item2hilera, item2planta)
+                                    item3plan.desplegar()
+                                    #Almacenar en Cola
+                                    self.ColaPlanesRiego.Push(item3plan)
                                 
                             print("#-----------[ Fin PlanRiegos ]-----------")
-
+                            #self.ColaPlanesRiego.desplegar()
                             
                             
                             print(f"#-------------[Fin Invernadero {nombreinvernadero}]--------------")
