@@ -26,6 +26,22 @@ class CDron (InfoNodo):
 
 ############################################################
 
+class CPlanta (InfoNodo):
+    def __init__(self, hilera, posicion, litrosAgua, gramosFertilizante, nombre):
+        self.hilera = hilera
+        self.posicion = posicion
+        self.litrosAgua = litrosAgua
+        self.gramosFertilizante = gramosFertilizante
+        self.nombre = nombre
+    
+    def desplegar(self):
+        print(f"Hilera: {self.hilera} - Posicion: {self.posicion} - Litros Agua: {self.litrosAgua} - Gramos Fertilizante: {self.gramosFertilizante} - Nombre Planta: {self.nombre}")
+    
+    def EsIgualALLave(self, nombre):
+        return self.nombre == nombre
+
+
+############################################################
 class CInvernadero (InfoNodo):
     def __init__(self, nombre, numeroHilera, plantasXHilera, ListaPlantas, ListaAsignacionDrones):
         self.nombre = nombre

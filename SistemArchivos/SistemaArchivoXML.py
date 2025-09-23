@@ -9,6 +9,9 @@ class SistemaArchivo:
     def __init__(self, ruta):
         self.ruta = ruta
         self.ListaDrones = Lista()
+        self.ListaInvernaderos = Lista()
+        self.ListaPlantas = Lista()
+        
         
         
 
@@ -77,15 +80,19 @@ class SistemaArchivo:
                             print("# -------[ Lista plantas ]-------")
                             listaplantas = inv.getElementsByTagName('listaPlantas')[0]
                             plantas = listaplantas.getElementsByTagName('planta')
-                            for planta in plantas:
+                            for planta in reversed(plantas):
                                 hileraplanta = planta.getAttribute('hilera')
                                 posicionplanta = planta.getAttribute('posicion')
                                 litrosAgua = planta.getAttribute('litrosAgua')
                                 gramosFertilizante = planta.getAttribute('gramosFertilizante')
                                 nombreplanta = planta.firstChild.data
-                                print(f"Hilera: {hileraplanta} - Posicion: {posicionplanta} - Litros Agua: {litrosAgua} - Gramos Fertilizante: {gramosFertilizante} - Nombre Planta: {nombreplanta}")
-                                #print(planta.toxml())
+                                #print(f"Hilera: {hileraplanta} - Posicion: {posicionplanta} - Litros Agua: {litrosAgua} - Gramos Fertilizante: {gramosFertilizante} - Nombre Planta: {nombreplanta}")
+                                #Almacenar Planta
+                                self.ListaPlantas.agregar(CPlanta(hileraplanta,posicionplanta,litrosAgua, gramosFertilizante, nombreplanta))
+                            
+                            self.ListaPlantas.desplegar()
                             print("# -------[ Fin Lista plantas ]-------")
+                            
                             print("# -------------[ asignacionDrones ]-------------")
                             asignacionDrones = inv.getElementsByTagName('asignacionDrones')[0]
                             dronesAsignados = asignacionDrones.getElementsByTagName('dron')
@@ -108,6 +115,9 @@ class SistemaArchivo:
                                     print(item)
                                 
                             print("#-----------[ Fin PlanRiegos ]-----------")
+
+                            
+                            
                             print(f"#-------------[Fin Invernadero {nombreinvernadero}]--------------")
                         print("#---------------[Fin Invernaderos]-------------")
                     print("#---------------[Fin Lista Invernaderos XML]-------------")
