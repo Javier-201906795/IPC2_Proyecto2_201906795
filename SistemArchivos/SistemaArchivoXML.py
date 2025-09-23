@@ -9,7 +9,7 @@ class SistemaArchivo:
     def __init__(self, ruta):
         self.ruta = ruta
         self.ListaDrones = Lista()
-        self.ListaInvernaderos = Lista()
+        #self.ListaInvernaderos = Lista()
         self.ListaPlantas = Lista()
         self.ListaPlanes = Lista()
         self.ColaInvernaderos = Cola()
@@ -138,13 +138,18 @@ class SistemaArchivo:
                             self.ListaPlanes.desplegar()
                             print("#-----------[ Fin PlanRiegos ]-----------")
                             #Crear Invernadero
-                            Invernadero = CInvernadero(nombreinvernadero,numeroHileras,plantasXhilera,self.ListaPlantas,self.ListaPlanes)
+                            Invernadero = CInvernadero(nombreinvernadero,numeroHileras,plantasXhilera,self.ListaPlantas,self.ListaPlanes, self.ListaDrones)
                             Invernadero.desplegar()
                             #Almacenar invernadero
                             self.ColaInvernaderos.Push(Invernadero)
+                            #Reiniciar Valores para nuevo Invernadero
+                            self.ListaPlantas = Lista()
+                            self.ListaPlanes = Lista()
                             print(f"#-------------[Fin Invernadero {nombreinvernadero}]--------------")
                         print("#---------------[Fin Invernaderos]-------------")
+                        print("#"*10+"# [ Lista Invernaderos ] #"+ "#"*10)
                         self.ColaInvernaderos.desplegar()
+                        print("#"*10+"# [ Fin Lista Invernaderos ] #"+ "#"*10)
                     print("#---------------[Fin Lista Invernaderos XML]-------------")
             else:
                 print("El objeto DOM, no se puede segmentar.")

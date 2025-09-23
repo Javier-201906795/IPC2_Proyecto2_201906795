@@ -75,12 +75,13 @@ class CPlanRiego (InfoNodo):
 
 ############################################################
 class CInvernadero (InfoNodo):
-    def __init__(self, nombre, numeroHilera, plantasXHilera, ListaPlantas, ListaPlanes):
+    def __init__(self, nombre, numeroHilera, plantasXHilera, ListaPlantas, ListaPlanes, ListaDrones):
         self.nombre = nombre
         self.numeroHilera = numeroHilera
         self.plantasXHilera = plantasXHilera
         self.ListaPlantas = ListaPlantas
         self.ListaPlanes = ListaPlanes
+        self.ListaDrones = ListaDrones
     
     def EsIgualALLave(self, nombre):
         return self.nombre == nombre
@@ -94,5 +95,8 @@ class CInvernadero (InfoNodo):
         print("-------------- [Lista Planes] -----------------")
         self.ListaPlanes.desplegar()
         print("------------- [Fin Lista Planes] --------------")
+        print("-------------- [Lista Drones] -----------------")
+        self.ListaDrones.desplegar()
+        print("-------------- [Fin Lista Planes] -----------------")
         print("///////////////////////////////////////")
         
