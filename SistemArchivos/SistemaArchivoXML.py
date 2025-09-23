@@ -38,6 +38,13 @@ class SistemaArchivo:
             print("¡¡¡ [ERROR] No se pudo convertir a archivo DOM - XML !!!")
             print(f"Detalles del error: {e}")
             return None
+        
+
+
+
+
+
+
     
     def segmentar_archivo(self):
         try:
@@ -50,132 +57,150 @@ class SistemaArchivo:
                     print(item.toxml())
                     print("#---------------[Fin Configuracion XML]-------------")
                     ##########################################################
+
+
                     print("#---------------[Lista Drones XML]-------------")
-                    listadrones = item.getElementsByTagName("listaDrones")
-                    for drones in listadrones:
-                        print("#------------[Drones]-------------")
-                        drone = drones.getElementsByTagName("dron")
-                        
-                        for d in drone:
-                            iddron =  d.getAttribute('id')
-                            nombredron = d.getAttribute('nombre')
-                            #Almacenar Dron
-                            self.ListaDrones.Push(CDron(iddron,nombredron))
-                        self.ListaDrones.desplegar()
-                        
-                        #print(self.ListaDrones.primero.obtenerDato().id)
-                        print("#------------[Fin Drones]-------------")
+                    try:
+                        listadrones = item.getElementsByTagName("listaDrones")
+                        for drones in listadrones:
+                            print("#------------[Drones]-------------")
+                            drone = drones.getElementsByTagName("dron")
+                            
+                            for d in drone:
+                                iddron =  d.getAttribute('id')
+                                nombredron = d.getAttribute('nombre')
+                                #Almacenar Dron
+                                self.ListaDrones.Push(CDron(iddron,nombredron))
+                            self.ListaDrones.desplegar()
+                            
+                            #print(self.ListaDrones.primero.obtenerDato().id)
+                            print("#------------[Fin Drones]-------------")
+                    except Exception as e:
+                        print("!!! ErrorXML no se encontro listaDrones !!!\n",e)
                     print("#---------------[Fin Lista Drones XML]-------------")
+
+
                     ##########################################################
+
+
                     print("#---------------[Lista Invernaderos XML]-------------")
-                    listainvernaderos = item.getElementsByTagName("listaInvernaderos")
-                    for invernaderos in listainvernaderos:
-                        print("#---------------[Invernaderos]-------------")
-                        
-                        invernadero = invernaderos.getElementsByTagName("invernadero")
-                        for inv in invernadero:
-                            nombreinvernadero = inv.getAttribute('nombre')
-                            print(f"#-------------[Invernadero {nombreinvernadero}]--------------")
-                            numeroHileras = inv.getElementsByTagName('numeroHileras')[0].firstChild.data
-                            plantasXhilera = inv.getElementsByTagName('plantasXhilera')[0].firstChild.data
-                            print("numero de hileras: ",numeroHileras)
-                            print("plantas por hilera: ",plantasXhilera)
-                            print("# -------[ Lista plantas ]-------")
-                            listaplantas = inv.getElementsByTagName('listaPlantas')[0]
-                            plantas = listaplantas.getElementsByTagName('planta')
-                            for planta in reversed(plantas):
-                                hileraplanta = planta.getAttribute('hilera')
-                                posicionplanta = planta.getAttribute('posicion')
-                                litrosAgua = planta.getAttribute('litrosAgua')
-                                gramosFertilizante = planta.getAttribute('gramosFertilizante')
-                                nombreplanta = planta.firstChild.data
-                                #print(f"Hilera: {hileraplanta} - Posicion: {posicionplanta} - Litros Agua: {litrosAgua} - Gramos Fertilizante: {gramosFertilizante} - Nombre Planta: {nombreplanta}")
-                                #Almacenar Planta
-                                self.ListaPlantas.agregar(CPlanta(hileraplanta,posicionplanta,litrosAgua, gramosFertilizante, nombreplanta))
+                    try:
+                        listainvernaderos = item.getElementsByTagName("listaInvernaderos")
+                        for invernaderos in listainvernaderos:
+                            print("#---------------[Invernaderos]-------------")
                             
-                            self.ListaPlantas.desplegar()
-                            print("# -------[ Fin Lista plantas ]-------")
-                            
-                            print("# -------------[ asignacionDrones ]-------------")
-                            
-                            ColaDronesInvernadero = Cola()
+                            try:
+                                invernadero = invernaderos.getElementsByTagName("invernadero")
+                                for inv in invernadero:
+                                    nombreinvernadero = inv.getAttribute('nombre')
+                                    print(f"#-------------[Invernadero {nombreinvernadero}]--------------")
+                                    numeroHileras = inv.getElementsByTagName('numeroHileras')[0].firstChild.data
+                                    plantasXhilera = inv.getElementsByTagName('plantasXhilera')[0].firstChild.data
+                                    print("numero de hileras: ",numeroHileras)
+                                    print("plantas por hilera: ",plantasXhilera)
+                                    print("# -------[ Lista plantas ]-------")
+                                    try:
+                                        listaplantas = inv.getElementsByTagName('listaPlantas')[0]
+                                        plantas = listaplantas.getElementsByTagName('planta')
+                                        for planta in reversed(plantas):
+                                            hileraplanta = planta.getAttribute('hilera')
+                                            posicionplanta = planta.getAttribute('posicion')
+                                            litrosAgua = planta.getAttribute('litrosAgua')
+                                            gramosFertilizante = planta.getAttribute('gramosFertilizante')
+                                            nombreplanta = planta.firstChild.data
+                                            #print(f"Hilera: {hileraplanta} - Posicion: {posicionplanta} - Litros Agua: {litrosAgua} - Gramos Fertilizante: {gramosFertilizante} - Nombre Planta: {nombreplanta}")
+                                            #Almacenar Planta
+                                            self.ListaPlantas.agregar(CPlanta(hileraplanta,posicionplanta,litrosAgua, gramosFertilizante, nombreplanta))
+                                        
+                                        self.ListaPlantas.desplegar()
+                                    except Exception as e:
+                                        print("!!! ErrorXML en listaPlantas !!!\n",e)
+                                    print("# -------[ Fin Lista plantas ]-------")
+                                    
+                                    print("# -------------[ asignacionDrones ]-------------")
+                                    
+                                    ColaDronesInvernadero = Cola()
 
-                            #Nueva Lista drones para invernadero
-                            
+                                    #Nueva Lista drones para invernadero
+                                    
 
-                            for i in range(0,self.ListaDrones.tamano()):
-                                #AgregarDato
-                                if i <=0 :
-                                    datocola = self.ListaDrones.primero
-                                else:
-                                    datocola = datocola.siguiente
-                                #guardar en cola nueva
-                                iddronnuevo = datocola.valor.id
-                                nombredronnuevo = datocola.valor.nombre
-                                ColaDronesInvernadero.Push(CDron(iddronnuevo,nombredronnuevo))
+                                    for i in range(0,self.ListaDrones.tamano()):
+                                        #AgregarDato
+                                        if i <=0 :
+                                            datocola = self.ListaDrones.primero
+                                        else:
+                                            datocola = datocola.siguiente
+                                        #guardar en cola nueva
+                                        iddronnuevo = datocola.valor.id
+                                        nombredronnuevo = datocola.valor.nombre
+                                        ColaDronesInvernadero.Push(CDron(iddronnuevo,nombredronnuevo))
 
-                            print("----")    
-                            ColaDronesInvernadero.desplegar()
-                            print("----")    
-                            
-                            asignacionDrones = inv.getElementsByTagName('asignacionDrones')[0]
-                            dronesAsignados = asignacionDrones.getElementsByTagName('dron')
-                            for dron in dronesAsignados:
-                                iddronasignacion = dron.getAttribute('id')
-                                hileraasignacion = dron.getAttribute('hilera')
-                                #print(f"id: {iddronasignacion} - hilera: {hileraasignacion}")
-                                #Buscar Dron
-                                item = ColaDronesInvernadero.buscar_item(iddronasignacion)
-                                item.asignarHilera(hileraasignacion)
-                                item.desplegar()
-                                
-                            print("# -------------[ Fin asignacionDrones ]-------------")
-                            print("#-----------[ PlanRiego ]-----------")
-                            planesriego = inv.getElementsByTagName('planesRiego')[0]
-                            planes = planesriego.getElementsByTagName('plan')
-                            for plan in reversed(planes):
-                                nombreplan = plan.getAttribute('nombre')
-                                colaplan = plan.firstChild.data
-                                #print(f"Plan: {nombreplan} - Cola: {colaplan}")
-                                #Elimina espacios en blanco y separa por comas
-                                elementos = colaplan.split(',')
-                                ColaPlanesRiego = Cola()
-                                for elemento in elementos:
-                                    item = elemento.strip()
-                                    item2 = item.split('-')
-                                    item2hilera = item2[0].strip()
-                                    item2planta = item2[1].strip()
-                                    #print(f'hilera: {item2hilera} - planta: {item2planta}')
-                                    #Almacenar Asignacion Plan
-                                    ColaPlanesRiego.Push(CAsignacionPlan(item2hilera, item2planta))
-                                #Almacen Plan Riego
-                                planriego = CPlanRiego(nombreplan,ColaPlanesRiego)
-                                #Almacenar en Lista
-                                self.ListaPlanes.agregar(planriego)
-                            # print("primero")
-                            # ColaPlanesRiego.primero.obtenerDato().desplegar()
-                            # print('Pop')
-                            # ColaPlanesRiego.Pop()
-                            self.ListaPlanes.desplegar()
-                            print("#-----------[ Fin PlanRiegos ]-----------")
-                            #Crear Invernadero
-                            Invernadero = CInvernadero(nombreinvernadero,numeroHileras,plantasXhilera,self.ListaPlantas,self.ListaPlanes, ColaDronesInvernadero)
-                            Invernadero.desplegar()
-                            #Almacenar invernadero
-                            self.ColaInvernaderos.Push(Invernadero)
-                            #Reiniciar Valores para nuevo Invernadero
-                            self.ListaPlantas = Lista()
-                            self.ListaPlanes = Lista()
-                            ColaDronesInvernadero = Cola()
-                            
-                            print(f"#-------------[Fin Invernadero {nombreinvernadero}]--------------")
-                        print("#---------------[Fin Invernaderos]-------------")
-                        print()
-                        print()
-                        print("#"*10+"# [ Lista Invernaderos ] #"+ "#"*10)
-                        self.ColaInvernaderos.desplegar()
-                        print("#"*10+"# [ Fin Lista Invernaderos ] #"+ "#"*10)
-                        print()
+                                    print("----")    
+                                    ColaDronesInvernadero.desplegar()
+                                    print("----")    
+                                    
+                                    asignacionDrones = inv.getElementsByTagName('asignacionDrones')[0]
+                                    dronesAsignados = asignacionDrones.getElementsByTagName('dron')
+                                    for dron in dronesAsignados:
+                                        iddronasignacion = dron.getAttribute('id')
+                                        hileraasignacion = dron.getAttribute('hilera')
+                                        #print(f"id: {iddronasignacion} - hilera: {hileraasignacion}")
+                                        #Buscar Dron
+                                        item = ColaDronesInvernadero.buscar_item(iddronasignacion)
+                                        item.asignarHilera(hileraasignacion)
+                                        item.desplegar()
+                                        
+                                    print("# -------------[ Fin asignacionDrones ]-------------")
+                                    print("#-----------[ PlanRiego ]-----------")
+                                    planesriego = inv.getElementsByTagName('planesRiego')[0]
+                                    planes = planesriego.getElementsByTagName('plan')
+                                    for plan in reversed(planes):
+                                        nombreplan = plan.getAttribute('nombre')
+                                        colaplan = plan.firstChild.data
+                                        #print(f"Plan: {nombreplan} - Cola: {colaplan}")
+                                        #Elimina espacios en blanco y separa por comas
+                                        elementos = colaplan.split(',')
+                                        ColaPlanesRiego = Cola()
+                                        for elemento in elementos:
+                                            item = elemento.strip()
+                                            item2 = item.split('-')
+                                            item2hilera = item2[0].strip()
+                                            item2planta = item2[1].strip()
+                                            #print(f'hilera: {item2hilera} - planta: {item2planta}')
+                                            #Almacenar Asignacion Plan
+                                            ColaPlanesRiego.Push(CAsignacionPlan(item2hilera, item2planta))
+                                        #Almacen Plan Riego
+                                        planriego = CPlanRiego(nombreplan,ColaPlanesRiego)
+                                        #Almacenar en Lista
+                                        self.ListaPlanes.agregar(planriego)
+                                    # print("primero")
+                                    # ColaPlanesRiego.primero.obtenerDato().desplegar()
+                                    # print('Pop')
+                                    # ColaPlanesRiego.Pop()
+                                    self.ListaPlanes.desplegar()
+                                    print("#-----------[ Fin PlanRiegos ]-----------")
+                                    #Crear Invernadero
+                                    Invernadero = CInvernadero(nombreinvernadero,numeroHileras,plantasXhilera,self.ListaPlantas,self.ListaPlanes, ColaDronesInvernadero)
+                                    Invernadero.desplegar()
+                                    #Almacenar invernadero
+                                    self.ColaInvernaderos.Push(Invernadero)
+                                    #Reiniciar Valores para nuevo Invernadero
+                                    self.ListaPlantas = Lista()
+                                    self.ListaPlanes = Lista()
+                                    ColaDronesInvernadero = Cola()
+                                    
+                                    print(f"#-------------[Fin Invernadero {nombreinvernadero}]--------------")
+                            except Exception as e:
+                                print("!!! Error en  invernadero !!!\n",e)
+                            print("#---------------[Fin Invernaderos]-------------")
+                            print()
+                            print()
+                            print("#"*10+"# [ Lista Invernaderos ] #"+ "#"*10)
+                            self.ColaInvernaderos.desplegar()
+                            print("#"*10+"# [ Fin Lista Invernaderos ] #"+ "#"*10)
+                            print()
+                    except Exception as e:
+                        print("!!! ErrorXML en listaInvernaderos !!!\n",e)
                     print("#---------------[Fin Lista Invernaderos XML]-------------")
             else:
                 print("El objeto DOM, no se puede segmentar.")
