@@ -25,7 +25,7 @@ for i in range(0,ColaLista.tamano()):
     nombre = ColaLista.Pop().nombre
 #Seleccion una opcion
 planselecionado = input("Numero de opcion: ")
-#Obtenr informacion
+#Obtener informacion
 sistema_riego.Obtenerinformacion(invernaderoselecionado,planselecionado)
     
 
