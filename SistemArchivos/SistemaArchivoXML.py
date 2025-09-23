@@ -219,6 +219,11 @@ class SistemaArchivo:
                     except Exception as e:
                         print("!!! ErrorXML en listaInvernaderos !!!\n",e)
                     print("#---------------[Fin Lista Invernaderos XML]-------------")
+
+
+                    #Devolver Lista invernaderos
+                    return self.ColaInvernaderos
+
             else:
                 print("El objeto DOM, no se puede segmentar.")
                 return None

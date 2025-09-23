@@ -87,7 +87,7 @@ class CInvernadero (InfoNodo):
         return self.nombre == nombre
     
     def desplegar(self):
-        print("///////////////////////////////////////")
+        print("/"*120)
         print(f'nombre: {self.nombre} - numero hileras: {self.numeroHilera} - plantas por hilera: {self.plantasXHilera}')
         print("-------------- [Lista Plantas] --------------")
         self.ListaPlantas.desplegar()
@@ -98,5 +98,5 @@ class CInvernadero (InfoNodo):
         print("-------------- [Lista Drones] -----------------")
         self.ListaDrones.desplegar()
         print("-------------- [Fin Lista Planes] -----------------")
-        print("///////////////////////////////////////")
+        print("/"*120)
         
