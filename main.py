@@ -11,7 +11,7 @@ invernaderos = sistema_archivo.segmentar_archivo()
 #Pasar a SistemaRiegos
 sistema_riego = SistemaRiegos(invernaderos)
 #Selecciona un invernadero
-Colanombreinvernaderos = sistema_riego.ListarInvernaderos()
+Colanombreinvernaderos = sistema_riego.ColasInvernaderos()
 #Imprime invernaderos
 for i in range(0,Colanombreinvernaderos.tamano()):
     nombre = Colanombreinvernaderos.Pop().nombre
@@ -19,7 +19,7 @@ for i in range(0,Colanombreinvernaderos.tamano()):
 invernaderoselecionado = input("Numero de opcion: ")
 print(invernaderoselecionado)
 #Listar Planes
-ColaLista = sistema_riego.ListarPlanes(invernaderoselecionado)
+ColaLista = sistema_riego.ColasPlanes(invernaderoselecionado)
 #Imprime Planes
 for i in range(0,ColaLista.tamano()):
     nombre = ColaLista.Pop().nombre

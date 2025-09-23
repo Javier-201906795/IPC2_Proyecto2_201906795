@@ -11,7 +11,7 @@ class SistemaRiegos():
     def desplegar(self):
         self.colainvernaderos.desplegar()
 
-    def ListarInvernaderos(self):
+    def ColasInvernaderos(self):
         try:
             Colanombreinv = Cola()
             #Recorre invernaderos
@@ -28,7 +28,7 @@ class SistemaRiegos():
         except Exception as e:
             print("!!! Error al listar invernaderos !!!\n",e)
 
-    def ListarPlanes(self, opcion):
+    def ColasPlanes(self, opcion):
         try:
 
             print(f'>> Opcion seleccionada: {opcion}')
