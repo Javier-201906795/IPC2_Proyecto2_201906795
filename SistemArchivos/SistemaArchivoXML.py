@@ -126,8 +126,10 @@ class SistemaArchivo:
                                     #Almacenar Asignacion Plan
                                     ColaPlanesRiego.Push(CAsignacionPlan(item2hilera, item2planta))
                                 ColaPlanesRiego.desplegar()  
-                            #print("primero")
-                            #ColaPlanesRiego.primero.obtenerDato().desplegar()
+                            # print("primero")
+                            # ColaPlanesRiego.primero.obtenerDato().desplegar()
+                            # print('Pop')
+                            # ColaPlanesRiego.Pop()
                             print("#-----------[ Fin PlanRiegos ]-----------")
                             
                             

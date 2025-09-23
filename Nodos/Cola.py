@@ -38,7 +38,7 @@ class Cola:
         actual = self.primero
         encontrado = False
         while actual != None and not encontrado:
-            if actual.obtenerInfo().EsIgualALLave(item):
+            if actual.obtenerDato().EsIgualALLave(item):
                 encontrado = True
             else:
                 actual = actual.obtenerSiguiente()
@@ -48,10 +48,10 @@ class Cola:
     def Pop(self):
         primerotemp = self.primero
         if self.primero != None:
-            self.primero.obtenerInfo().desplegar()                    
+            self.primero.obtenerDato().desplegar()                    
             self.primero = self.primero.obtenerSiguiente()
         else:
             print("Cola esta vacia")
             return None
             
-        return primerotemp.obtenerInfo()
+        return primerotemp.obtenerDato()
