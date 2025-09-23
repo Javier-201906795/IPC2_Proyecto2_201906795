@@ -84,3 +84,15 @@ class Lista:
             actual = actual.siguiente
             indice += 1
         return -1
+    
+    def buscar_item(self, id_buscar):
+        # Busca el índice de un elemento por su id
+        actual = self.primero
+        indice = 0
+        while actual:
+            #Valida si existe el valor id y si si el id es igual
+            if hasattr(actual.valor, 'id') and actual.valor.id == id_buscar:
+                return actual.valor
+            actual = actual.siguiente
+            indice += 1
+        return None

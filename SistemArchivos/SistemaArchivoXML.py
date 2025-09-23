@@ -99,7 +99,12 @@ class SistemaArchivo:
                             for dron in dronesAsignados:
                                 iddronasignacion = dron.getAttribute('id')
                                 hileraasignacion = dron.getAttribute('hilera')
-                                print(f"id: {iddronasignacion} - hilera: {hileraasignacion}")
+                                #print(f"id: {iddronasignacion} - hilera: {hileraasignacion}")
+                                #Buscar Dron
+                                item = self.ListaDrones.buscar_item(iddronasignacion)
+                                item.asignarHilera(hileraasignacion)
+                                item.desplegar()
+                                
                             print("# -------------[ Fin asignacionDrones ]-------------")
                             print("#-----------[ PlanRiego ]-----------")
                             planesriego = inv.getElementsByTagName('planesRiego')[0]
