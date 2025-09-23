@@ -147,7 +147,13 @@ class SistemaRiegos():
         print(">> Tiempo: ", tiempo)
         try:
             #Obtener instrucciones
-            pass
+            self.PlanSel.desplegar()
+            print()
+            #Obtener drones
+            self.InvListaDrones.desplegar()
+            print()
+
+            
         except Exception as e:
             print("!!! Error al ejecutar_tiempo !!!\n",e)
         print("########################## [FIN Sistema Riegos] ############################\n\n\n")
