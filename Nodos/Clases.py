@@ -99,4 +99,17 @@ class CInvernadero (InfoNodo):
         self.ListaDrones.desplegar()
         print("-------------- [Fin Lista Planes] -----------------")
         print("/"*120)
-        
+    
+############################################################
+class Cnombreinvernadero (InfoNodo):
+    def __init__(self, nombre,opcion):
+        self.nombre = nombre
+        self.opcion = opcion
+
+    def desplegar(self):
+        print(f'Opcion: {self.opcion}) Nombre: {self.nombre}')       
+    
+    def EsIgualALLave(self, nombre):
+        return self.nombre == nombre    
+
+         
