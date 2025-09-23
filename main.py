@@ -4,7 +4,7 @@ from SistemaRiegos.SistemaRiegos import SistemaRiegos
 
 
 #Leer Archivo XML
-ruta = 'G:\\2020\\2020_USAC\\Semestre14(2025)\\IPC2\\1_Laboratorio\\8_PROYECTO2\\IPC2_Proyecto2_201906795\\entrada.xml'
+ruta = 'G:\\2020\\2020_USAC\\Semestre14(2025)\\IPC2\\1_Laboratorio\\8_PROYECTO2\\IPC2_Proyecto2_201906795\\entrada2.xml'
 sistema_archivo = SistemaArchivo(ruta)
 #Convertir a Listas y Colas
 invernaderos = sistema_archivo.segmentar_archivo()
@@ -13,7 +13,7 @@ invernaderos.desplegar()
 print("\n"*5,"?"*80)
 #Pasar a SistemaRiegos
 sistema_riego = SistemaRiegos(invernaderos)
-sistema_riego.desplegar()
+sistema_riego.Ejecutar_tiempo(2)
 
 
 
