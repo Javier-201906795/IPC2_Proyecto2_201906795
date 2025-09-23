@@ -12,6 +12,7 @@ class SistemaArchivo:
         self.ListaPlantas = Lista()
         self.ListaPlanes = Lista()
         self.ColaInvernaderos = Cola()
+        self.BanderaErrores = False
         
         
         
@@ -76,6 +77,7 @@ class SistemaArchivo:
                             print("#------------[Fin Drones]-------------")
                     except Exception as e:
                         print("!!! ErrorXML no se encontro listaDrones !!!\n",e)
+                        self.BanderaErrores = True
                     print("#---------------[Fin Lista Drones XML]-------------")
 
 
@@ -114,6 +116,7 @@ class SistemaArchivo:
                                         self.ListaPlantas.desplegar()
                                     except Exception as e:
                                         print("!!! ErrorXML en listaPlantas !!!\n",e)
+                                        self.BanderaErrores = True
                                     print("# -------[ Fin Lista plantas ]-------")
                                     
                                     print("# -------------[ asignacionDrones ]-------------")
@@ -136,6 +139,7 @@ class SistemaArchivo:
                                         ColaDronesInvernadero.desplegar()
                                     except Exception as e:
                                         print("!!! ErrorXML en listaDrones o en copia valores drones !!!\n",e)
+                                        self.BanderaErrores = True
                                     
                                     try:
                                         asignacionDrones = inv.getElementsByTagName('asignacionDrones')[0]
@@ -150,6 +154,7 @@ class SistemaArchivo:
                                             item.desplegar()
                                     except Exception as e:
                                         print("!!! ErrorXML en asignacionDrones !!!\n",e)
+                                        self.BanderaErrores = True
                                         
                                     print("# -------------[ Fin asignacionDrones ]-------------")
                                     
@@ -181,18 +186,23 @@ class SistemaArchivo:
                                         self.ListaPlanes.desplegar()
                                     except Exception as e:
                                         print("!!! ErrorXML en planesRiego!!!\n",e)
+                                        self.BanderaErrores = True
+
+
                                     print("#-----------[ Fin PlanRiegos ]-----------")
 
                                     try:
-                                        #Crear Invernadero
-                                        Invernadero = CInvernadero(nombreinvernadero,numeroHileras,plantasXhilera,self.ListaPlantas,self.ListaPlanes, ColaDronesInvernadero)
-                                        Invernadero.desplegar()
-                                        #Almacenar invernadero
-                                        self.ColaInvernaderos.Push(Invernadero)
+                                        if self.BanderaErrores == False:
+                                            #Crear Invernadero
+                                            Invernadero = CInvernadero(nombreinvernadero,numeroHileras,plantasXhilera,self.ListaPlantas,self.ListaPlanes, ColaDronesInvernadero)
+                                            Invernadero.desplegar()
+                                            #Almacenar invernadero
+                                            self.ColaInvernaderos.Push(Invernadero)
                                         #Reiniciar Valores para nuevo Invernadero
                                         self.ListaPlantas = Lista()
                                         self.ListaPlanes = Lista()
                                         ColaDronesInvernadero = Cola()
+                                        self.BanderaErrores == False
                                     except Exception as e:
                                         print("!!! ERORR AL CREAR INVERNADERO !!!\n Revise si el XML esta correctamente\n",e)
                                     
