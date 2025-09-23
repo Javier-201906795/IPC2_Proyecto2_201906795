@@ -136,9 +136,14 @@ class SistemaArchivo:
                             # ColaPlanesRiego.Pop()
                             self.ListaPlanes.desplegar()
                             print("#-----------[ Fin PlanRiegos ]-----------")
-                            
-                            
-                            
+                            #Invernadero
+                            Invernadero = CInvernadero(nombreinvernadero,numeroHileras,plantasXhilera,self.ListaPlantas,self.ListaPlanes)
+                            Invernadero.desplegar()
+                            # print(nombreinvernadero)
+                            # print(numeroHileras)
+                            # print(plantasXhilera)
+                            # print(self.ListaPlantas)
+                            # print(self.ListaPlanes)
                             print(f"#-------------[Fin Invernadero {nombreinvernadero}]--------------")
                         print("#---------------[Fin Invernaderos]-------------")
                     print("#---------------[Fin Lista Invernaderos XML]-------------")
