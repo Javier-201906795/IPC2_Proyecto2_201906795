@@ -56,7 +56,7 @@ class SistemaArchivo:
                         print("#------------[Drones]-------------")
                         drone = drones.getElementsByTagName("dron")
                         
-                        for d in reversed(drone):
+                        for d in drone:
                             iddron =  d.getAttribute('id')
                             nombredron = d.getAttribute('nombre')
                             #Almacenar Dron
@@ -98,15 +98,27 @@ class SistemaArchivo:
                             
                             print("# -------------[ asignacionDrones ]-------------")
                             
-                            ColaDronesInvernadero = self.ListaDrones
+                            ColaDronesInvernadero = Cola()
+
                             #Nueva Lista drones para invernadero
                             
 
-                            # for i in range(self.ListaDrones.tamano()):
-                            #      #AgregarDato
+                            for i in range(0,self.ListaDrones.tamano()):
+                                #AgregarDato
+                                if i <=0 :
+                                    datocola = self.ListaDrones.primero
+                                else:
+                                    datocola = datocola.siguiente
+                                #guardar en cola nueva
+                                iddronnuevo = datocola.valor.id
+                                nombredronnuevo = datocola.valor.nombre
+                                ColaDronesInvernadero.Push(CDron(iddronnuevo,nombredronnuevo))
+
+                            print("----")    
+                            ColaDronesInvernadero.desplegar()
+                            print("----")    
                             
                             asignacionDrones = inv.getElementsByTagName('asignacionDrones')[0]
-                            print(asignacionDrones.toxml())
                             dronesAsignados = asignacionDrones.getElementsByTagName('dron')
                             for dron in dronesAsignados:
                                 iddronasignacion = dron.getAttribute('id')
