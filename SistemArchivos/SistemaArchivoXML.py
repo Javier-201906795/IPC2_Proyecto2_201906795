@@ -9,7 +9,6 @@ class SistemaArchivo:
     def __init__(self, ruta):
         self.ruta = ruta
         self.ListaDrones = Cola()
-        #self.ListaInvernaderos = Lista()
         self.ListaPlantas = Lista()
         self.ListaPlanes = Lista()
         self.ColaInvernaderos = Cola()
@@ -119,75 +118,83 @@ class SistemaArchivo:
                                     
                                     print("# -------------[ asignacionDrones ]-------------")
                                     
-                                    ColaDronesInvernadero = Cola()
+                                    try:
+                                        ColaDronesInvernadero = Cola()
 
-                                    #Nueva Lista drones para invernadero
+                                        #Nueva Lista drones para invernadero
+                                        for i in range(0,self.ListaDrones.tamano()):
+                                            #AgregarDato
+                                            if i <=0 :
+                                                datocola = self.ListaDrones.primero
+                                            else:
+                                                datocola = datocola.siguiente
+                                            #guardar en cola nueva
+                                            iddronnuevo = datocola.valor.id
+                                            nombredronnuevo = datocola.valor.nombre
+                                            ColaDronesInvernadero.Push(CDron(iddronnuevo,nombredronnuevo))
+
+                                        ColaDronesInvernadero.desplegar()
+                                    except Exception as e:
+                                        print("!!! ErrorXML en listaDrones o en copia valores drones !!!\n",e)
                                     
-
-                                    for i in range(0,self.ListaDrones.tamano()):
-                                        #AgregarDato
-                                        if i <=0 :
-                                            datocola = self.ListaDrones.primero
-                                        else:
-                                            datocola = datocola.siguiente
-                                        #guardar en cola nueva
-                                        iddronnuevo = datocola.valor.id
-                                        nombredronnuevo = datocola.valor.nombre
-                                        ColaDronesInvernadero.Push(CDron(iddronnuevo,nombredronnuevo))
-
-                                    print("----")    
-                                    ColaDronesInvernadero.desplegar()
-                                    print("----")    
-                                    
-                                    asignacionDrones = inv.getElementsByTagName('asignacionDrones')[0]
-                                    dronesAsignados = asignacionDrones.getElementsByTagName('dron')
-                                    for dron in dronesAsignados:
-                                        iddronasignacion = dron.getAttribute('id')
-                                        hileraasignacion = dron.getAttribute('hilera')
-                                        #print(f"id: {iddronasignacion} - hilera: {hileraasignacion}")
-                                        #Buscar Dron
-                                        item = ColaDronesInvernadero.buscar_item(iddronasignacion)
-                                        item.asignarHilera(hileraasignacion)
-                                        item.desplegar()
+                                    try:
+                                        asignacionDrones = inv.getElementsByTagName('asignacionDrones')[0]
+                                        dronesAsignados = asignacionDrones.getElementsByTagName('dron')
+                                        for dron in dronesAsignados:
+                                            iddronasignacion = dron.getAttribute('id')
+                                            hileraasignacion = dron.getAttribute('hilera')
+                                            #print(f"id: {iddronasignacion} - hilera: {hileraasignacion}")
+                                            #Buscar Dron
+                                            item = ColaDronesInvernadero.buscar_item(iddronasignacion)
+                                            item.asignarHilera(hileraasignacion)
+                                            item.desplegar()
+                                    except Exception as e:
+                                        print("!!! ErrorXML en asignacionDrones !!!\n",e)
                                         
                                     print("# -------------[ Fin asignacionDrones ]-------------")
+                                    
+                                    
                                     print("#-----------[ PlanRiego ]-----------")
-                                    planesriego = inv.getElementsByTagName('planesRiego')[0]
-                                    planes = planesriego.getElementsByTagName('plan')
-                                    for plan in reversed(planes):
-                                        nombreplan = plan.getAttribute('nombre')
-                                        colaplan = plan.firstChild.data
-                                        #print(f"Plan: {nombreplan} - Cola: {colaplan}")
-                                        #Elimina espacios en blanco y separa por comas
-                                        elementos = colaplan.split(',')
-                                        ColaPlanesRiego = Cola()
-                                        for elemento in elementos:
-                                            item = elemento.strip()
-                                            item2 = item.split('-')
-                                            item2hilera = item2[0].strip()
-                                            item2planta = item2[1].strip()
-                                            #print(f'hilera: {item2hilera} - planta: {item2planta}')
-                                            #Almacenar Asignacion Plan
-                                            ColaPlanesRiego.Push(CAsignacionPlan(item2hilera, item2planta))
-                                        #Almacen Plan Riego
-                                        planriego = CPlanRiego(nombreplan,ColaPlanesRiego)
-                                        #Almacenar en Lista
-                                        self.ListaPlanes.agregar(planriego)
-                                    # print("primero")
-                                    # ColaPlanesRiego.primero.obtenerDato().desplegar()
-                                    # print('Pop')
-                                    # ColaPlanesRiego.Pop()
-                                    self.ListaPlanes.desplegar()
+                                    try:
+                                        planesriego = inv.getElementsByTagName('planesRiego')[0]
+                                        planes = planesriego.getElementsByTagName('plan')
+                                        for plan in reversed(planes):
+                                            nombreplan = plan.getAttribute('nombre')
+                                            colaplan = plan.firstChild.data
+                                            #print(f"Plan: {nombreplan} - Cola: {colaplan}")
+                                            #Elimina espacios en blanco y separa por comas
+                                            elementos = colaplan.split(',')
+                                            ColaPlanesRiego = Cola()
+                                            for elemento in elementos:
+                                                item = elemento.strip()
+                                                item2 = item.split('-')
+                                                item2hilera = item2[0].strip()
+                                                item2planta = item2[1].strip()
+                                                #print(f'hilera: {item2hilera} - planta: {item2planta}')
+                                                #Almacenar Asignacion Plan
+                                                ColaPlanesRiego.Push(CAsignacionPlan(item2hilera, item2planta))
+                                            #Almacen Plan Riego
+                                            planriego = CPlanRiego(nombreplan,ColaPlanesRiego)
+                                            #Almacenar en Lista
+                                            self.ListaPlanes.agregar(planriego)
+                                    
+                                        self.ListaPlanes.desplegar()
+                                    except Exception as e:
+                                        print("!!! ErrorXML en planesRiego!!!\n",e)
                                     print("#-----------[ Fin PlanRiegos ]-----------")
-                                    #Crear Invernadero
-                                    Invernadero = CInvernadero(nombreinvernadero,numeroHileras,plantasXhilera,self.ListaPlantas,self.ListaPlanes, ColaDronesInvernadero)
-                                    Invernadero.desplegar()
-                                    #Almacenar invernadero
-                                    self.ColaInvernaderos.Push(Invernadero)
-                                    #Reiniciar Valores para nuevo Invernadero
-                                    self.ListaPlantas = Lista()
-                                    self.ListaPlanes = Lista()
-                                    ColaDronesInvernadero = Cola()
+
+                                    try:
+                                        #Crear Invernadero
+                                        Invernadero = CInvernadero(nombreinvernadero,numeroHileras,plantasXhilera,self.ListaPlantas,self.ListaPlanes, ColaDronesInvernadero)
+                                        Invernadero.desplegar()
+                                        #Almacenar invernadero
+                                        self.ColaInvernaderos.Push(Invernadero)
+                                        #Reiniciar Valores para nuevo Invernadero
+                                        self.ListaPlantas = Lista()
+                                        self.ListaPlanes = Lista()
+                                        ColaDronesInvernadero = Cola()
+                                    except Exception as e:
+                                        print("!!! ERORR AL CREAR INVERNADERO !!!\n Revise si el XML esta correctamente\n",e)
                                     
                                     print(f"#-------------[Fin Invernadero {nombreinvernadero}]--------------")
                             except Exception as e:
