@@ -11,6 +11,7 @@ class SistemaArchivo:
         self.ListaDrones = Lista()
         self.ListaInvernaderos = Lista()
         self.ListaPlantas = Lista()
+        self.ListaPlanes = Lista()
         
         
         
@@ -110,7 +111,7 @@ class SistemaArchivo:
                             print("#-----------[ PlanRiego ]-----------")
                             planesriego = inv.getElementsByTagName('planesRiego')[0]
                             planes = planesriego.getElementsByTagName('plan')
-                            for plan in planes:
+                            for plan in reversed(planes):
                                 nombreplan = plan.getAttribute('nombre')
                                 colaplan = plan.firstChild.data
                                 #print(f"Plan: {nombreplan} - Cola: {colaplan}")
@@ -127,11 +128,13 @@ class SistemaArchivo:
                                     ColaPlanesRiego.Push(CAsignacionPlan(item2hilera, item2planta))
                                 #Almacen Plan Riego
                                 planriego = CPlanRiego(nombreplan,ColaPlanesRiego)
-                                planriego.desplegar()
+                                #Almacenar en Lista
+                                self.ListaPlanes.agregar(planriego)
                             # print("primero")
                             # ColaPlanesRiego.primero.obtenerDato().desplegar()
                             # print('Pop')
                             # ColaPlanesRiego.Pop()
+                            self.ListaPlanes.desplegar()
                             print("#-----------[ Fin PlanRiegos ]-----------")
                             
                             
