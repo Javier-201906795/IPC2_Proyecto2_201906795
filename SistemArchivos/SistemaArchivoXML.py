@@ -12,6 +12,7 @@ class SistemaArchivo:
         self.ListaInvernaderos = Lista()
         self.ListaPlantas = Lista()
         self.ListaPlanes = Lista()
+        self.ColaInvernaderos = Cola()
         
         
         
@@ -139,9 +140,11 @@ class SistemaArchivo:
                             #Crear Invernadero
                             Invernadero = CInvernadero(nombreinvernadero,numeroHileras,plantasXhilera,self.ListaPlantas,self.ListaPlanes)
                             Invernadero.desplegar()
-                            
+                            #Almacenar invernadero
+                            self.ColaInvernaderos.Push(Invernadero)
                             print(f"#-------------[Fin Invernadero {nombreinvernadero}]--------------")
                         print("#---------------[Fin Invernaderos]-------------")
+                        self.ColaInvernaderos.desplegar()
                     print("#---------------[Fin Lista Invernaderos XML]-------------")
             else:
                 print("El objeto DOM, no se puede segmentar.")
