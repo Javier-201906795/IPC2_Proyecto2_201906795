@@ -97,14 +97,21 @@ class SistemaArchivo:
                             print("# -------[ Fin Lista plantas ]-------")
                             
                             print("# -------------[ asignacionDrones ]-------------")
+                            nuevalistadrones = self.ListaDrones
+
+                            #Nueva Lista drones para invernadero
+                            # for i in range(self.ListaDrones):
+                            #     dato = 
+                            
                             asignacionDrones = inv.getElementsByTagName('asignacionDrones')[0]
+                            print(asignacionDrones.toxml())
                             dronesAsignados = asignacionDrones.getElementsByTagName('dron')
                             for dron in dronesAsignados:
                                 iddronasignacion = dron.getAttribute('id')
                                 hileraasignacion = dron.getAttribute('hilera')
                                 #print(f"id: {iddronasignacion} - hilera: {hileraasignacion}")
                                 #Buscar Dron
-                                item = self.ListaDrones.buscar_item(iddronasignacion)
+                                item = nuevalistadrones.buscar_item(iddronasignacion)
                                 item.asignarHilera(hileraasignacion)
                                 item.desplegar()
                                 
@@ -138,18 +145,22 @@ class SistemaArchivo:
                             self.ListaPlanes.desplegar()
                             print("#-----------[ Fin PlanRiegos ]-----------")
                             #Crear Invernadero
-                            Invernadero = CInvernadero(nombreinvernadero,numeroHileras,plantasXhilera,self.ListaPlantas,self.ListaPlanes, self.ListaDrones)
+                            Invernadero = CInvernadero(nombreinvernadero,numeroHileras,plantasXhilera,self.ListaPlantas,self.ListaPlanes, nuevalistadrones)
                             Invernadero.desplegar()
                             #Almacenar invernadero
                             self.ColaInvernaderos.Push(Invernadero)
                             #Reiniciar Valores para nuevo Invernadero
                             self.ListaPlantas = Lista()
                             self.ListaPlanes = Lista()
+                            nuevalistadrones = None
                             print(f"#-------------[Fin Invernadero {nombreinvernadero}]--------------")
                         print("#---------------[Fin Invernaderos]-------------")
+                        print()
+                        print()
                         print("#"*10+"# [ Lista Invernaderos ] #"+ "#"*10)
                         self.ColaInvernaderos.desplegar()
                         print("#"*10+"# [ Fin Lista Invernaderos ] #"+ "#"*10)
+                        print()
                     print("#---------------[Fin Lista Invernaderos XML]-------------")
             else:
                 print("El objeto DOM, no se puede segmentar.")
