@@ -19,7 +19,7 @@ for i in range(0,Colanombreinvernaderos.tamano()):
 invernaderoselecionado = input("Numero de opcion: ")
 print(invernaderoselecionado)
 #Listar Planes
-#ColaLista = sistema_riego.ListarPlanes(invernaderoselecionado)
+ColaLista = sistema_riego.ListarPlanes(invernaderoselecionado)
     
 
 

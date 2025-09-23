@@ -28,7 +28,38 @@ class SistemaRiegos():
         except Exception as e:
             print("!!! Error al listar invernaderos !!!\n",e)
 
-    
+    def ListarPlanes(self, opcion):
+        try:
+
+            print(f'>> Opcion seleccionada: {opcion}')
+            #Buscar nombre invernadero
+            #Recorre invernaderso
+            invernadero = None
+            for i in range(0,int(opcion)):
+                if i <= 0:
+                    invernadero = self.colainvernaderos.primero
+                else:
+                    invernadero = invernadero.siguiente
+            #Datos invernadero
+            nombre = invernadero.valor.nombre
+            ListaPlanes = invernadero.valor.ListaPlanes
+            print(nombre)
+            print("\n\n ------------- [Planes] --------------")
+            #Obtener Instrucciones
+            for i in range(0,ListaPlanes.tamano()):
+                if i <=0:
+                    plan = ListaPlanes.primero
+                else:
+                    plan = plan.siguiente
+                #Datos plan
+                nombreplan = plan.valor.nombre
+                colaplan = plan.valor.colaplan
+                print(f'\nNombre plan: {nombreplan}')
+                colaplan.desplegar()
+            print("\n\n ------------- [Fin Planes] --------------")
+
+        except Exception as e:
+            print("!!! Error al Listar Planes !!!")
 
 
     def Ejecutar_tiempo(self,tiempo):
