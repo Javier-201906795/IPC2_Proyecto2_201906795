@@ -97,11 +97,13 @@ class SistemaArchivo:
                             print("# -------[ Fin Lista plantas ]-------")
                             
                             print("# -------------[ asignacionDrones ]-------------")
-                            nuevalistadrones = self.ListaDrones
-
+                            
+                            ColaDronesInvernadero = self.ListaDrones
                             #Nueva Lista drones para invernadero
-                            # for i in range(self.ListaDrones):
-                            #     dato = 
+                            
+
+                            # for i in range(self.ListaDrones.tamano()):
+                            #      #AgregarDato
                             
                             asignacionDrones = inv.getElementsByTagName('asignacionDrones')[0]
                             print(asignacionDrones.toxml())
@@ -111,7 +113,7 @@ class SistemaArchivo:
                                 hileraasignacion = dron.getAttribute('hilera')
                                 #print(f"id: {iddronasignacion} - hilera: {hileraasignacion}")
                                 #Buscar Dron
-                                item = self.ListaDrones.buscar_item(iddronasignacion)
+                                item = ColaDronesInvernadero.buscar_item(iddronasignacion)
                                 item.asignarHilera(hileraasignacion)
                                 item.desplegar()
                                 
@@ -145,14 +147,15 @@ class SistemaArchivo:
                             self.ListaPlanes.desplegar()
                             print("#-----------[ Fin PlanRiegos ]-----------")
                             #Crear Invernadero
-                            Invernadero = CInvernadero(nombreinvernadero,numeroHileras,plantasXhilera,self.ListaPlantas,self.ListaPlanes, nuevalistadrones)
+                            Invernadero = CInvernadero(nombreinvernadero,numeroHileras,plantasXhilera,self.ListaPlantas,self.ListaPlanes, ColaDronesInvernadero)
                             Invernadero.desplegar()
                             #Almacenar invernadero
                             self.ColaInvernaderos.Push(Invernadero)
                             #Reiniciar Valores para nuevo Invernadero
                             self.ListaPlantas = Lista()
                             self.ListaPlanes = Lista()
-                            nuevalistadrones = None
+                            ColaDronesInvernadero = Cola()
+                            
                             print(f"#-------------[Fin Invernadero {nombreinvernadero}]--------------")
                         print("#---------------[Fin Invernaderos]-------------")
                         print()
