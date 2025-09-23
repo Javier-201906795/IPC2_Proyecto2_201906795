@@ -8,7 +8,7 @@ from Nodos.Clases import *
 class SistemaArchivo:
     def __init__(self, ruta):
         self.ruta = ruta
-        self.ListaDrones = Lista()
+        self.ListaDrones = Cola()
         #self.ListaInvernaderos = Lista()
         self.ListaPlantas = Lista()
         self.ListaPlanes = Lista()
@@ -60,7 +60,7 @@ class SistemaArchivo:
                             iddron =  d.getAttribute('id')
                             nombredron = d.getAttribute('nombre')
                             #Almacenar Dron
-                            self.ListaDrones.agregar(CDron(iddron,nombredron))
+                            self.ListaDrones.Push(CDron(iddron,nombredron))
                         self.ListaDrones.desplegar()
                         
                         #print(self.ListaDrones.primero.obtenerDato().id)
@@ -111,7 +111,7 @@ class SistemaArchivo:
                                 hileraasignacion = dron.getAttribute('hilera')
                                 #print(f"id: {iddronasignacion} - hilera: {hileraasignacion}")
                                 #Buscar Dron
-                                item = nuevalistadrones.buscar_item(iddronasignacion)
+                                item = self.ListaDrones.buscar_item(iddronasignacion)
                                 item.asignarHilera(hileraasignacion)
                                 item.desplegar()
                                 

@@ -44,6 +44,17 @@ class Cola:
                 actual = actual.obtenerSiguiente()
 
         return encontrado
+    
+    def buscar_item(self,item):
+        actual = self.primero
+        encontrado = False
+        while actual != None and not encontrado:
+            if actual.obtenerDato().EsIgualALLave(item):
+                encontrado = actual.obtenerDato()
+            else:
+                actual = actual.obtenerSiguiente()
+
+        return encontrado
 
     def Pop(self):
         primerotemp = self.primero
