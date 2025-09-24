@@ -22,11 +22,18 @@ class SistemaArchivoSalida:
             doc = Document()
             root = doc.createElement('datoSalida')
             doc.appendChild(root)
+            
+            listaInvernaderos = doc.createElement('listaInvernaderos')
+            root.appendChild(listaInvernaderos)
 
-            campo = doc.createElement("campo")
-            campo.setAttribute("id", "1")
-            campo.setAttribute("nombre", "2")
-            root.appendChild(campo)
+            invernadero = doc.createElement('invernadero')
+            invernadero.setAttribute("nombre", "Invernadero Uno")
+            listaInvernaderos.appendChild(invernadero)
+
+
+            
+
+            
 
             # ==============================
             # Guardar en archivo XML

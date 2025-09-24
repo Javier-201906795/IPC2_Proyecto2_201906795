@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <datoSalida>
+ <listaInvernaderos>
+  <invernadero nombre="Invernadero Uno"/>
+ </listaInvernaderos>
  <campo id="1" nombre="2"/>
 </datoSalida>
