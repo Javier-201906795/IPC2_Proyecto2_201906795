@@ -17,12 +17,16 @@ class CDron (InfoNodo):
         self.id = id
         self.nombre = nombre
         self.hilera = None
+        self.planta = 0
+    
+    def asignarPlanta(self,planta):
+        self.planta = planta
 
     def asignarHilera(self, hilera):
         self.hilera = hilera
     
     def desplegar(self):
-        print(f"ID: {self.id} - Nombre: {self.nombre} - Hilera Asignada: {self.hilera}")
+        print(f"ID: {self.id} - Nombre: {self.nombre} - Hilera Asignada: {self.hilera} - Planta: P{self.planta}")
 
     def EsIgualALLave(self, id):
         return self.id == id

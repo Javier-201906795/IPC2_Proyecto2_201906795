@@ -153,6 +153,8 @@ class SistemaRiegos():
         try:
             hilera = instruccion.hilera
             planta = instruccion.planta
+            
+            print("-"*50)
             print(f">> Instruccion: {hilera} - {planta}")
 
             #Aumentar tiempo
@@ -168,8 +170,13 @@ class SistemaRiegos():
             #Mover Drones
             if self.DronRegando == False:
                 #No hay drones regando avanazar
-                print()
-
+                print("No hay drones regando avanazar")
+                #Imprimir antes
+                self.InvListaDrones.desplegar()
+                #Mover
+#                for i in range()
+            
+            print("-"*50)
             print()
 
         except Exception as e:
