@@ -350,19 +350,28 @@ class SistemaRiegos():
             print()
 
             #Ejecutar instrucciones
-            Nombreinstrucciones = self.PlanSel.nombre
             Colainstrucciones = self.PlanSel.colaplan
             max = Colainstrucciones.tamano()
+            ultimoriegotiempo = 0
             for i in range(0,max):
+                
+                #Instruccion a ejecutar
                 instruccion = Colainstrucciones.Pop()
                 #Ejecutar hasta completar
                 completado = False
                 while completado == False and (self.Tiempoactual) < int(self.Tiempomax):
                     completado = self.Ejecutar_instruccion(instruccion)
                     print(f'tiempoa: {self.Tiempoactual} - tiempmax: {self.Tiempomax} - completado: {completado}')
-            
-            if Colainstrucciones.tamano() == 0:
-                print(f"\n\n>>>> Se completaron todos los riegos, tiempoA: {self.Tiempoactual} - tiempmax: {self.Tiempomax}\n\n")
+                
+            #Ya no hay instrucciones pero si tiempo
+            if Colainstrucciones.tamano() <= 0:
+                #Guardar tiempo ultimo riego
+                ultimoriegotiempo = self.Tiempoactual
+                
+                #Terminar tiempo
+                for h in range(self.Tiempoactual, self.Tiempomax):
+                    self.Tiempoactual += 1
+                    print(f"\n\n>>>> Se completaron todos los riegos, tiempoA: {self.Tiempoactual} - tiempmax: {self.Tiempomax} - tiempo ultimo riego: {ultimoriegotiempo}\n\n")
             
                 
             
