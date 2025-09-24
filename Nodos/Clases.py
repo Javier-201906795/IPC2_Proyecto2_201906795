@@ -138,11 +138,14 @@ class Cnombreplan (InfoNodo):
 class Ctiempo(InfoNodo):
     def __init__(self, tiemposeg):
         self.tiemposeg = tiemposeg
-        self.colamovimientos = Cola()
+        self.colamovimientos = None
 
     def desplegar(self):
         print(f'\nTiempo: {self.tiemposeg}')
         self.colamovimientos.desplegar()
+    
+    def asignarcolamovimientos(self, colamov):
+        self.colamovimientos = colamov
 
 ############################################################
 
@@ -152,5 +155,4 @@ class Cmovimiento(InfoNodo):
         self.accion = accion
     
     def desplegar(self):
-        print(f'\nMovimiento:')
-        print(f'Nombre: {self.nombre} - Accion: {self.accion}')
+        print(f'\nMovimiento -> Nombre: {self.nombre} - Accion: {self.accion}')

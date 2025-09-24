@@ -187,6 +187,8 @@ class SistemaRiegos():
             hilera = instruccion.hilera
             planta = instruccion.planta
             banderainstruccioncompletada = False
+
+            Colamovimientos = Cola()
             
             
             print("\n"+"-"*50)
@@ -254,7 +256,10 @@ class SistemaRiegos():
                     
                     plantaactual = dron.valor.planta
                     #Mover Dron
-                    dron.valor.asignarPlanta(int(plantaactual)+1)
+                    plantanueva = int(plantaactual)+1
+                    dron.valor.asignarPlanta(plantanueva)
+                    #Almacenar movimiento
+                    Colamovimientos.Push(Cmovimiento(dron.valor.nombre,f'Adelante (H{dron.valor.hilera}P{plantanueva})'))
                 #Imprimir nuevo valores
                 self.InvListaDrones.desplegar()
             else:
@@ -341,7 +346,10 @@ class SistemaRiegos():
                                         print(f"Dron {nombredron2} llego a posicion -> esperar")
                     #Imprimir nuevo valores
                     self.InvListaDrones.desplegar()
-                    
+
+            print('\n'+'*'*10+" [ Cola movimientos ] "+"*"*10)        
+            Colamovimientos.desplegar()
+            print('*'*35)        
             
             print("-"*50)
             print()
