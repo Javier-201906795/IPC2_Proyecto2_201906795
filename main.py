@@ -34,7 +34,7 @@ sistema_riego.Obtenerinformacion(invernaderoselecionado,planselecionado)
 sistema_riego.Ejecutar_tiempo(15)
 
 #Sistema Salida XML
-sistema_archivo_salida.crear_archivo()
+sistema_archivo_salida.crear_archivo('hola mundo')
 
 
 

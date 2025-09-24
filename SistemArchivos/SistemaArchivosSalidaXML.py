@@ -9,10 +9,10 @@ class SistemaArchivoSalida:
     def __init__(self, ruta):
         self.ruta = ruta
 
-    def crear_archivo(self):
+    def crear_archivo(self, contenido):
         try:
             with open(self.ruta, 'w') as archivo:
-                pass
-            print("Archivo creado o sobrescrito correctamente.")
+                archivo.write(contenido)
+            print(">> Archivo creado o sobrescrito correctamente.\n")
         except Exception as e:
             print(f'!!! Error al crear_archivo !!!\n',e)
