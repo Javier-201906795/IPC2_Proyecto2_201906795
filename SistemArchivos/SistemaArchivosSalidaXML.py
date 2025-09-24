@@ -27,7 +27,7 @@ class SistemaArchivoSalida:
             root.appendChild(listaInvernaderos)
 
             #Lista invernaderos
-            for i in range(1,2):
+            for i in range(0,1):
                 #Datos invernadero
                 invernadero = doc.createElement('invernadero')
                 invernadero.setAttribute("nombre", f"Invernadero {i}")
@@ -37,19 +37,57 @@ class SistemaArchivoSalida:
                 listaplanes = doc.createElement('listaPlanes')
                 invernadero.appendChild(listaplanes)
 
-                for i in range(1,3):
+                for h in range(0,1):
                     #Datos Planes
                     plan = doc.createElement('plan')
-                    plan.setAttribute('nombre',f'Semana{i}')
+                    plan.setAttribute('nombre',f'Semana{h}')
                     listaplanes.appendChild(plan)
 
                     #Tiempo optimo
                     tiempoOptimo = doc.createElement('tiempoOptimoSegundos')
                     plan.appendChild(tiempoOptimo)
-                    txtTiempoOptimo = doc.createTextNode('8')
-                    tiempoOptimo.appendChild(txtTiempoOptimo)
-                
+                    txt= doc.createTextNode('8')
+                    tiempoOptimo.appendChild(txt)
 
+                    #aguaRequeridaLitros
+                    aguaRequerida = doc.createElement('aguaRequeridaLitros')
+                    plan.appendChild(aguaRequerida)
+                    txt= doc.createTextNode('5')
+                    aguaRequerida.appendChild(txt)
+
+                    #Fertilizante
+                    fertilizanteReq = doc.createElement('fertilizanteRequeridoGramos')
+                    plan.appendChild(fertilizanteReq)
+                    txt= doc.createTextNode('500')
+                    fertilizanteReq.appendChild(txt)
+
+                    #Lista Eficiencia Drones
+                    efiDrones = doc.createElement('eficienciaDronesRegadores')
+                    plan.appendChild(efiDrones)
+
+                    #Dron
+                    for j in range(0,3):
+                        Dron = doc.createElement('dron')
+                        efiDrones.appendChild(Dron)
+                        Dron.setAttribute('nombre',f'DR{j}')
+                        Dron.setAttribute('litrosAgua',f'{j+3}')
+                        Dron.setAttribute('gramosFertilizante',f'{j*100}')
+
+                    #Lista instrucciones
+                    instrucciones = doc.createElement('instrucciones')
+                    plan.appendChild(instrucciones)
+
+                    #Tiempo
+                    for k in range(0,1):
+                        tiempo = doc.createElement('tiempo')
+                        instrucciones.appendChild(tiempo)
+
+                        #Movimiento
+                        for l in range(0,3):
+                            movimiento = doc.createElement('dron')
+                            tiempo.appendChild(movimiento)
+                            movimiento.setAttribute('nombre',f'DR{l}')
+                            movimiento.setAttribute('accion',f'Adelante(H{i}P{l})')
 
             
 
