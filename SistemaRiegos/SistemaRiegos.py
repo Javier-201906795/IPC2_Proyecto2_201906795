@@ -185,7 +185,7 @@ class SistemaRiegos():
             hilera = instruccion.hilera
             planta = instruccion.planta
             
-            print("-"*50)
+            print("\n"+"-"*50)
             print(f">> Instruccion: {hilera} - {planta}")
 
             #Aumentar tiempo
@@ -231,6 +231,7 @@ class SistemaRiegos():
             
             print("-"*50)
             print()
+            return True
 
         except Exception as e:
             print(f"!!! Error al Ejecutar_instruccion: {instruccion} !!!\n",e)
@@ -256,9 +257,14 @@ class SistemaRiegos():
             max = Colainstrucciones.tamano()
             for i in range(0,max):
                 instruccion = Colainstrucciones.Pop()
-                #Clase utilizada CAsignacionPlan (hilera, planta)
-                #Ejecutar
-                self.Ejecutar_instruccion(instruccion)
+                #Ejecutar hasta completar
+                completado = False
+                while completado == False and (self.Tiempoactual) <= int(self.Tiempomax):
+                    completado = self.Ejecutar_instruccion(instruccion)
+                    print(f'tiempoa: {self.Tiempoactual} - tiempmax: {self.Tiempomax} - completado: {completado}')
+            
+            
+                
             
         except Exception as e:
             print("!!! Error al ejecutar_tiempo !!!\n",e)
