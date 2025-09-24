@@ -13,7 +13,7 @@
       <dron nombre="DR2" litrosAgua="5" gramosFertilizante="200"/>
      </eficienciaDronesRegadores>
      <instrucciones>
-      <tiempo>
+      <tiempo segundos="0">
        <dron nombre="DR0" accion="Adelante(H0P0)"/>
        <dron nombre="DR1" accion="Adelante(H0P1)"/>
        <dron nombre="DR2" accion="Adelante(H0P2)"/>

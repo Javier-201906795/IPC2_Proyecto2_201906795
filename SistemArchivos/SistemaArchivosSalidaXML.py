@@ -80,6 +80,7 @@ class SistemaArchivoSalida:
                     #Tiempo
                     for k in range(0,1):
                         tiempo = doc.createElement('tiempo')
+                        tiempo.setAttribute('segundos',f'{k}')
                         instrucciones.appendChild(tiempo)
 
                         #Movimiento
