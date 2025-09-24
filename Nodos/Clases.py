@@ -131,4 +131,26 @@ class Cnombreplan (InfoNodo):
     
     def EsIgualALLave(self, nombre):
         return self.nombre == nombre  
-         
+
+
+############################################################
+
+class Ctiempo(InfoNodo):
+    def __init__(self, tiemposeg):
+        self.tiemposeg = tiemposeg
+        self.colamovimientos = Cola()
+
+    def desplegar(self):
+        print(f'\nTiempo: {self.tiemposeg}')
+        self.colamovimientos.desplegar()
+
+############################################################
+
+class Cmovimiento(InfoNodo):
+    def __init__(self, nombre, accion):
+        self.nombre = nombre
+        self.accion = accion
+    
+    def desplegar(self):
+        print(f'\nMovimiento:')
+        print(f'Nombre: {self.nombre} - Accion: {self.accion}')
