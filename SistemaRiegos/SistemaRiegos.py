@@ -139,6 +139,15 @@ class SistemaRiegos():
 
 
 
+    def Ejecutar_instruccion(self, instruccion):
+        try:
+            hilera = instruccion.hilera
+            planta = instruccion.planta
+            print(f">> Instruccion: {hilera} - {planta}\n")
+
+        except Exception as e:
+            print(f"!!! Error al Ejecutar_instruccion: {instruccion} !!!\n",e)
+
 
 
 
@@ -153,6 +162,15 @@ class SistemaRiegos():
             self.InvListaDrones.desplegar()
             print()
 
+            #Ejecutar instrucciones
+            Nombreinstrucciones = self.PlanSel.nombre
+            Colainstrucciones = self.PlanSel.colaplan
+            max = Colainstrucciones.tamano()
+            for i in range(0,max):
+                instruccion = Colainstrucciones.Pop()
+                #Clase utilizada CAsignacionPlan (hilera, planta)
+                #Ejecutar
+                self.Ejecutar_instruccion(instruccion)
             
         except Exception as e:
             print("!!! Error al ejecutar_tiempo !!!\n",e)
