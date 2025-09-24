@@ -153,7 +153,7 @@ class SistemaRiegos():
 
             #Aumentar tiempo
             self.Tiempoactual +=1
-            print(f'>>> Tiempo Actual: {self.Tiempoactual}')
+            print(f'>>> Tiempo Actual: {self.Tiempoactual} - Tiempo Maximo: {self.Tiempomax}')
 
             print()
 
