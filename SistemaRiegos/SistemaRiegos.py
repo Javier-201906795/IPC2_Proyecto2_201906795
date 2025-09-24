@@ -16,6 +16,9 @@ class SistemaRiegos():
         self.InvListaPlantas = None
         self.InvListaDrones = None
 
+        self.Tiempoactual = 0
+        self.Tiempomax = 0
+
     def desplegar(self):
         self.colainvernaderos.desplegar()
 
@@ -91,6 +94,9 @@ class SistemaRiegos():
             self.InvListaPlantas = None
             self.InvListaDrones = None
 
+            self.Tiempoactual = 0
+            self.Tiempomax = 0
+
             #Obtener invernadero
             invernaderodata = None
             for i in range(0,int(numinv)):
@@ -143,7 +149,13 @@ class SistemaRiegos():
         try:
             hilera = instruccion.hilera
             planta = instruccion.planta
-            print(f">> Instruccion: {hilera} - {planta}\n")
+            print(f">> Instruccion: {hilera} - {planta}")
+
+            #Aumentar tiempo
+            self.Tiempoactual +=1
+            print(f'>>> Tiempo Actual: {self.Tiempoactual}')
+
+            print()
 
         except Exception as e:
             print(f"!!! Error al Ejecutar_instruccion: {instruccion} !!!\n",e)
@@ -153,7 +165,8 @@ class SistemaRiegos():
 
     def Ejecutar_tiempo(self,tiempo):
         print("\n\n\n########################## [Sistema Riegos] ############################")
-        print(">> Tiempo: ", tiempo)
+        print(">> Tiempo Max: ", tiempo)
+        self.Tiempomax = tiempo
         try:
             #Obtener instrucciones
             self.PlanSel.desplegar()
