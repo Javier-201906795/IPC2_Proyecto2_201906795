@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <datoSalida>
  <listaInvernaderos>
-  <invernadero nombre="Invernadero Uno"/>
+  <invernadero nombre="Invernadero 1">
+   <listaPlanes>
+    <plan nombre="Semana1">
+     <tiempoOptimoSegundos>8</tiempoOptimoSegundos>
+    </plan>
+    <plan nombre="Semana2">
+     <tiempoOptimoSegundos>8</tiempoOptimoSegundos>
+    </plan>
+   </listaPlanes>
+  </invernadero>
  </listaInvernaderos>
- <campo id="1" nombre="2"/>
 </datoSalida>

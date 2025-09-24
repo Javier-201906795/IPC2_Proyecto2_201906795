@@ -26,9 +26,29 @@ class SistemaArchivoSalida:
             listaInvernaderos = doc.createElement('listaInvernaderos')
             root.appendChild(listaInvernaderos)
 
-            invernadero = doc.createElement('invernadero')
-            invernadero.setAttribute("nombre", "Invernadero Uno")
-            listaInvernaderos.appendChild(invernadero)
+            #Lista invernaderos
+            for i in range(1,2):
+                #Datos invernadero
+                invernadero = doc.createElement('invernadero')
+                invernadero.setAttribute("nombre", f"Invernadero {i}")
+                listaInvernaderos.appendChild(invernadero)
+
+                #Lista Planes
+                listaplanes = doc.createElement('listaPlanes')
+                invernadero.appendChild(listaplanes)
+
+                for i in range(1,3):
+                    #Datos Planes
+                    plan = doc.createElement('plan')
+                    plan.setAttribute('nombre',f'Semana{i}')
+                    listaplanes.appendChild(plan)
+
+                    #Tiempo optimo
+                    tiempoOptimo = doc.createElement('tiempoOptimoSegundos')
+                    plan.appendChild(tiempoOptimo)
+                    txtTiempoOptimo = doc.createTextNode('8')
+                    tiempoOptimo.appendChild(txtTiempoOptimo)
+                
 
 
             
