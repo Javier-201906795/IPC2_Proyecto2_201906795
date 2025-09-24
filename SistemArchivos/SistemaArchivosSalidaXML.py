@@ -11,8 +11,28 @@ class SistemaArchivoSalida:
 
     def crear_archivo(self, contenido):
         try:
-            with open(self.ruta, 'w') as archivo:
+            with open(self.ruta, 'wb') as archivo:
                 archivo.write(contenido)
             print(">> Archivo creado o sobrescrito correctamente.\n")
         except Exception as e:
             print(f'!!! Error al crear_archivo !!!\n',e)
+    
+    def segmentar_archivo_XML(self):
+        try:
+            doc = Document()
+            root = doc.createElement('datoSalida')
+            doc.appendChild(root)
+
+            campo = doc.createElement("campo")
+            campo.setAttribute("id", "1")
+            campo.setAttribute("nombre", "2")
+            root.appendChild(campo)
+
+            # ==============================
+            # Guardar en archivo XML
+            # ==============================
+            xml_str = doc.toprettyxml(indent=" ", encoding="UTF-8")
+            self.crear_archivo(xml_str)
+
+        except Exception as e:
+            print(f'!!! Error al segmentar_archivo_XML !!!\n',e)

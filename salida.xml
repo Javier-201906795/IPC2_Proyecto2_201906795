@@ -1,1 +1,4 @@
-hola mundo
+<?xml version="1.0" encoding="UTF-8"?>
+<datoSalida>
+ <campo id="1" nombre="2"/>
+</datoSalida>
