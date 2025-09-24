@@ -199,9 +199,10 @@ class SistemaRiegos():
             #Un dron riega a la vez
             #Sigue el orden de riego
 
-            #Validar si hay riego o no
-            #Buscar Dron/Hilera comparo posicion Planta = posicion planta dron
+            #0----------- [ Validar si hay riego o no ] --------------
+            #0.1 Buscar Dron/Hilera comparo posicion Planta = Planta dron
             for i in range(0,self.InvListaDrones.tamano()):
+                #DRON{i}
                 if i <= 0:
                     dron = self.InvListaDrones.primero
                 else:
@@ -209,9 +210,9 @@ class SistemaRiegos():
                 nombredron = dron.valor.nombre
                 hildron = f'H{dron.valor.hilera}'
                 plandron = f'P{dron.valor.planta}'
-                #Encontrar Dron
+                #0.1.1 Encontrar Dron
                 if hildron == hilera:
-                    #Validar posicion
+                    #0.1.2 Validar posicion
                     if plandron == planta:
                         print(f'>>>> Dron Regando, {nombredron}')
                         self.DronRegando = True
@@ -229,12 +230,18 @@ class SistemaRiegos():
                         
                         
                     else:
+                        #Dron Evaluado no esta en posicion de riego
                         self.DronRegando = False
 
 
             print(f'Dron Regando: {self.DronRegando}')
+            #0----------- [ FIN Validar si hay riego o no ] --------------
+            
 
-            #Mover Drones
+
+
+            #1----------- [ MOVER DRONES ] --------------
+            #1.1 Primer Movimienoto Drones
             if self.Tiempoactual == 1:
                 #Mover Todos los Drones
                 for j in range(0,self.InvListaDrones.tamano()):
