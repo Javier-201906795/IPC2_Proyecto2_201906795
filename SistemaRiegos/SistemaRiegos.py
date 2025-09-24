@@ -199,13 +199,35 @@ class SistemaRiegos():
             print(f'Dron Regando: {self.DronRegando}')
 
             #Mover Drones
-            if self.DronRegando == False:
-                #No hay drones regando avanazar
-                print("No hay drones regando avanazar")
-                #Imprimir antes
+            if self.Tiempoactual == 1:
+                #Mover Todos los Drones
+                for i in range(0,self.InvListaDrones.tamano()):
+                    if i <= 0:
+                        dron = self.InvListaDrones.primero
+                    else:
+                        dron = dron.siguiente
+                    
+                    plantaactual = dron.valor.planta
+                    #Mover Dron
+                    dron.valor.asignarPlanta(int(plantaactual)+1)
+                #Imprimir nuevo valores
                 self.InvListaDrones.desplegar()
-                #Mover
-#                for i in range()
+            else:
+                if self.DronRegando == False:
+                    #No hay drones regando avanazar
+                    print("No hay drones regando, -> avanazar")
+                    #Mover Todos los Drones
+                    for i in range(0,self.InvListaDrones.tamano()):
+                        if i <= 0:
+                            dron = self.InvListaDrones.primero
+                        else:
+                            dron = dron.siguiente
+                        plantaactual = dron.valor.planta
+                        #Mover Dron si llego al final
+                        if int(plantaactual) < int(self.InvplantasXHilera):
+                            dron.valor.asignarPlanta(int(plantaactual)+1)
+                    #Imprimir nuevo valores
+                    self.InvListaDrones.desplegar()
             
             print("-"*50)
             print()
