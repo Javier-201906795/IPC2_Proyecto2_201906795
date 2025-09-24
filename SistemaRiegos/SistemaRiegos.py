@@ -21,6 +21,8 @@ class SistemaRiegos():
 
         self.DronRegando = False
 
+        self.ColaHilerasIndividualIndividual = Cola()
+
     def desplegar(self):
         self.colainvernaderos.desplegar()
 
@@ -137,6 +139,35 @@ class SistemaRiegos():
             self.InvplantasXHilera = invernaderodata.plantasXHilera
             self.InvListaPlantas = invernaderodata.ListaPlantas
             self.InvListaDrones = invernaderodata.ListaDrones
+
+
+            #Colas por Hilera
+            Colainstrucciones = self.PlanSel.colaplan
+            #Cola hileras separadas
+            self.ColaHilerasIndividual = Cola()
+            for i in range(0,int(self.InvnumeroHilera)):
+                nuevaCola = Cola()
+                #Buscar elementos para hilera
+                Buscar = f'H{i+1}'
+                for j in range(0,Colainstrucciones.tamano()):
+                    if j <= 0:
+                        instruccion = Colainstrucciones.primero
+                    else:
+                        instruccion = instruccion.siguiente
+                    hil = instruccion.valor.hilera
+                    pla = instruccion.valor.planta
+                    #print(f'hilera: {hil}, planta{pla}')
+                    #Compara valores si igual a la hilera buscada
+                    if hil == Buscar:
+                        #Guardar en nuevaCola
+                        nuevaCola.Push(CAsignacionPlan(hil,pla))
+                #Almacenar hilera
+                self.ColaHilerasIndividual.Push(nuevaCola)
+            
+            print("\n -------[nuevas colas de hileras ]-------")
+            print(f'> Numero colas hileras: {self.ColaHilerasIndividual.tamano()}')
+            self.ColaHilerasIndividual.desplegar()
+                        
             
 
             print("\n\n")
