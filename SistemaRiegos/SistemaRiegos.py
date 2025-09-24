@@ -184,6 +184,7 @@ class SistemaRiegos():
         try:
             hilera = instruccion.hilera
             planta = instruccion.planta
+            banderainstruccioncompletada = False
             
             print("\n"+"-"*50)
             print(f">> Instruccion: {hilera} - {planta}")
@@ -196,6 +197,28 @@ class SistemaRiegos():
             #Restricciones
             #Un dron riega a la vez
             #Sigue el orden de riego
+
+            #Validar 
+            #Buscar Dron/Hilera posicion Planta
+            for i in range(0,self.InvListaDrones.tamano()):
+                if i <= 0:
+                    dron = self.InvListaDrones.primero
+                else:
+                    dron = dron.siguiente
+                nombredron = dron.valor.nombre
+                hildron = f'H{dron.valor.hilera}'
+                plandron = f'P{dron.valor.planta}'
+                #Encontrar Dron
+                if hildron == hilera:
+                    #Validar posicion
+                    if plandron == planta:
+                        print(f'>>>> Dron Regando, {nombredron}')
+                        self.DronRegando = True
+                        banderainstruccioncompletada = True
+                    else:
+                        self.DronRegando = False
+
+
             print(f'Dron Regando: {self.DronRegando}')
 
             #Mover Drones
@@ -228,10 +251,12 @@ class SistemaRiegos():
                             dron.valor.asignarPlanta(int(plantaactual)+1)
                     #Imprimir nuevo valores
                     self.InvListaDrones.desplegar()
+                elif self.DronRegando == True:
+                    print("Hay drones regando, -> esperar")
             
             print("-"*50)
             print()
-            return True
+            return banderainstruccioncompletada
 
         except Exception as e:
             print(f"!!! Error al Ejecutar_instruccion: {instruccion} !!!\n",e)
@@ -259,7 +284,7 @@ class SistemaRiegos():
                 instruccion = Colainstrucciones.Pop()
                 #Ejecutar hasta completar
                 completado = False
-                while completado == False and (self.Tiempoactual) <= int(self.Tiempomax):
+                while completado == False and (self.Tiempoactual) < int(self.Tiempomax):
                     completado = self.Ejecutar_instruccion(instruccion)
                     print(f'tiempoa: {self.Tiempoactual} - tiempmax: {self.Tiempomax} - completado: {completado}')
             
