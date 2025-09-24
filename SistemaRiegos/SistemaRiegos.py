@@ -19,6 +19,8 @@ class SistemaRiegos():
         self.Tiempoactual = 0
         self.Tiempomax = 0
 
+        self.DronRegando = False
+
     def desplegar(self):
         self.colainvernaderos.desplegar()
 
@@ -97,6 +99,8 @@ class SistemaRiegos():
             self.Tiempoactual = 0
             self.Tiempomax = 0
 
+            self.DronRegando = False
+
             #Obtener invernadero
             invernaderodata = None
             for i in range(0,int(numinv)):
@@ -154,6 +158,17 @@ class SistemaRiegos():
             #Aumentar tiempo
             self.Tiempoactual +=1
             print(f'>>> Tiempo Actual: {self.Tiempoactual} - Tiempo Maximo: {self.Tiempomax}')
+            print()
+            
+            #Restricciones
+            #Un dron riega a la vez
+            #Sigue el orden de riego
+            print(f'Dron Regando: {self.DronRegando}')
+
+            #Mover Drones
+            if self.DronRegando == False:
+                #No hay drones regando avanazar
+                print()
 
             print()
 
