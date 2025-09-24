@@ -15,6 +15,7 @@ class SistemaRiegos():
         self.InvplantasXHilera = None
         self.InvListaPlantas = None
         self.InvListaDrones = None
+        self.InvInstrucciones = None
 
         self.Tiempoactual = 0
         self.Tiempomax = 0
@@ -139,6 +140,7 @@ class SistemaRiegos():
             self.InvplantasXHilera = invernaderodata.plantasXHilera
             self.InvListaPlantas = invernaderodata.ListaPlantas
             self.InvListaDrones = invernaderodata.ListaDrones
+            self.InvInstrucciones = invernaderodata.colainstrucciones
 
 
             #Colas por Hilera

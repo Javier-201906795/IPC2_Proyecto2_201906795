@@ -1,5 +1,7 @@
 from Nodos.Lista import Lista
 
+from Nodos.Cola import Cola
+from Nodos.Clases import *
 
 class InfoNodo():
     
@@ -86,6 +88,8 @@ class CInvernadero (InfoNodo):
         self.ListaPlantas = ListaPlantas
         self.ListaPlanes = ListaPlanes
         self.ListaDrones = ListaDrones
+
+        self.colainstrucciones = Cola()
     
     def EsIgualALLave(self, nombre):
         return self.nombre == nombre
