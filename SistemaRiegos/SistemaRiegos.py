@@ -266,22 +266,23 @@ class SistemaRiegos():
                         if int(plantaactual) < int(self.InvplantasXHilera):
                             #Mover si No esta en su posicion de riego
                             #Buscar en hilera
-                            for g in range(1,int(hileradron)+1):
-                                if g <= 1:
+                            for g in range(0,int(hileradron)):
+                                if g <= 0:
                                     hilera = self.ColaHilerasIndividual.primero
                                 else:
                                     hilera = hilera.siguiente
                                 colahilera = hilera.valor
                             #colahilera.desplegar()
                             #obtener primera posicion
-                            posiciontope = colahilera.primero.valor.planta
-                            posiciontope = int(posiciontope[1])
-                            #Validar si mover o no
-                            if plantaactual < posiciontope:
-                                #Mover dron
-                                dron.valor.asignarPlanta(int(plantaactual)+1)
-                            else:
-                                print(f"Dron {nombredron2} llego a posicion -> esperar")
+                            if colahilera.primero != None:
+                                posiciontope = colahilera.primero.valor.planta
+                                posiciontope = int(posiciontope[1])
+                                #Validar si mover o no
+                                if plantaactual < posiciontope:
+                                    #Mover dron
+                                    dron.valor.asignarPlanta(int(plantaactual)+1)
+                                else:
+                                    print(f"Dron {nombredron2} llego a posicion -> esperar")
                     #Imprimir nuevo valores
                     self.InvListaDrones.desplegar()
                 elif self.DronRegando == True:
@@ -305,22 +306,23 @@ class SistemaRiegos():
                             if int(plantaactual) < int(self.InvplantasXHilera):
                                 #Mover si No esta en su posicion de riego
                                 #Buscar en hilera
-                                for g in range(1,int(hileradron)+1):
-                                    if g <= 1:
+                                for p in range(0,int(hileradron)):
+                                    if p <= 0:
                                         hilera = self.ColaHilerasIndividual.primero
                                     else:
                                         hilera = hilera.siguiente
                                     colahilera = hilera.valor
                                 #colahilera.desplegar()
-                                #obtener primera posicion
-                                posiciontope = colahilera.primero.valor.planta
-                                posiciontope = int(posiciontope[1])
-                                #Validar si mover o no
-                                if plantaactual < posiciontope:
-                                    #Mover dron
-                                    dron.valor.asignarPlanta(int(plantaactual)+1)
-                                else:
-                                    print(f"Dron {nombredron2} llego a posicion -> esperar")
+                                if colahilera.primero != None:
+                                    #obtener primera posicion
+                                    posiciontope = colahilera.primero.valor.planta
+                                    posiciontope = int(posiciontope[1])
+                                    #Validar si mover o no
+                                    if plantaactual < posiciontope:
+                                        #Mover dron
+                                        dron.valor.asignarPlanta(int(plantaactual)+1)
+                                    else:
+                                        print(f"Dron {nombredron2} llego a posicion -> esperar")
                     #Imprimir nuevo valores
                     self.InvListaDrones.desplegar()
                     
@@ -359,6 +361,8 @@ class SistemaRiegos():
                     completado = self.Ejecutar_instruccion(instruccion)
                     print(f'tiempoa: {self.Tiempoactual} - tiempmax: {self.Tiempomax} - completado: {completado}')
             
+            if Colainstrucciones.tamano() == 0:
+                print(f"\n\n>>>> Se completaron todos los riegos, tiempoA: {self.Tiempoactual} - tiempmax: {self.Tiempomax}\n\n")
             
                 
             
