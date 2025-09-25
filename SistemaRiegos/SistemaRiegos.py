@@ -177,8 +177,8 @@ class SistemaRiegos():
                     item = Colatemp.primero
                 else:
                     item = item.siguiente
-                itemclasenodo = item.valor
-                self.ColaHilerasIndividual.Push(itemclasenodo)
+                colahilera = item.valor
+                self.ColaHilerasIndividual.Push(colahilera)
 
             
             print("\n -------[nuevas colas de hileras ]-------")
