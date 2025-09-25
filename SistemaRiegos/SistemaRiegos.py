@@ -100,6 +100,7 @@ class SistemaRiegos():
             self.Tiempomax = 0
             self.DronRegando = False
             self.ColaHilerasIndividual = Cola()
+            
         except Exception as e:
             print("!!! Error al reiniciar valores !!!",e)
 
@@ -339,7 +340,7 @@ class SistemaRiegos():
                         plantaactual = dron.valor.planta
                         hileradron = dron.valor.hilera
                         #1.2.3 Validar DRON != Posicion Riego (Aun falta para llegar)
-                        if int(plantaactual) <= int(self.InvplantasXHilera):
+                        if int(plantaactual) <= int(self.InvplantasXHilera.strip()):
                             #1.2.3.1 Mover Dron (aun falta para su posicion de riego)
                             #Buscar en hilera individuales posicion final de riego
                             for g in range(0,int(hileradron)):
@@ -399,7 +400,7 @@ class SistemaRiegos():
                             Colamovimientos.Push(Cmovimiento(dron.valor.nombre,f'Regar    (H{dron.valor.hilera}P{int(plantaactual)})'))
                         else:
                             #Valida no sobrepasa numero de plantas
-                            if int(plantaactual) <= int(self.InvplantasXHilera):
+                            if int(plantaactual) <= int(self.InvplantasXHilera.strip()):
                                 #1.3.4 Validar si llego a su poiscion de Riego
                                 #Buscar en hilera individuales posicion final de riego
                                 for p in range(0,int(hileradron)):
