@@ -86,6 +86,25 @@ class SistemaRiegos():
             print("!!! Error al Listar Planes !!!")
 
 
+    def ReiniciarValores(self):
+        try:
+            print('\n> Reniciando valores')
+            self.InvernaderoSel = None
+            self.PlanSel = None
+            self.Invnombre = None
+            self.InvnumeroHilera = None
+            self.InvplantasXHilera = None
+            self.InvListaPlantas = None
+            self.InvListaDrones = None
+
+            self.Tiempoactual = 0
+            self.Tiempomax = 0
+
+            self.DronRegando = False
+        except Exception as e:
+            print("!!! Error al reiniciar valores !!!",e)
+
+
     # def obtenervaloresitem(self, cola, numvalor):
     #     for i in range(0, numvalor):
     #         if i <= 0:
@@ -129,18 +148,7 @@ class SistemaRiegos():
         try:
             print(f'\n>> Invernadero seleccionado: {numinv}  -  Plan seleccionado: {numplan}')
             #Reinicar valores
-            self.InvernaderoSel = None
-            self.PlanSel = None
-            self.Invnombre = None
-            self.InvnumeroHilera = None
-            self.InvplantasXHilera = None
-            self.InvListaPlantas = None
-            self.InvListaDrones = None
-
-            self.Tiempoactual = 0
-            self.Tiempomax = 0
-
-            self.DronRegando = False
+            self.ReiniciarValores()
 
             #Obtener invernadero
             invernaderodata = None
