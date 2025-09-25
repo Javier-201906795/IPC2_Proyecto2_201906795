@@ -246,6 +246,16 @@ class SistemaRiegos():
 
                 if int(hil) == int(hilera) and int(posicion) == int(pos):
                     print(f'> Regar Planta (H{hil}P{pos}) {plantadato.nombre} - Agua: {agu} - Fertilizante: {fer} ')
+                    #Cambiar valores agua y ferlizante
+                    aguaactual = self.InvernaderoSel.aguaRequerida
+                    feractual = self.InvernaderoSel.fertilizanteRequerido
+                    nuevovaloragua = int(aguaactual) + int(agu)
+                    nuevovalorfertilizante = int(feractual) + int(fer)
+                    #Almacenar
+                    self.InvernaderoSel.asignarAguaRequerida(nuevovaloragua)
+                    self.InvernaderoSel.asignarFerilizanteRequerido(nuevovalorfertilizante)
+                    print(f'- AguaTotal: {self.InvernaderoSel.aguaRequerida} - FertTotal: {self.InvernaderoSel.fertilizanteRequerido}')
+
                     
 
                 

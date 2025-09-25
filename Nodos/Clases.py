@@ -99,9 +99,9 @@ class CInvernadero (InfoNodo):
         self.ListaDrones = ListaDrones
 
         self.colainstrucciones = Cola()
-        self.tiempoOptimo = None
-        self.aguaRequerida = None
-        self.fertilizanteRequerido = None
+        self.tiempoOptimo = 0
+        self.aguaRequerida = 0
+        self.fertilizanteRequerido = 0
 
     def asignartiempoOptimo(self, tiempoO):
         self.tiempoOptimo = tiempoO
