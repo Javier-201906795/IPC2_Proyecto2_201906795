@@ -29,8 +29,8 @@ for i in range(0,ColaLista.tamano()):
 #Seleccion una opcion
 planselecionado = input("Numero de opcion: ")
 #Obtener informacion
-#sistema_riego.Obtenerinformacion(invernaderoselecionado,1)
-#sistema_riego.Ejecutar_tiempo(9)
+sistema_riego.Obtenerinformacion(invernaderoselecionado,1)
+sistema_riego.Ejecutar_tiempo(9)
 sistema_riego.Obtenerinformacion(invernaderoselecionado,2)
 sistema_riego.Ejecutar_tiempo(10)
 
