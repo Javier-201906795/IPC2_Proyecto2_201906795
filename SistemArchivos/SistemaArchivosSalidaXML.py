@@ -8,6 +8,14 @@ from Nodos.Clases import *
 class SistemaArchivoSalida:
     def __init__(self, ruta):
         self.ruta = ruta
+        self.colainvernaderos = None
+    
+    def asignarcolainvernadero(self, colainver):
+        self.colainvernaderos = colainver
+        #Imprimir valores
+        print("\n"+'/'*10+"[ Invernaderos Salida XML ]"+"/"*10)
+        self.colainvernaderos.desplegar()
+        print("\n"+'/'*10+"[ Fin Invernaderos Salida XML ]"+"/"*10)
 
     def crear_archivo(self, contenido):
         try:

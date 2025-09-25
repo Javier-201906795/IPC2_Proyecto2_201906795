@@ -23,6 +23,9 @@ class SistemaRiegos():
         self.DronRegando = False
 
         self.ColaHilerasIndividual = Cola()
+    
+    def obtenercolainvernaderos(self):
+        return self.colainvernaderos
 
     def desplegar(self):
         self.colainvernaderos.desplegar()
