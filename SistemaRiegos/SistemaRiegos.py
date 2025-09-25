@@ -148,9 +148,10 @@ class SistemaRiegos():
 
             #Colas por Hilera Individual
             Colainstrucciones = self.PlanSel.colaplan
+            Colatemp = Cola()
             #Cola hileras separadas
             for i in range(0,int(self.InvnumeroHilera)):
-                nuevaCola = Cola()
+                ColaHilera = Cola()
                 #Buscar elementos para hilera
                 Buscar = f'H{i+1}'
                 for j in range(0,Colainstrucciones.tamano()):
@@ -163,11 +164,22 @@ class SistemaRiegos():
                     #print(f'hilera: {hil}, planta{pla}')
                     #Compara valores si igual a la hilera buscada
                     if hil == Buscar:
-
-                        #Guardar en nuevaCola
-                        nuevaCola.Push(CAsignacionPlan(hil,pla))
+                        #Guardar en ColaHilera
+                        ColaHilera.Push(CAsignacionPlan(hil,pla))
+                
+                
+                
                 #Almacenar hilera
-                self.ColaHilerasIndividual.Push(nuevaCola)
+                Colatemp.Push(ColaHilera)
+            #Almacenar hilera gobal
+            for u in range(0,Colatemp.tamano()):
+                if u <= 0:
+                    item = Colatemp.primero
+                else:
+                    item = item.siguiente
+                itemclasenodo = item.valor
+                self.ColaHilerasIndividual.Push(itemclasenodo)
+
             
             print("\n -------[nuevas colas de hileras ]-------")
             print(f'> Numero colas hileras: {self.ColaHilerasIndividual.tamano()}')
