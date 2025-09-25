@@ -143,7 +143,7 @@ class SistemaRiegos():
             self.InvplantasXHilera = invernaderodata.plantasXHilera
             self.InvListaPlantas = invernaderodata.ListaPlantas
             self.InvListaDrones = invernaderodata.ListaDrones
-            self.InvInstrucciones = invernaderodata.ListaInstrucciones
+            self.InvInstrucciones = invernaderodata.colainstrucciones
 
 
             #Colas por Hilera Individual
@@ -163,6 +163,7 @@ class SistemaRiegos():
                     #print(f'hilera: {hil}, planta{pla}')
                     #Compara valores si igual a la hilera buscada
                     if hil == Buscar:
+
                         #Guardar en nuevaCola
                         nuevaCola.Push(CAsignacionPlan(hil,pla))
                 #Almacenar hilera
@@ -368,7 +369,7 @@ class SistemaRiegos():
 
             print('\n'+'*'*10+" [ Tiempo ] "+"*"*10)        
             #Almacenar instruccion
-            self.InvInstrucciones.agregar(Ctiempo(self.Tiempoactual, Colamovimientos))
+            self.InvInstrucciones.Push(Ctiempo(self.Tiempoactual, Colamovimientos))
             self.InvInstrucciones.desplegar()
             print('*'*35)     
             
