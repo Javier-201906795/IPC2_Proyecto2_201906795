@@ -100,20 +100,25 @@ class SistemaRiegos():
             self.Tiempomax = 0
             self.DronRegando = False
             self.ColaHilerasIndividual = Cola()
-            # #Reinicia Valores Dron
-            # for i in range(0,self.InvListaDrones.tamano()):
-            #     if i <=0:
-            #         DronR = self.InvListaDrones.primero
-            #     else:
-            #         DronR = DronR.siguiente
-            #     DronRData = DronR.valor
-            #     DronRData.asignaraguautilizada(0)
-            #     DronRData.asignarfertilizanteutilizado(0)
-            #     #DronRData.asignarPlanta(0)
+            
         except Exception as e:
             print("!!! Error al reiniciar valores !!!",e)
 
 
+    def ReiniciarDrones(self):
+        try:
+            #Reinicia Valores Dron
+            for i in range(0,self.InvListaDrones.tamano()):
+                if i <=0:
+                    DronR = self.InvListaDrones.primero
+                else:
+                    DronR = DronR.siguiente
+                DronRData = DronR.valor
+                DronRData.asignaraguautilizada(0)
+                DronRData.asignarfertilizanteutilizado(0)
+                DronRData.asignarPlanta(0)
+        except Exception as e:
+            print('!!! Error al Reinicia drones!!!',e)
 
 
     def Obtenerinformacion(self, numinv, numplan):
@@ -159,6 +164,9 @@ class SistemaRiegos():
             self.InvListaPlantas = invernaderodata.ListaPlantas
             self.InvListaDrones = invernaderodata.ListaDrones
             self.InvInstrucciones = invernaderodata.colainstrucciones
+
+            #Reiniciar Valores Drones
+            self.ReiniciarDrones()
 
 
             #Colas por Hilera Individual
