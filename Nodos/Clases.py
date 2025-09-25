@@ -99,6 +99,18 @@ class CInvernadero (InfoNodo):
         self.ListaDrones = ListaDrones
 
         self.colainstrucciones = Cola()
+        self.tiempoOptimo = None
+        self.aguaRequerida = None
+        self.fertilizanteRequerido = None
+
+    def asignartiempoOptimo(self, tiempoO):
+        self.tiempoOptimo = tiempoO
+    
+    def asignarAguaRequerida (self, agua):
+        self.aguaRequerida = agua
+    
+    def asignarFerilizanteRequerido (self, fertilizante):
+        self.fertilizanteRequerido = fertilizante
     
     def EsIgualALLave(self, nombre):
         return self.nombre == nombre
