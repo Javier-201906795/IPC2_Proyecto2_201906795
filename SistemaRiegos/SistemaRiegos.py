@@ -229,6 +229,31 @@ class SistemaRiegos():
             print("!!! Error al Obtener informacion de invernadero y planes !!!\n",e)
 
 
+    def ManejarAguayFertilizante(self, hilera, posicion):
+        try:
+            print("-"*10+"[ Obtener Agua y Ferilizante ]"+"-"*10)
+            for i in range(0,self.InvListaPlantas.tamano()):
+                if i <= 0:
+                    planta = self.InvListaPlantas.primero
+                else:
+                    planta = planta.siguiente
+                plantadato = planta.valor
+                hil = plantadato.hilera
+                pos = plantadato.posicion
+                agu = plantadato.litrosAgua
+                fer = plantadato.gramosFertilizante
+                
+
+                if int(hil) == int(hilera) and int(posicion) == int(pos):
+                    print(f'Regar Planta {plantadato.nombre} - Agua: {agu} - Fertilizante: {fer} (H{hil}P{pos})')
+                    
+
+                
+        
+                
+            print("-"*10+"[ Fin Obtener Agua y Ferilizante ]"+"-"*10)
+        except Exception as e:
+            print("!!! Error al ObtenerPlantaAguayFertilizante!!!",e)
 
 
     def Ejecutar_instruccion(self, instruccion):
@@ -384,7 +409,7 @@ class SistemaRiegos():
                         hileranotocar = instruccion.hilera[1]
                         if int(hileradron) == int(hileranotocar):
                             print(f'Dron Regando. -> Regar    (H{dron.valor.hilera}P{int(plantaactual)})')
-                            #self.ColaHilerasIndividual.desplegar()
+                            self.ManejarAguayFertilizante(dron.valor.hilera,int(plantaactual))
                             #Almacenar movimiento
                             Colamovimientos.Push(Cmovimiento(dron.valor.nombre,f'Regar    (H{dron.valor.hilera}P{int(plantaactual)})'))
                         else:
