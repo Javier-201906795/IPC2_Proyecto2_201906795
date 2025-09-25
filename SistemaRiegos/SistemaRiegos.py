@@ -146,10 +146,9 @@ class SistemaRiegos():
             self.InvInstrucciones = invernaderodata.colainstrucciones
 
 
-            #Colas por Hilera
+            #Colas por Hilera Individual
             Colainstrucciones = self.PlanSel.colaplan
             #Cola hileras separadas
-            #self.ColaHilerasIndividual = Cola()
             for i in range(0,int(self.InvnumeroHilera)):
                 nuevaCola = Cola()
                 #Buscar elementos para hilera
