@@ -96,11 +96,10 @@ class SistemaRiegos():
             self.InvplantasXHilera = None
             self.InvListaPlantas = None
             self.InvListaDrones = None
-
             self.Tiempoactual = 0
             self.Tiempomax = 0
-
             self.DronRegando = False
+            self.ColaHilerasIndividual = Cola()
         except Exception as e:
             print("!!! Error al reiniciar valores !!!",e)
 
