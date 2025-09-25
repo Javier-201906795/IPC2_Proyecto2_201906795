@@ -106,6 +106,10 @@ class CInvernadero (InfoNodo):
         print("-------------- [Lista Drones] -----------------")
         self.ListaDrones.desplegar()
         print("-------------- [Fin Lista Planes] -----------------")
+        if self.colainstrucciones.tamano() > 0:
+            print("-------------- [Lista Instrucciones] -----------------")
+            self.colainstrucciones.desplegar()
+            print("-------------- [FinLista Instrucciones] -----------------")
         print("/"*120)
     
 ############################################################

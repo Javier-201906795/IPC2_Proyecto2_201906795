@@ -13,7 +13,7 @@ class SistemaArchivoSalida:
     def asignarcolainvernadero(self, colainver):
         self.colainvernaderos = colainver
         #Imprimir valores
-        print("\n"+'/'*10+"[ Invernaderos Salida XML ]"+"/"*10)
+        print("\n"+'*-'*10+"[ Invernaderos Salida XML ]"+"*-"*10)
         self.colainvernaderos.desplegar()
         print("\n"+'/'*10+"[ Fin Invernaderos Salida XML ]"+"/"*10)
 
