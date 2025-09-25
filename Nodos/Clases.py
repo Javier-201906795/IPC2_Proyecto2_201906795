@@ -89,7 +89,7 @@ class CInvernadero (InfoNodo):
         self.ListaPlanes = ListaPlanes
         self.ListaDrones = ListaDrones
 
-        self.colainstrucciones = Cola()
+        self.ListaInstrucciones = Lista()
     
     def EsIgualALLave(self, nombre):
         return self.nombre == nombre
@@ -106,9 +106,9 @@ class CInvernadero (InfoNodo):
         print("-------------- [Lista Drones] -----------------")
         self.ListaDrones.desplegar()
         print("-------------- [Fin Lista Planes] -----------------")
-        if self.colainstrucciones.tamano() > 0:
+        if self.ListaInstrucciones.tamano() > 0:
             print("-------------- [Lista Instrucciones] -----------------")
-            self.colainstrucciones.desplegar()
+            self.ListaInstrucciones.desplegar()
             print("-------------- [FinLista Instrucciones] -----------------")
         print("/"*120)
     

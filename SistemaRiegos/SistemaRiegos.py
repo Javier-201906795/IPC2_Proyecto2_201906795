@@ -143,7 +143,7 @@ class SistemaRiegos():
             self.InvplantasXHilera = invernaderodata.plantasXHilera
             self.InvListaPlantas = invernaderodata.ListaPlantas
             self.InvListaDrones = invernaderodata.ListaDrones
-            self.InvInstrucciones = invernaderodata.colainstrucciones
+            self.InvInstrucciones = invernaderodata.ListaInstrucciones
 
 
             #Colas por Hilera Individual
@@ -368,7 +368,7 @@ class SistemaRiegos():
 
             print('\n'+'*'*10+" [ Tiempo ] "+"*"*10)        
             #Almacenar instruccion
-            self.InvInstrucciones.Push(Ctiempo(self.Tiempoactual, Colamovimientos))
+            self.InvInstrucciones.agregar(Ctiempo(self.Tiempoactual, Colamovimientos))
             self.InvInstrucciones.desplegar()
             print('*'*35)     
             
