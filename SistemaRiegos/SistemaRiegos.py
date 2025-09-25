@@ -151,7 +151,7 @@ class SistemaRiegos():
             Colatemp = Cola()
             #Cola hileras separadas
             for i in range(0,int(self.InvnumeroHilera)):
-                ColaHilera = Cola()
+                ListaHilera = Lista()
                 #Buscar elementos para hilera
                 Buscar = f'H{i+1}'
                 for j in range(0,Colainstrucciones.tamano()):
@@ -165,14 +165,16 @@ class SistemaRiegos():
                     #Compara valores si igual a la hilera buscada
                     if hil == Buscar:
                         #Guardar en ColaHilera
-                        ColaHilera.Push(CAsignacionPlan(hil,pla))
+                        ListaHilera.agregar(CAsignacionPlan(hil,pla))
                 
                 
                 
                 #Almacenar hilera
-                Colatemp.Push(ColaHilera)
+                Colatemp.Push(ListaHilera)
             
-            
+            Colatemp.desplegar()
+            print("\n----------\n")
+
             #Almacenar hilera gobal
             for u in range(0,Colatemp.tamano()):
                 if u <= 0:
@@ -180,11 +182,28 @@ class SistemaRiegos():
                 else:
                     item = item.siguiente
                 #obtener cola hilera
-                colahilera = item.valor
+                listahilera = item.valor
+                listahilera.desplegar()
+                print("----------")
                 #Ordenar de menor a mayor
+                colaordenada = Cola()
+                for r in range(0,listahilera.tamano()):
+                    if r <=0:
+                        it = listahilera.primero
+                    else:
+                        it = it.siguiente
+                    itemvalor = it.valor
+                    itemvalor.desplegar()
+                    #Añadir a cola
+                    colaordenada.Push(itemvalor)
+                
+                print("----------")
+                colaordenada.desplegar
                 #Almacenar
-                self.ColaHilerasIndividual.Push(colahilera)
-
+                self.ColaHilerasIndividual.Push(colaordenada)
+            print("\n----------")
+            self.ColaHilerasIndividual.desplegar()
+            print("----------\n")
             
             print("\n -------[nuevas colas de hileras ]-------")
             print(f'> Numero colas hileras: {self.ColaHilerasIndividual.tamano()}')
