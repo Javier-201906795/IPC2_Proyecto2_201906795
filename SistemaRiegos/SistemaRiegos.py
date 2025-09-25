@@ -86,7 +86,36 @@ class SistemaRiegos():
             print("!!! Error al Listar Planes !!!")
 
 
+    def obtenervaloresitem(self, cola, numvalor):
+        for i in range(0, numvalor):
+            if i <= 0:
+                nodo = cola.primero
+            else:
+                nodo = nodo.siguiente
+        
+        return nodo
+            
+    
+    
+    def ordenarcola(self, cola):
+        print('--------------- [{ Ordenamiento COLA }]----------------')
+        cola.desplegar()
+        print('---------\n')
+        nuevacola = Cola()
+        #Ordenamiento burbuja
+        for i in range(0,cola.tamano() -1):
+            for j in range(0,cola.tamano() - i):
+                # Si el número actual es mayor que el siguiente, los intercambiamos
+                prim = self.obtenervaloresitem(cola,j+1)
+                sig = self.obtenervaloresitem(cola,j+2)
 
+                if prim > sig:
+                    #cambiar lugares
+                    temporal = prim
+                    prim = sig
+                    sig = temporal
+
+        print('--------------- [{ Fin Ordenamiento COLA }]----------------')
 
 
 
@@ -166,7 +195,8 @@ class SistemaRiegos():
                         #Guardar en ColaHilera
                         ColaHilera.Push(CAsignacionPlan(hil,pla))
                 
-                
+                #Ordenar cola
+                self.ordenarcola(ColaHilera)
                 
                 #Almacenar hilera
                 self.ColaHilerasIndividual.Push(ColaHilera)
