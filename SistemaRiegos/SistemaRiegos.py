@@ -413,6 +413,10 @@ class SistemaRiegos():
             if Colainstrucciones.tamano() <= 0:
                 #Guardar tiempo ultimo riego
                 ultimoriegotiempo = self.Tiempoactual
+
+                #Cambiar variable Regar a Fin de los ultimos drones
+                completado = self.Ejecutar_instruccion(CAsignacionPlan('H0','P0'))
+
                 
                 #Terminar tiempo
                 for h in range(self.Tiempoactual, self.Tiempomax):
