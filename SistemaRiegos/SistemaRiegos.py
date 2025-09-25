@@ -171,13 +171,18 @@ class SistemaRiegos():
                 
                 #Almacenar hilera
                 Colatemp.Push(ColaHilera)
+            
+            
             #Almacenar hilera gobal
             for u in range(0,Colatemp.tamano()):
                 if u <= 0:
                     item = Colatemp.primero
                 else:
                     item = item.siguiente
+                #obtener cola hilera
                 colahilera = item.valor
+                #Ordenar de menor a mayor
+                #Almacenar
                 self.ColaHilerasIndividual.Push(colahilera)
 
             
