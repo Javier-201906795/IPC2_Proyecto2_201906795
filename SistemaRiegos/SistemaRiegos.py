@@ -245,7 +245,7 @@ class SistemaRiegos():
                 
 
                 if int(hil) == int(hilera) and int(posicion) == int(pos):
-                    print(f'Regar Planta {plantadato.nombre} - Agua: {agu} - Fertilizante: {fer} (H{hil}P{pos})')
+                    print(f'> Regar Planta (H{hil}P{pos}) {plantadato.nombre} - Agua: {agu} - Fertilizante: {fer} ')
                     
 
                 
