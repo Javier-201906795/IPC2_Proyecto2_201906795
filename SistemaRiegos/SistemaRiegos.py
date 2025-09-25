@@ -185,25 +185,59 @@ class SistemaRiegos():
                 listahilera = item.valor
                 listahilera.desplegar()
                 print("----------")
+                
                 #Ordenar de menor a mayor
+
                 colaordenada = Cola()
+
                 for r in range(0,listahilera.tamano()):
                     if r <=0:
                         it = listahilera.primero
                     else:
                         it = it.siguiente
+                    #obtener valor
                     itemvalor = it.valor
-                    itemvalor.desplegar()
-                    #Añadir a cola
-                    colaordenada.Push(itemvalor)
+                    posicion1 = int(itemvalor.planta[1])
+
+
+                    for k in range(0,listahilera.tamano()):
+                        if k <=0:
+                            ite = listahilera.primero
+                        else:
+                            ite = ite.siguiente
+                        #obtener valor
+                        itemval = ite.valor
+                        posicion2 = int(itemval.planta[1])
+
+                        #comparar y ordenar
+                        if posicion1 < posicion2:
+                            #Si es menor
+                            itemvalor.desplegar()
+                            itemval.desplegar()
+                            #Añadir a cola
+                            colaordenada.Push(itemvalor)
+                            #Eliminar para no volver a compara
+                            itemvalor.asignarhilera('H0')
+                            itemvalor.asignarplanta('H0')
+
+                        elif posicion1 == posicion2:
+                            #ver si es el mismo nodo
+                            if itemvalor == itemval:
+                                print('mismo nodo')
+                            else:
+                                #Si es menor
+                                itemvalor.desplegar()
+                                itemval.desplegar()
+                                #Añadir a cola
+                                colaordenada.Push(itemvalor)
+                                #Eliminar para no volver a compara
+                                #listahilera.eliminar(itemvalor)
                 
-                print("----------")
-                colaordenada.desplegar
+                print("---[Cola ordenada]-------")
+                colaordenada.desplegar()
                 #Almacenar
                 self.ColaHilerasIndividual.Push(colaordenada)
-            print("\n----------")
-            self.ColaHilerasIndividual.desplegar()
-            print("----------\n")
+            
             
             print("\n -------[nuevas colas de hileras ]-------")
             print(f'> Numero colas hileras: {self.ColaHilerasIndividual.tamano()}')

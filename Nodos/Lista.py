@@ -58,10 +58,12 @@ class Lista:
             if self.primero != None:
                 self.primero = actual.obtenerSiguiente()
                 print("Eliminado1")
+                self.longitud -= 1
         else:
             if encontrado:
                 previo.asignarSiguiente(actual.obtenerSiguiente())
                 print("Eliminado2")
+                self.longitud -= 1
             else:
                 print("no encontrado")
 

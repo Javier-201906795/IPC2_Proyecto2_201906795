@@ -58,12 +58,21 @@ class CAsignacionPlan (InfoNodo):
     def __init__ (self, hilera, planta):
         self.hilera = hilera
         self.planta = planta
+
+    def asignarhilera(self,hilera):
+        self.hilera = hilera
+
+    def asignarplanta(self,planta):
+        self.planta = planta
     
     def desplegar(self):
         print(f"Hilera: {self.hilera} - Planta: {self.planta}")
     
     def EsIgualALLave(self, hilera):
-        return self.hilera == hilera
+        if self.hilera == hilera:
+            return True
+        else:
+            return False
 
 
 ############################################################
