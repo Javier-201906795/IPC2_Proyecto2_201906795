@@ -104,16 +104,22 @@ class SistemaRiegos():
         nuevacola = Cola()
         #Ordenamiento burbuja
         for i in range(0,cola.tamano() -1):
-            for j in range(0,cola.tamano() - i):
+            for j in range(0,cola.tamano() - i -1):
                 # Si el número actual es mayor que el siguiente, los intercambiamos
                 prim = self.obtenervaloresitem(cola,j+1)
                 sig = self.obtenervaloresitem(cola,j+2)
-
-                if prim > sig:
-                    #cambiar lugares
-                    temporal = prim
-                    prim = sig
-                    sig = temporal
+                
+                primdato = int(prim.valor.planta[1])
+                sigdato = int(sig.valor.planta[1])
+                if  primdato > sigdato:
+                    #temporal = prim
+                    temporal = CAsignacionPlan(prim.valor.hilera,prim.valor.planta)
+                    #prim = sig (cambiar valor)
+                    prim.valor.asignarplanta(f'P{sigdato}')
+                    #sig = temporal
+                    sig.valor.asignarplanta(temporal.planta)
+                prim.valor.desplegar()
+                sig.valor.desplegar()
 
         print('--------------- [{ Fin Ordenamiento COLA }]----------------')
 
@@ -195,8 +201,13 @@ class SistemaRiegos():
                         #Guardar en ColaHilera
                         ColaHilera.Push(CAsignacionPlan(hil,pla))
                 
+                print('-cola a ordenar-')
+                ColaHilera.desplegar()
                 #Ordenar cola
                 self.ordenarcola(ColaHilera)
+                print('-Nuevo orden-')
+                ColaHilera.desplegar()
+                
                 
                 #Almacenar hilera
                 self.ColaHilerasIndividual.Push(ColaHilera)
