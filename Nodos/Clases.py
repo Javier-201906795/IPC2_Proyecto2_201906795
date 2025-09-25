@@ -136,13 +136,16 @@ class Cnombreplan (InfoNodo):
 ############################################################
 
 class Ctiempo(InfoNodo):
-    def __init__(self, tiemposeg):
+    def __init__(self, tiemposeg, colamovimientos):
         self.tiemposeg = tiemposeg
-        self.colamovimientos = None
+        self.colamovimientos = colamovimientos
 
     def desplegar(self):
         print(f'\nTiempo: {self.tiemposeg}')
-        self.colamovimientos.desplegar()
+        if self.colamovimientos.tamano() == 0:
+            print('- No hay elemento en movimientos')
+        else:
+            self.colamovimientos.desplegar()
     
     def asignarcolamovimientos(self, colamov):
         self.colamovimientos = colamov
@@ -155,4 +158,4 @@ class Cmovimiento(InfoNodo):
         self.accion = accion
     
     def desplegar(self):
-        print(f'\nMovimiento -> Nombre: {self.nombre} - Accion: {self.accion}')
+        print(f'Movimiento -> Nombre: {self.nombre} - Accion: {self.accion}')

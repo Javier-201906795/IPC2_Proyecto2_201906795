@@ -347,9 +347,11 @@ class SistemaRiegos():
                     #Imprimir nuevo valores
                     self.InvListaDrones.desplegar()
 
-            print('\n'+'*'*10+" [ Cola movimientos ] "+"*"*10)        
-            Colamovimientos.desplegar()
-            print('*'*35)        
+            print('\n'+'*'*10+" [ Tiempo ] "+"*"*10)        
+            #Almacenar instruccion
+            self.InvInstrucciones.Push(Ctiempo(self.Tiempoactual, Colamovimientos))
+            self.InvInstrucciones.desplegar()
+            print('*'*35)     
             
             print("-"*50)
             print()
