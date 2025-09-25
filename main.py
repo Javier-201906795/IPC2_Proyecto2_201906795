@@ -31,7 +31,7 @@ planselecionado = input("Numero de opcion: ")
 #Obtener informacion
 sistema_riego.Obtenerinformacion(invernaderoselecionado,planselecionado)
     
-sistema_riego.Ejecutar_tiempo(6)
+sistema_riego.Ejecutar_tiempo(10)
 
 #Sistema Salida XML
 #sistema_archivo_salida.asignarcolainvernadero(sistema_riego.obtenercolainvernaderos())

@@ -309,6 +309,7 @@ class SistemaRiegos():
                     dron.valor.asignarPlanta(plantanueva)
                     #Almacenar movimiento
                     Colamovimientos.Push(Cmovimiento(dron.valor.nombre,f'Adelante (H{dron.valor.hilera}P{plantanueva})'))
+                    print(f"Dron {dron.valor.nombre}  -> Avanzar (H{dron.valor.hilera}P{int(plantaactual)+1})")
                 #Imprimir nuevo valores
                 self.InvListaDrones.desplegar()
             else:
@@ -316,7 +317,7 @@ class SistemaRiegos():
                 if self.DronRegando == False:
                     #1.2.1 Avanzar Todos los drones
                     #1.2.2 Validar Restriccion Movimiento
-                    print("No hay drones regando, -> avanzar")
+                    print("No hay drones regando, -> avanzar ")
                     #Mover Drones
                     for f in range(0,self.InvListaDrones.tamano()):
                         #DRON{f}
@@ -349,9 +350,10 @@ class SistemaRiegos():
                                     dron.valor.asignarPlanta(int(plantaactual)+1)
                                     #Almacenar movimiento
                                     Colamovimientos.Push(Cmovimiento(dron.valor.nombre,f'Adelante (H{dron.valor.hilera}P{int(plantaactual)+1})'))
+                                    print(f"Dron {nombredron2}  -> Avanzar (H{dron.valor.hilera}P{int(plantaactual)+1})")
                                 else:
                                     ##1.2.3.3 Esperar Dron 
-                                    print(f"Dron {nombredron2} llego a posicion -> esperar")
+                                    print(f"Dron {nombredron2} llego a posicion -> esperar (H{dron.valor.hilera}P{int(plantaactual)})")
                                     #Almacenar movimiento
                                     Colamovimientos.Push(Cmovimiento(dron.valor.nombre,f'Esperar  (H{dron.valor.hilera}P{int(plantaactual)}).'))
                                     
@@ -399,9 +401,10 @@ class SistemaRiegos():
                                         dron.valor.asignarPlanta(int(plantaactual)+1)
                                         #Almacenar movimiento
                                         Colamovimientos.Push(Cmovimiento(dron.valor.nombre,f'Adelante (H{dron.valor.hilera}P{int(plantaactual)+1})'))
+                                        print(f"Dron {nombredron2}  -> Avanzar (H{dron.valor.hilera}P{int(plantaactual)+1})")
                                     else:
                                         #1.3.4.2 Esperar Dron
-                                        print(f"Dron {nombredron2} llego a posicion -> esperar")
+                                        print(f"Dron {nombredron2} llego a posicion -> esperar (H{dron.valor.hilera}P{int(plantaactual)})")
                                         #Almacenar movimiento
                                         Colamovimientos.Push(Cmovimiento(dron.valor.nombre,f'Esperar  (H{dron.valor.hilera}P{int(plantaactual)})'))
                                 else:
