@@ -351,11 +351,18 @@ class SistemaRiegos():
                                     #Almacenar movimiento
                                     Colamovimientos.Push(Cmovimiento(dron.valor.nombre,f'Adelante (H{dron.valor.hilera}P{int(plantaactual)+1})'))
                                     print(f"Dron {nombredron2}  -> Avanzar (H{dron.valor.hilera}P{int(plantaactual)+1})")
-                                else:
-                                    ##1.2.3.3 Esperar Dron 
+                                elif plantaactual == posiciontope:
+                                    #1.3.4.2 Esperar Dron
                                     print(f"Dron {nombredron2} llego a posicion -> esperar (H{dron.valor.hilera}P{int(plantaactual)})")
                                     #Almacenar movimiento
-                                    Colamovimientos.Push(Cmovimiento(dron.valor.nombre,f'Esperar  (H{dron.valor.hilera}P{int(plantaactual)}).'))
+                                    Colamovimientos.Push(Cmovimiento(dron.valor.nombre,f'Esperar  (H{dron.valor.hilera}P{int(plantaactual)})'))
+                                elif plantaactual > posiciontope:
+                                    print('Dron tiene que regresar')
+                                    #1.3.4.2 Mover Dron
+                                    dron.valor.asignarPlanta(int(plantaactual)-1)
+                                    print(f"Dron {nombredron2}  -> regresar1 (H{dron.valor.hilera}P{int(plantaactual)-1})")
+                                    #Almacenar movimiento
+                                    Colamovimientos.Push(Cmovimiento(dron.valor.nombre,f'Retrocede(H{dron.valor.hilera}P{int(plantaactual)})'))
                                     
                     #Imprimir nuevo valores
                     self.InvListaDrones.desplegar()
@@ -376,7 +383,8 @@ class SistemaRiegos():
                         #1.3.3 No mover Dron Regando
                         hileranotocar = instruccion.hilera[1]
                         if int(hileradron) == int(hileranotocar):
-                            print('Dron Regando.')
+                            print(f'Dron Regando. -> Regar    (H{dron.valor.hilera}P{int(plantaactual)})')
+                            #self.ColaHilerasIndividual.desplegar()
                             #Almacenar movimiento
                             Colamovimientos.Push(Cmovimiento(dron.valor.nombre,f'Regar    (H{dron.valor.hilera}P{int(plantaactual)})'))
                         else:
@@ -402,16 +410,24 @@ class SistemaRiegos():
                                         #Almacenar movimiento
                                         Colamovimientos.Push(Cmovimiento(dron.valor.nombre,f'Adelante (H{dron.valor.hilera}P{int(plantaactual)+1})'))
                                         print(f"Dron {nombredron2}  -> Avanzar (H{dron.valor.hilera}P{int(plantaactual)+1})")
-                                    else:
+                                    elif plantaactual == posiciontope:
                                         #1.3.4.2 Esperar Dron
                                         print(f"Dron {nombredron2} llego a posicion -> esperar (H{dron.valor.hilera}P{int(plantaactual)})")
                                         #Almacenar movimiento
                                         Colamovimientos.Push(Cmovimiento(dron.valor.nombre,f'Esperar  (H{dron.valor.hilera}P{int(plantaactual)})'))
+                                    elif plantaactual > posiciontope:
+                                        print('Dron tiene que regresar')
+                                        #1.3.4.2 Mover Dron
+                                        dron.valor.asignarPlanta(int(plantaactual)-1)
+                                        print(f"Dron {nombredron2}  -> regresar1 (H{dron.valor.hilera}P{int(plantaactual)-1})")
+                                        Colamovimientos.Push(Cmovimiento(dron.valor.nombre,f'Retrocede(H{dron.valor.hilera}P{int(plantaactual)-1})'))
                                 else:
                                     #1.4 Fin (ya no hay instrucciones para es hilera)
                                     print(f"Fin para Dron {nombredron2}")
                                     #Almacenar movimiento
                                     Colamovimientos.Push(Cmovimiento(dron.valor.nombre,f'FIN      (H{dron.valor.hilera}P{int(plantaactual)})'))
+                                    #Almacenar movimiento
+                                    
                                         
                     #Imprimir nuevo valores
                     self.InvListaDrones.desplegar()
