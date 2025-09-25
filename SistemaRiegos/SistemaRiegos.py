@@ -104,43 +104,6 @@ class SistemaRiegos():
             print("!!! Error al reiniciar valores !!!",e)
 
 
-    # def obtenervaloresitem(self, cola, numvalor):
-    #     for i in range(0, numvalor):
-    #         if i <= 0:
-    #             nodo = cola.primero
-    #         else:
-    #             nodo = nodo.siguiente
-        
-    #     return nodo
-            
-    
-    
-    # def ordenarcola(self, cola):
-    #     print('--------------- [{ Ordenamiento COLA }]----------------')
-    #     cola.desplegar()
-    #     print('---------\n')
-    #     nuevacola = Cola()
-    #     #Ordenamiento burbuja
-    #     for i in range(0,cola.tamano() -1):
-    #         for j in range(0,cola.tamano() - i -1):
-    #             # Si el número actual es mayor que el siguiente, los intercambiamos
-    #             prim = self.obtenervaloresitem(cola,j+1)
-    #             sig = self.obtenervaloresitem(cola,j+2)
-                
-    #             primdato = int(prim.valor.planta[1])
-    #             sigdato = int(sig.valor.planta[1])
-    #             if  primdato > sigdato:
-    #                 #temporal = prim
-    #                 temporal = CAsignacionPlan(prim.valor.hilera,prim.valor.planta)
-    #                 #prim = sig (cambiar valor)
-    #                 prim.valor.asignarplanta(f'P{sigdato}')
-    #                 #sig = temporal
-    #                 sig.valor.asignarplanta(temporal.planta)
-    #             prim.valor.desplegar()
-    #             sig.valor.desplegar()
-
-    #     print('--------------- [{ Fin Ordenamiento COLA }]----------------')
-
 
 
     def Obtenerinformacion(self, numinv, numplan):
