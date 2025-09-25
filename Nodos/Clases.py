@@ -20,7 +20,16 @@ class CDron (InfoNodo):
         self.nombre = nombre
         self.hilera = None
         self.planta = 0
+        self.fertilizanteutilizado = 0
+        self.aguautilizada = 0
+        
     
+    def asignaraguautilizada (self, agua):
+        self.aguautilizada = agua
+    
+    def asignarfertilizanteutilizado (self, fertilizante):
+        self.fertilizanteutilizado = fertilizante
+
     def asignarPlanta(self,planta):
         self.planta = planta
 

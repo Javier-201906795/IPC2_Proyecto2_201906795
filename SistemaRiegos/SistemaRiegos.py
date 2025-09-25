@@ -229,7 +229,7 @@ class SistemaRiegos():
             print("!!! Error al Obtener informacion de invernadero y planes !!!\n",e)
 
 
-    def ManejarAguayFertilizante(self, hilera, posicion):
+    def ManejarAguayFertilizante(self, hilera, posicion, dron):
         try:
             print("-"*10+"[ Obtener Agua y Ferilizante ]"+"-"*10)
             for i in range(0,self.InvListaPlantas.tamano()):
@@ -255,9 +255,14 @@ class SistemaRiegos():
                     self.InvernaderoSel.asignarAguaRequerida(nuevovaloragua)
                     self.InvernaderoSel.asignarFerilizanteRequerido(nuevovalorfertilizante)
                     print(f'- AguaTotal: {self.InvernaderoSel.aguaRequerida} - FertTotal: {self.InvernaderoSel.fertilizanteRequerido}')
-
-                    
-
+                    #Valores Dron
+                    dronagua = dron.aguautilizada
+                    dronfertilizante = dron.fertilizanteutilizado
+                    nuevodronagua = int(dronagua)+int(agu)
+                    nuevofertilizante = int(dronfertilizante) + int(fer)
+                    dron.asignaraguautilizada(nuevodronagua)
+                    dron.asignarfertilizanteutilizado(nuevofertilizante)
+                    print(f'- DronAgua: {dron.aguautilizada} - DronFert: {dron.fertilizanteutilizado}')
                 
         
                 
@@ -419,7 +424,7 @@ class SistemaRiegos():
                         hileranotocar = instruccion.hilera[1]
                         if int(hileradron) == int(hileranotocar):
                             print(f'Dron Regando. -> Regar    (H{dron.valor.hilera}P{int(plantaactual)})')
-                            self.ManejarAguayFertilizante(dron.valor.hilera,int(plantaactual))
+                            self.ManejarAguayFertilizante(dron.valor.hilera,int(plantaactual),dron.valor)
                             #Almacenar movimiento
                             Colamovimientos.Push(Cmovimiento(dron.valor.nombre,f'Regar    (H{dron.valor.hilera}P{int(plantaactual)})'))
                         else:
