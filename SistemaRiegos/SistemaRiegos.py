@@ -148,10 +148,9 @@ class SistemaRiegos():
 
             #Colas por Hilera Individual
             Colainstrucciones = self.PlanSel.colaplan
-            Colatemp = Cola()
             #Cola hileras separadas
             for i in range(0,int(self.InvnumeroHilera)):
-                ListaHilera = Lista()
+                ColaHilera = Cola()
                 #Buscar elementos para hilera
                 Buscar = f'H{i+1}'
                 for j in range(0,Colainstrucciones.tamano()):
@@ -165,78 +164,14 @@ class SistemaRiegos():
                     #Compara valores si igual a la hilera buscada
                     if hil == Buscar:
                         #Guardar en ColaHilera
-                        ListaHilera.agregar(CAsignacionPlan(hil,pla))
+                        ColaHilera.Push(CAsignacionPlan(hil,pla))
                 
                 
                 
                 #Almacenar hilera
-                Colatemp.Push(ListaHilera)
+                self.ColaHilerasIndividual.Push(ColaHilera)
             
-            Colatemp.desplegar()
-            print("\n----------\n")
-
-            #Almacenar hilera gobal
-            for u in range(0,Colatemp.tamano()):
-                if u <= 0:
-                    item = Colatemp.primero
-                else:
-                    item = item.siguiente
-                #obtener cola hilera
-                listahilera = item.valor
-                listahilera.desplegar()
-                print("----------")
-                
-                #Ordenar de menor a mayor
-
-                colaordenada = Cola()
-
-                for r in range(0,listahilera.tamano()):
-                    if r <=0:
-                        it = listahilera.primero
-                    else:
-                        it = it.siguiente
-                    #obtener valor
-                    itemvalor = it.valor
-                    posicion1 = int(itemvalor.planta[1])
-
-
-                    for k in range(0,listahilera.tamano()):
-                        if k <=0:
-                            ite = listahilera.primero
-                        else:
-                            ite = ite.siguiente
-                        #obtener valor
-                        itemval = ite.valor
-                        posicion2 = int(itemval.planta[1])
-
-                        #comparar y ordenar
-                        if posicion1 < posicion2:
-                            #Si es menor
-                            itemvalor.desplegar()
-                            itemval.desplegar()
-                            #Añadir a cola
-                            colaordenada.Push(itemvalor)
-                            #Eliminar para no volver a compara
-                            itemvalor.asignarhilera('H0')
-                            itemvalor.asignarplanta('H0')
-
-                        elif posicion1 == posicion2:
-                            #ver si es el mismo nodo
-                            if itemvalor == itemval:
-                                print('mismo nodo')
-                            else:
-                                #Si es menor
-                                itemvalor.desplegar()
-                                itemval.desplegar()
-                                #Añadir a cola
-                                colaordenada.Push(itemvalor)
-                                #Eliminar para no volver a compara
-                                #listahilera.eliminar(itemvalor)
-                
-                print("---[Cola ordenada]-------")
-                colaordenada.desplegar()
-                #Almacenar
-                self.ColaHilerasIndividual.Push(colaordenada)
+            
             
             
             print("\n -------[nuevas colas de hileras ]-------")
