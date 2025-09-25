@@ -358,6 +358,11 @@ class SistemaRiegos():
                                         print(f"Dron {nombredron2} llego a posicion -> esperar")
                                         #Almacenar movimiento
                                         Colamovimientos.Push(Cmovimiento(dron.valor.nombre,f'Esperar  (H{dron.valor.hilera}P{int(plantaactual)})'))
+                                else:
+                                    #1.4 Fin (ya no hay instrucciones para es hilera)
+                                    print(f"Fin para Dron {nombredron2}")
+                                    #Almacenar movimiento
+                                    Colamovimientos.Push(Cmovimiento(dron.valor.nombre,f'FIN      (H{dron.valor.hilera}P{int(plantaactual)})'))
                                         
                     #Imprimir nuevo valores
                     self.InvListaDrones.desplegar()
