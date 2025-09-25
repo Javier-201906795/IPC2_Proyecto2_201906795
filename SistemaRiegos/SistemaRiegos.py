@@ -446,6 +446,9 @@ class SistemaRiegos():
             max = Colainstrucciones.tamano()
             ultimoriegotiempo = 0
             for i in range(0,max):
+                #VALIDAR TIEMPO
+                if (self.Tiempoactual) >= int(self.Tiempomax):
+                    break
                 
                 #Instruccion a ejecutar
                 instruccion = Colainstrucciones.Pop()
