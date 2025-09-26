@@ -25,6 +25,9 @@ class SistemaRiegos():
         self.DronRegando = False
 
         self.ColaHilerasIndividual = Cola()
+
+        self.rutaSalida = 'G:\\2020\\2020_USAC\\Semestre14(2025)\\IPC2\\1_Laboratorio\\8_PROYECTO2\\IPC2_Proyecto2_201906795\\salida.xml'
+        self.sistema_archivo_salida = SistemaArchivoSalida(self.rutaSalida)
     
     def obtenercolainvernaderos(self):
         return self.colainvernaderos
@@ -532,10 +535,16 @@ class SistemaRiegos():
     def CrearArchivoXML(self):
         try:
             print(">> Creando archivo xml")
-            rutaSalida = 'G:\\2020\\2020_USAC\\Semestre14(2025)\\IPC2\\1_Laboratorio\\8_PROYECTO2\\IPC2_Proyecto2_201906795\\salida.xml'
-            sistema_archivo_salida = SistemaArchivoSalida(rutaSalida)
+            
+            
             #Iniciar
-            sistema_archivo_salida.asignarcolainvernadero(self.colainvernaderos)
-            sistema_archivo_salida.segmentar_archivo_XML()
+            self.sistema_archivo_salida.asignarcolainvernadero(self.colainvernaderos)
+            self.sistema_archivo_salida.segmentar_archivo_XML()
         except Exception as e:
             print("!!! Error al crearArchivoXML !!!",e)
+    
+    def CreanplanXML(self):
+        try:
+            self.sistema_archivo_salida.crear_plan()
+        except Exception as e:
+            print("!!! Error en CreanplanXML!!!\n",e)
