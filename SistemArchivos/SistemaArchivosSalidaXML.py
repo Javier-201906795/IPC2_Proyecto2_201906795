@@ -115,7 +115,7 @@ class SistemaArchivoSalida:
                 #Fertilizante
                 fertilizanteReq = doc.createElement('fertilizanteRequeridoGramos')
                 plan.appendChild(fertilizanteReq)
-                txt= doc.createTextNode('500')
+                txt= doc.createTextNode(str(self.invernaderoactual.fertilizanteRequerido))
                 fertilizanteReq.appendChild(txt)
 
                 #Lista Eficiencia Drones
@@ -123,12 +123,19 @@ class SistemaArchivoSalida:
                 plan.appendChild(efiDrones)
 
                 #Dron
-                for j in range(0,3):
+                lsdron = self.invernaderoactual.ListaDrones
+                for j in range(0,lsdron.tamano()):
+                    if j <=0:
+                        dronl = lsdron.primero
+                    else:
+                        dronl = dronl.siguiente
+                    dataDron = dronl.valor
+
                     Dron = doc.createElement('dron')
                     efiDrones.appendChild(Dron)
-                    Dron.setAttribute('nombre',f'DR{j}')
-                    Dron.setAttribute('litrosAgua',f'{j+3}')
-                    Dron.setAttribute('gramosFertilizante',f'{j*100}')
+                    Dron.setAttribute('nombre',f'{dataDron.nombre}')
+                    Dron.setAttribute('litrosAgua',f'{dataDron.aguautilizada}')
+                    Dron.setAttribute('gramosFertilizante',f'{dataDron.fertilizanteutilizado}')
 
                 #Lista instrucciones
                 instrucciones = doc.createElement('instrucciones')

@@ -6,11 +6,11 @@
     <plan nombre="Semana 2">
      <tiempoOptimoSegundos>8</tiempoOptimoSegundos>
      <aguaRequeridaLitros>12</aguaRequeridaLitros>
-     <fertilizanteRequeridoGramos>500</fertilizanteRequeridoGramos>
+     <fertilizanteRequeridoGramos>1200</fertilizanteRequeridoGramos>
      <eficienciaDronesRegadores>
-      <dron nombre="DR0" litrosAgua="3" gramosFertilizante="0"/>
-      <dron nombre="DR1" litrosAgua="4" gramosFertilizante="100"/>
-      <dron nombre="DR2" litrosAgua="5" gramosFertilizante="200"/>
+      <dron nombre="DR01" litrosAgua="2" gramosFertilizante="200"/>
+      <dron nombre="DR02" litrosAgua="2" gramosFertilizante="200"/>
+      <dron nombre="DR03" litrosAgua="3" gramosFertilizante="300"/>
      </eficienciaDronesRegadores>
      <instrucciones>
       <tiempo segundos="0">
