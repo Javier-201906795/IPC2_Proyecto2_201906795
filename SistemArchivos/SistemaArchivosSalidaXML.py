@@ -47,7 +47,7 @@ class SistemaArchivoSalida:
             root.appendChild(listaInvernaderos)
 
             #Lista invernaderos
-            for i in range(0,1):
+            for i in range(0,2):
                 #Datos invernadero
                 invernadero = doc.createElement('invernadero')
                 invernadero.setAttribute("nombre", f"Invernadero {i}")
@@ -111,7 +111,11 @@ class SistemaArchivoSalida:
                             movimiento.setAttribute('accion',f'Adelante(H{i}P{l})')
 
             
-
+            #Modificar Invernadero
+            lista = listaInvernaderos.getElementsByTagName('invernadero')
+            if len(lista) > 1:
+                segundo = lista[1]                       # índice 1 -> segundo elemento
+                print("Atributo nombre (A):", segundo.getAttribute('nombre'))
             
 
             # ==============================
