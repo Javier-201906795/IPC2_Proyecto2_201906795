@@ -68,12 +68,27 @@ class SistemaArchivoSalida:
             print("!!! Error al agregarinvernaderos!!!\n ",e)
     
 
+    def obtenerinvernaderactual(self,numeroinvernadero):
+        try:
+            for i in range(0,int(numeroinvernadero)):
+                if i <=0:
+                    invernaderoL = self.colainvernaderos.primero
+                else:
+                    invernaderoL = invernaderoL.siguiente
+                invernaderodata = invernaderoL.valor
+                #Almacenar
+                self.invernaderoactual = invernaderodata
+        
+        except Exception as e:
+            print("!!! Error al obtenerinvernaderactual!!!\n",e)
 
 
     def crear_plan(self, numeroinvernadero, nombreplan):
         try:
             doc = self.doc
             listaplanes = self.listaplanes
+            #Obtner infomacion invernadero
+            self.obtenerinvernaderactual(numeroinvernadero)
             print(f'Creando plan el invernadero nuero: {numeroinvernadero}')
             #Modificar Invernadero
             Listainvernaderos = self.listaInvernaderos.getElementsByTagName('invernadero')
@@ -88,8 +103,49 @@ class SistemaArchivoSalida:
                 #Tiempo optimo
                 tiempoOptimo = doc.createElement('tiempoOptimoSegundos')
                 plan.appendChild(tiempoOptimo)
-                txt= doc.createTextNode('8')
+                txt= doc.createTextNode(str(self.invernaderoactual.tiempoOptimo -1))
                 tiempoOptimo.appendChild(txt)
+
+                #aguaRequeridaLitros
+                aguaRequerida = doc.createElement('aguaRequeridaLitros')
+                plan.appendChild(aguaRequerida)
+                txt= doc.createTextNode(str(self.invernaderoactual.aguaRequerida))
+                aguaRequerida.appendChild(txt)
+
+                #Fertilizante
+                fertilizanteReq = doc.createElement('fertilizanteRequeridoGramos')
+                plan.appendChild(fertilizanteReq)
+                txt= doc.createTextNode('500')
+                fertilizanteReq.appendChild(txt)
+
+                #Lista Eficiencia Drones
+                efiDrones = doc.createElement('eficienciaDronesRegadores')
+                plan.appendChild(efiDrones)
+
+                #Dron
+                for j in range(0,3):
+                    Dron = doc.createElement('dron')
+                    efiDrones.appendChild(Dron)
+                    Dron.setAttribute('nombre',f'DR{j}')
+                    Dron.setAttribute('litrosAgua',f'{j+3}')
+                    Dron.setAttribute('gramosFertilizante',f'{j*100}')
+
+                #Lista instrucciones
+                instrucciones = doc.createElement('instrucciones')
+                plan.appendChild(instrucciones)
+
+                #Tiempo
+                for k in range(0,1):
+                    tiempo = doc.createElement('tiempo')
+                    tiempo.setAttribute('segundos',f'{k}')
+                    instrucciones.appendChild(tiempo)
+
+                    #Movimiento
+                    for l in range(0,3):
+                        movimiento = doc.createElement('dron')
+                        tiempo.appendChild(movimiento)
+                        movimiento.setAttribute('nombre',f'DR{l}')
+                        movimiento.setAttribute('accion',f'Adelante(H{i}P{l})')
 
         except Exception as e:
             print("!!! Error al crear plan!!!",e)

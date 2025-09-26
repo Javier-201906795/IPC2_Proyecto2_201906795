@@ -14,6 +14,7 @@ class SistemaRiegos():
         self.colainvernaderos = colainvernaderos
         self.InvernaderoSel = None
         self.PlanSel = None
+        self.ultimoriegotiempo = None
 
         self.Invnombre = None
         self.InvnumeroHilera = None
@@ -107,6 +108,7 @@ class SistemaRiegos():
             self.Tiempomax = 0
             self.DronRegando = False
             self.ColaHilerasIndividual = Cola()
+            self.InvernaderoSel.asignartiempoOptimo(0)
             
         except Exception as e:
             print("!!! Error al reiniciar valores !!!",e)
@@ -517,7 +519,8 @@ class SistemaRiegos():
             #Ya no hay instrucciones pero si tiempo
             if Colainstrucciones.tamano() <= 0:
                 #Guardar tiempo ultimo riego
-                ultimoriegotiempo = self.Tiempoactual
+                self.ultimoriegotiempo = self.Tiempoactual
+                self.InvernaderoSel.asignartiempoOptimo(self.ultimoriegotiempo)
 
                 #Cambiar variable Regar a Fin de los ultimos drones
                 completado = self.Ejecutar_instruccion(CAsignacionPlan('H0','P0'))
