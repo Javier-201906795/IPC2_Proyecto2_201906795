@@ -66,7 +66,26 @@ class SistemaArchivoSalida:
         except Exception as e:
             print("!!! Error al agregarinvernaderos!!!\n ",e)
     
-    
+
+
+
+    def crear_plan(self, numeroinvernadero):
+        try:
+            print(f'Creando plan el invernadero nuero: {numeroinvernadero}')
+
+        except Exception as e:
+            print("!!! Error al crear plan!!!",e)
+
+
+    def GuardarSalidaXML(self):
+        try:
+            # ==============================
+            # Guardar en archivo XML
+            # ==============================
+            xml_str = self.doc.toprettyxml(indent=" ", encoding="UTF-8")
+            self.crear_archivo(xml_str)
+        except Exception as e:
+            print('!!! Error en GuardarSalidaXML!!!',e)
     
     def segmentar_archivo_XML(self):
         try:
@@ -78,6 +97,8 @@ class SistemaArchivoSalida:
             root.appendChild(self.listaInvernaderos)
 
             self.agregarinvernaderos()
+
+
 
             # #Lista invernaderos
             # for i in range(0,2):
@@ -154,8 +175,8 @@ class SistemaArchivoSalida:
             # ==============================
             # Guardar en archivo XML
             # ==============================
-            xml_str = doc.toprettyxml(indent=" ", encoding="UTF-8")
-            self.crear_archivo(xml_str)
+            #xml_str = doc.toprettyxml(indent=" ", encoding="UTF-8")
+            #self.crear_archivo(xml_str)
 
         except Exception as e:
             print(f'!!! Error al segmentar_archivo_XML !!!\n',e)

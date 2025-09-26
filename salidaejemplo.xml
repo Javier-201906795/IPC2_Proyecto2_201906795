@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<datosSalida>
+    <listaInvernaderos>
+        <invernadero nombre='Invernadero Zacapa'>
+            <listaPlanes>
+                <plan nombre='Semana 1'>
+                    <tiempoOptimoSegundos> 8 </tiempoOptimoSegundos>
+                    <aguaRequeridaLitros> 5 </aguaRequeridaLitros>
+                    <fertilizanteRequeridoGramos> 500 </fertilizanteRequeridoGramos>
+                    <eficienciaDronesRegadores>
+                        <dron nombre='DR01' litrosAgua=2 gramosFertilizante=200/>
+                        <dron nombre='DR02' litrosAgua=2 gramosFertilizante=200/>
+                        <dron nombre='DR03' litrosAgua=1 gramosFertilizante=100/>
+                    </eficienciaDronesRegadores>
+                    <instrucciones>
+                        <tiempo segundos=1>
+                            <dron nombre='DR01' accion='Adelante (H1P1)'/>
+                            <dron nombre='DR02' accion='Adelante (H2P1)'/>
+                            <dron nombre='DR03' accion='Adelante (H3P1)'/>
+                        </tiempo>
+                    </instrucciones>
+                </plan>
+            </listaPlanes>
+        </invernadero>
+    </listaInvernaderos>
+</datosSalida>

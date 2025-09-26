@@ -545,6 +545,12 @@ class SistemaRiegos():
     
     def CreanplanXML(self):
         try:
-            self.sistema_archivo_salida.crear_plan()
+            self.sistema_archivo_salida.crear_plan(2)
         except Exception as e:
             print("!!! Error en CreanplanXML!!!\n",e)
+    
+    def GuardarSalidaXML(self):
+        try:
+            self.sistema_archivo_salida.GuardarSalidaXML()
+        except Exception as e:
+            print("!! Error al guardar salida xml!!!\n",e)
