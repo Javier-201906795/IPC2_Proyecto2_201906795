@@ -2,7 +2,11 @@
 <datoSalida>
  <listaInvernaderos>
   <invernadero nombre="Invernadero Zacapa">
-   <listaPlanes/>
+   <listaPlanes>
+    <plan nombre="Semana 2">
+     <tiempoOptimoSegundos>8</tiempoOptimoSegundos>
+    </plan>
+   </listaPlanes>
   </invernadero>
  </listaInvernaderos>
 </datoSalida>

@@ -12,6 +12,7 @@ class SistemaArchivoSalida:
         self.doc = None
         self.root = None
         self.listaInvernaderos = None
+        self.listaplanes = None
 
         self.invernaderoactual = None
     
@@ -60,8 +61,8 @@ class SistemaArchivoSalida:
                     self.listaInvernaderos.appendChild(invernadero)
 
                     #Lista Planes
-                    listaplanes = doc.createElement('listaPlanes')
-                    invernadero.appendChild(listaplanes)
+                    self.listaplanes = doc.createElement('listaPlanes')
+                    invernadero.appendChild(self.listaplanes)
 
         except Exception as e:
             print("!!! Error al agregarinvernaderos!!!\n ",e)
@@ -69,9 +70,26 @@ class SistemaArchivoSalida:
 
 
 
-    def crear_plan(self, numeroinvernadero):
+    def crear_plan(self, numeroinvernadero, nombreplan):
         try:
+            doc = self.doc
+            listaplanes = self.listaplanes
             print(f'Creando plan el invernadero nuero: {numeroinvernadero}')
+            #Modificar Invernadero
+            Listainvernaderos = self.listaInvernaderos.getElementsByTagName('invernadero')
+            for i in range(0,int(numeroinvernadero)):
+                invernadero = Listainvernaderos[i]
+                print("Nombre Invernadero: ", invernadero.getAttribute('nombre'))
+                #Datos Planes
+                plan = doc.createElement('plan')
+                plan.setAttribute('nombre',f'{nombreplan}')
+                listaplanes.appendChild(plan)
+
+                #Tiempo optimo
+                tiempoOptimo = doc.createElement('tiempoOptimoSegundos')
+                plan.appendChild(tiempoOptimo)
+                txt= doc.createTextNode('8')
+                tiempoOptimo.appendChild(txt)
 
         except Exception as e:
             print("!!! Error al crear plan!!!",e)

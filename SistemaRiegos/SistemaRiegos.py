@@ -10,6 +10,7 @@ class SistemaRiegos():
     def __init__(self, colainvernaderos):
         self.numeroinverndaerosel = None
         self.numeroplanseleccionado = None
+        self.nombreplan  = None
         self.colainvernaderos = colainvernaderos
         self.InvernaderoSel = None
         self.PlanSel = None
@@ -77,15 +78,14 @@ class SistemaRiegos():
             #Cola nombres
             colanombresplanes = Cola()
             #Obtener Instrucciones
-            nombreplan = None
             for i in range(0,ListaPlanes.tamano()):
                 if i <=0:
                     plan = ListaPlanes.primero
                 else:
                     plan = plan.siguiente
                 #Datos plan
-                nombreplan = plan.valor.nombre
-                colanombresplanes.Push(Cnombreplan(nombreplan,i+1))
+                self.nombreplan = plan.valor.nombre
+                colanombresplanes.Push(Cnombreplan(self.nombreplan,i+1))
             
             return colanombresplanes
 
@@ -549,7 +549,7 @@ class SistemaRiegos():
     
     def CreanplanXML(self):
         try:
-            self.sistema_archivo_salida.crear_plan(self.numeroinverndaerosel)
+            self.sistema_archivo_salida.crear_plan(self.numeroinverndaerosel,self.nombreplan )
         except Exception as e:
             print("!!! Error en CreanplanXML!!!\n",e)
     
