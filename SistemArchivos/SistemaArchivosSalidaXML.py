@@ -142,17 +142,32 @@ class SistemaArchivoSalida:
                 plan.appendChild(instrucciones)
 
                 #Tiempo
-                for k in range(0,1):
+                instruccionesinv = self.invernaderoactual.colainstrucciones
+                for k in range(0,int(self.invernaderoactual.tiempoOptimo)):
+                    if k <=0:
+                        colaL = instruccionesinv.primero
+                    else:
+                        colaL = colaL.siguiente
+                    colainstrucciones = colaL.valor
+                    
+
+
                     tiempo = doc.createElement('tiempo')
-                    tiempo.setAttribute('segundos',f'{k}')
+                    tiempo.setAttribute('segundos',f'{colainstrucciones.tiemposeg}')
                     instrucciones.appendChild(tiempo)
 
                     #Movimiento
-                    for l in range(0,3):
+                    colamovi = colainstrucciones.colamovimientos
+                    for l in range(0,colamovi.tamano()):
+                        if l <= 0:
+                            mov = colamovi.primero
+                        else:
+                            mov = mov.siguiente
+                        movimientodata = mov.valor
                         movimiento = doc.createElement('dron')
                         tiempo.appendChild(movimiento)
-                        movimiento.setAttribute('nombre',f'DR{l}')
-                        movimiento.setAttribute('accion',f'Adelante(H{i}P{l})')
+                        movimiento.setAttribute('nombre',f'{movimientodata.nombre}')
+                        movimiento.setAttribute('accion',f'{movimientodata.accion}')
 
         except Exception as e:
             print("!!! Error al crear plan!!!",e)
