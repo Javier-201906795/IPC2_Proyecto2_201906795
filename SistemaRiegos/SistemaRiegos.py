@@ -1,7 +1,9 @@
-from SistemArchivos.SistemaArchivoXML import SistemaArchivo
+from SistemArchivos.SistemaArchivosSalidaXML import SistemaArchivoSalida
+
 from Nodos.Lista import Lista
 from Nodos.Cola import Cola
 from Nodos.Clases import *
+
 
 
 class SistemaRiegos():
@@ -526,4 +528,14 @@ class SistemaRiegos():
         print("########################## [FIN Sistema Riegos] ############################\n\n\n")
             
             
-        
+    
+    def CrearArchivoXML(self):
+        try:
+            print(">> Creando archivo xml")
+            rutaSalida = 'G:\\2020\\2020_USAC\\Semestre14(2025)\\IPC2\\1_Laboratorio\\8_PROYECTO2\\IPC2_Proyecto2_201906795\\salida.xml'
+            sistema_archivo_salida = SistemaArchivoSalida(rutaSalida)
+            #Iniciar
+            sistema_archivo_salida.asignarcolainvernadero(self.colainvernaderos)
+            sistema_archivo_salida.segmentar_archivo_XML()
+        except Exception as e:
+            print("!!! Error al crearArchivoXML !!!",e)
