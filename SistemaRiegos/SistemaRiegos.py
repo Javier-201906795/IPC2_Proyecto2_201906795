@@ -539,7 +539,7 @@ class SistemaRiegos():
             
             
     
-    def CrearArchivoXML(self):
+    def CrearListainvernaderoXML(self):
         try:
             print(">> Creando archivo xml")
             
@@ -548,7 +548,7 @@ class SistemaRiegos():
             self.sistema_archivo_salida.asignarcolainvernadero(self.colainvernaderos)
             self.sistema_archivo_salida.segmentar_archivo_XML()
         except Exception as e:
-            print("!!! Error al crearArchivoXML !!!",e)
+            print("!!! Error al CrearListainvernaderoXML !!!",e)
     
     def CreanplanXML(self):
         try:
@@ -561,3 +561,6 @@ class SistemaRiegos():
             self.sistema_archivo_salida.GuardarSalidaXML()
         except Exception as e:
             print("!! Error al guardar salida xml!!!\n",e)
+    
+    def CrearArchivoXML(self):
+        self.sistema_archivo_salida.creararchivoDOC()
