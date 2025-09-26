@@ -10,6 +10,7 @@ class SistemaArchivoSalida:
         self.ruta = ruta
         self.colainvernaderos = None
         self.doc = None
+        self.root = None
     
     def asignarcolainvernadero(self, colainver):
         self.colainvernaderos = colainver
@@ -27,14 +28,20 @@ class SistemaArchivoSalida:
             print(f'!!! Error al crear_archivo !!!\n',e)
     
     
-    
+    def creararchivoDOC(self):
+        try:
+            print('Creando Doc and root')
+            self.doc = Document()
+            self.root = self.doc.createElement('datoSalida')
+            self.doc.appendChild(self.root)
+        except Exception as e:
+            print("!!! Error al crear el archivo DOC!!!\n",e)
     
     def segmentar_archivo_XML(self):
         try:
-            self.doc = Document()
+            self.creararchivoDOC()
             doc = self.doc
-            root = doc.createElement('datoSalida')
-            doc.appendChild(root)
+            root = self.root
             
             listaInvernaderos = doc.createElement('listaInvernaderos')
             root.appendChild(listaInvernaderos)
