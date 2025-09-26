@@ -8,6 +8,8 @@ from Nodos.Clases import *
 
 class SistemaRiegos():
     def __init__(self, colainvernaderos):
+        self.numeroinverndaerosel = None
+        self.numeroplanseleccionado = None
         self.colainvernaderos = colainvernaderos
         self.InvernaderoSel = None
         self.PlanSel = None
@@ -128,6 +130,8 @@ class SistemaRiegos():
 
     def Obtenerinformacion(self, numinv, numplan):
         try:
+            self.numeroinverndaerosel = numinv
+            self.numeroplanseleccionado = numplan
             print(f'\n>> Invernadero seleccionado: {numinv}  -  Plan seleccionado: {numplan}')
             #Reinicar valores
             self.ReiniciarValores()
@@ -545,7 +549,7 @@ class SistemaRiegos():
     
     def CreanplanXML(self):
         try:
-            self.sistema_archivo_salida.crear_plan(2)
+            self.sistema_archivo_salida.crear_plan(self.numeroinverndaerosel)
         except Exception as e:
             print("!!! Error en CreanplanXML!!!\n",e)
     
