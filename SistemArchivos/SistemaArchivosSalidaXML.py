@@ -11,6 +11,9 @@ class SistemaArchivoSalida:
         self.colainvernaderos = None
         self.doc = None
         self.root = None
+        self.listaInvernaderos = None
+
+        self.invernaderoactual = None
     
     def asignarcolainvernadero(self, colainver):
         self.colainvernaderos = colainver
@@ -37,85 +40,115 @@ class SistemaArchivoSalida:
         except Exception as e:
             print("!!! Error al crear el archivo DOC!!!\n",e)
     
+    def agregarinvernaderos(self):
+        try:
+            doc = self.doc
+            
+            #Recorre invernaderos
+            if (self.colainvernaderos.tamano() > 0):
+                for i in range(0,self.colainvernaderos.tamano()):
+                    if i <=0:
+                        inv = self.colainvernaderos.primero
+                    else:
+                        inv = inv.siguiente
+                    #Obtener datos
+                    invern = inv.valor
+                    nombre = invern.nombre
+                    ##Datos invernadero
+                    invernadero = doc.createElement('invernadero')
+                    invernadero.setAttribute("nombre", f"{nombre}")
+                    self.listaInvernaderos.appendChild(invernadero)
+
+                    #Lista Planes
+                    listaplanes = doc.createElement('listaPlanes')
+                    invernadero.appendChild(listaplanes)
+
+        except Exception as e:
+            print("!!! Error al agregarinvernaderos!!!\n ",e)
+    
+    
+    
     def segmentar_archivo_XML(self):
         try:
             self.creararchivoDOC()
             doc = self.doc
             root = self.root
             
-            listaInvernaderos = doc.createElement('listaInvernaderos')
-            root.appendChild(listaInvernaderos)
+            self.listaInvernaderos = doc.createElement('listaInvernaderos')
+            root.appendChild(self.listaInvernaderos)
 
-            #Lista invernaderos
-            for i in range(0,2):
-                #Datos invernadero
-                invernadero = doc.createElement('invernadero')
-                invernadero.setAttribute("nombre", f"Invernadero {i}")
-                listaInvernaderos.appendChild(invernadero)
+            self.agregarinvernaderos()
 
-                #Lista Planes
-                listaplanes = doc.createElement('listaPlanes')
-                invernadero.appendChild(listaplanes)
+            # #Lista invernaderos
+            # for i in range(0,2):
+            #     #Datos invernadero
+            #     invernadero = doc.createElement('invernadero')
+            #     invernadero.setAttribute("nombre", f"Invernadero {i}")
+            #     self.listaInvernaderos.appendChild(invernadero)
 
-                for h in range(0,1):
-                    #Datos Planes
-                    plan = doc.createElement('plan')
-                    plan.setAttribute('nombre',f'Semana{h}')
-                    listaplanes.appendChild(plan)
+            #     #Lista Planes
+            #     listaplanes = doc.createElement('listaPlanes')
+            #     invernadero.appendChild(listaplanes)
 
-                    #Tiempo optimo
-                    tiempoOptimo = doc.createElement('tiempoOptimoSegundos')
-                    plan.appendChild(tiempoOptimo)
-                    txt= doc.createTextNode('8')
-                    tiempoOptimo.appendChild(txt)
+            #     for h in range(0,1):
+            #         #Datos Planes
+            #         plan = doc.createElement('plan')
+            #         plan.setAttribute('nombre',f'Semana{h}')
+            #         listaplanes.appendChild(plan)
 
-                    #aguaRequeridaLitros
-                    aguaRequerida = doc.createElement('aguaRequeridaLitros')
-                    plan.appendChild(aguaRequerida)
-                    txt= doc.createTextNode('5')
-                    aguaRequerida.appendChild(txt)
+            #         #Tiempo optimo
+            #         tiempoOptimo = doc.createElement('tiempoOptimoSegundos')
+            #         plan.appendChild(tiempoOptimo)
+            #         txt= doc.createTextNode('8')
+            #         tiempoOptimo.appendChild(txt)
 
-                    #Fertilizante
-                    fertilizanteReq = doc.createElement('fertilizanteRequeridoGramos')
-                    plan.appendChild(fertilizanteReq)
-                    txt= doc.createTextNode('500')
-                    fertilizanteReq.appendChild(txt)
+            #         #aguaRequeridaLitros
+            #         aguaRequerida = doc.createElement('aguaRequeridaLitros')
+            #         plan.appendChild(aguaRequerida)
+            #         txt= doc.createTextNode('5')
+            #         aguaRequerida.appendChild(txt)
 
-                    #Lista Eficiencia Drones
-                    efiDrones = doc.createElement('eficienciaDronesRegadores')
-                    plan.appendChild(efiDrones)
+            #         #Fertilizante
+            #         fertilizanteReq = doc.createElement('fertilizanteRequeridoGramos')
+            #         plan.appendChild(fertilizanteReq)
+            #         txt= doc.createTextNode('500')
+            #         fertilizanteReq.appendChild(txt)
 
-                    #Dron
-                    for j in range(0,3):
-                        Dron = doc.createElement('dron')
-                        efiDrones.appendChild(Dron)
-                        Dron.setAttribute('nombre',f'DR{j}')
-                        Dron.setAttribute('litrosAgua',f'{j+3}')
-                        Dron.setAttribute('gramosFertilizante',f'{j*100}')
+            #         #Lista Eficiencia Drones
+            #         efiDrones = doc.createElement('eficienciaDronesRegadores')
+            #         plan.appendChild(efiDrones)
 
-                    #Lista instrucciones
-                    instrucciones = doc.createElement('instrucciones')
-                    plan.appendChild(instrucciones)
+            #         #Dron
+            #         for j in range(0,3):
+            #             Dron = doc.createElement('dron')
+            #             efiDrones.appendChild(Dron)
+            #             Dron.setAttribute('nombre',f'DR{j}')
+            #             Dron.setAttribute('litrosAgua',f'{j+3}')
+            #             Dron.setAttribute('gramosFertilizante',f'{j*100}')
 
-                    #Tiempo
-                    for k in range(0,1):
-                        tiempo = doc.createElement('tiempo')
-                        tiempo.setAttribute('segundos',f'{k}')
-                        instrucciones.appendChild(tiempo)
+            #         #Lista instrucciones
+            #         instrucciones = doc.createElement('instrucciones')
+            #         plan.appendChild(instrucciones)
 
-                        #Movimiento
-                        for l in range(0,3):
-                            movimiento = doc.createElement('dron')
-                            tiempo.appendChild(movimiento)
-                            movimiento.setAttribute('nombre',f'DR{l}')
-                            movimiento.setAttribute('accion',f'Adelante(H{i}P{l})')
+            #         #Tiempo
+            #         for k in range(0,1):
+            #             tiempo = doc.createElement('tiempo')
+            #             tiempo.setAttribute('segundos',f'{k}')
+            #             instrucciones.appendChild(tiempo)
+
+            #             #Movimiento
+            #             for l in range(0,3):
+            #                 movimiento = doc.createElement('dron')
+            #                 tiempo.appendChild(movimiento)
+            #                 movimiento.setAttribute('nombre',f'DR{l}')
+            #                 movimiento.setAttribute('accion',f'Adelante(H{i}P{l})')
 
             
             #Modificar Invernadero
-            lista = listaInvernaderos.getElementsByTagName('invernadero')
-            if len(lista) > 1:
-                segundo = lista[1]                       # índice 1 -> segundo elemento
-                print("Atributo nombre (A):", segundo.getAttribute('nombre'))
+            # lista = listaInvernaderos.getElementsByTagName('invernadero')
+            # if len(lista) > 1:
+            #     segundo = lista[1]                       # índice 1 -> segundo elemento
+            #     print("Atributo nombre (A):", segundo.getAttribute('nombre'))
             
 
             # ==============================
