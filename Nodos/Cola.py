@@ -66,3 +66,16 @@ class Cola:
             return None
             
         return primerotemp.obtenerDato()
+
+    def Obtener(self,numero):
+        max = self.tamano()
+        if numero <= max:
+            for i in range(0,numero):
+                if i <=0:
+                    item = self.primero
+                else:
+                    item = item.siguiente
+                itemvalor = item.valor
+            return itemvalor
+        else:
+            return None

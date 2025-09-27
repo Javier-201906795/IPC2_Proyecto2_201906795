@@ -7,7 +7,7 @@ class SistemaCental:
         self.ruta = None
         self.sistema_archivo = None
         self.sistema_riego = None
-        self.Colanombreinvernaderos = None
+        self.Colainvernaderos = None
     
     def asignarruta(self, ruta):
         self.ruta = ruta
@@ -54,10 +54,12 @@ class SistemaCental:
     def crearReportesXML(self):
         try:
             #Obtener cola invernaderos
-            self.Colanombreinvernaderos = self.sistema_riego.ColasInvernaderos()
+            self.Colainvernaderos = self.sistema_riego.obtenercolainvernadero()
             #Recorrer invernaderos
-            for i in range(0,self.Colanombreinvernaderos.tamano()):
+            for i in range(0,self.Colainvernaderos.tamano()):
                 print(i)
+                dato = self.Colainvernaderos.Obtener(i+1)
+                dato.desplegar()
 
         except Exception as e:
             print('!!! Error al crear reportes xml !!!\n',e) 

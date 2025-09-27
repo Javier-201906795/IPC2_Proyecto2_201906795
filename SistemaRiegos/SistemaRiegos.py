@@ -627,3 +627,6 @@ class SistemaRiegos():
     
     def CrearArchivoXML(self):
         self.sistema_archivo_salida.creararchivoDOC()
+    
+    def obtenercolainvernadero(self):
+        return self.colainvernaderos
