@@ -119,45 +119,45 @@ class SistemaArchivoSalida:
 
 
 
-    def crear_movimientos_dron(self):
-        try:
-            print('> Creando movimientos dron')
-            self.nuevasinstruccionesinv.desplegar()
-            print()
-            self.obtenerinstrucciones()
-            self.nuevasinstruccionesinv.desplegar()
-            #Obtener valores
-            for i in range (0,int(self.invernaderoactual.tiempoOptimo)):
-                print('i:',i)
-                if i <=0:
-                    instruccionL = self.nuevasinstruccionesinv.primero
-                else:
-                    instruccionL = instruccionL.siguiente
-                instruccion = instruccionL.valor
-                tiempotxt = instruccion.tiemposeg
-                colainstrucciones = instruccion.colamovimientos
-                print(f'-[ {tiempotxt} ]-')
-                for h in range(0,colainstrucciones.tamano()):
-                    if h <=0:
-                        movimientoL = colainstrucciones.primero
-                    else:
-                        movimientoL = movimientoL.siguiente
-                    movimiento = movimientoL.valor
-                    nombredron = movimiento.nombre
-                    acciondron = movimiento.accion
-                    print(f'Nom: {nombredron} - Acc: {acciondron}')
-                    self.nuevasinstruccionesinv.desplegar()
-                print(f'-[FIN {tiempotxt} ]-')
+    # def crear_movimientos_dron(self):
+    #     try:
+    #         print('> Creando movimientos dron')
+    #         self.nuevasinstruccionesinv.desplegar()
+    #         print()
+    #         self.obtenerinstrucciones()
+    #         self.nuevasinstruccionesinv.desplegar()
+    #         #Obtener valores
+    #         for i in range (0,int(self.invernaderoactual.tiempoOptimo)):
+    #             print('i:',i)
+    #             if i <=0:
+    #                 instruccionL = self.nuevasinstruccionesinv.primero
+    #             else:
+    #                 instruccionL = instruccionL.siguiente
+    #             instruccion = instruccionL.valor
+    #             tiempotxt = instruccion.tiemposeg
+    #             colainstrucciones = instruccion.colamovimientos
+    #             print(f'-[ {tiempotxt} ]-')
+    #             for h in range(0,colainstrucciones.tamano()):
+    #                 if h <=0:
+    #                     movimientoL = colainstrucciones.primero
+    #                 else:
+    #                     movimientoL = movimientoL.siguiente
+    #                 movimiento = movimientoL.valor
+    #                 nombredron = movimiento.nombre
+    #                 acciondron = movimiento.accion
+    #                 print(f'Nom: {nombredron} - Acc: {acciondron}')
+    #                 self.nuevasinstruccionesinv.desplegar()
+    #             print(f'-[FIN {tiempotxt} ]-')
 
 
-        except Exception as e:
-            print("!!! Error al crear movimientos !!!\n",e)
+    #     except Exception as e:
+    #         print("!!! Error al crear movimientos !!!\n",e)
 
 
 
 
 
-    def crear_plan(self, numeroinvernadero, nombreplan):
+    def crear_plan(self, numeroinvernadero, nombreplan, numeroplan):
         try:
             doc = self.doc
             listaplanes = self.listaplanes
@@ -217,11 +217,50 @@ class SistemaArchivoSalida:
                 instrucciones = doc.createElement('instrucciones')
                 plan.appendChild(instrucciones)
 
-                self.crear_movimientos_dron()
+                #self.crear_movimientos_dron()
 
                 
 
-                # #Tiempo
+                #Tiempo
+                planmovientos = None
+                for m in range(0,int(numeroplan)):
+                    if m <=0:
+                        historicoplanL = self.invernaderoactual.historialmovimientos.primero
+                    else:
+                        historicoplanL = historicoplanL.siguiente
+                    planmovientos = historicoplanL.valor
+                    print("\n-----")
+                    planmovientos.desplegar()
+                    print("------\n")
+
+                for n in range(0,int(planmovientos.tamano())):    
+                    if n <=0:
+                        planL = planmovientos.primero
+                    else:
+                        planL = planL.siguiente
+                    plan = planL.valor
+                    
+                    tiempo = self.doc.createElement('tiempo')
+                    tiempo.setAttribute('segundos',f'{plan.tiemposeg}')
+                    instrucciones.appendChild(tiempo)
+
+                    #Movimiento
+                    colamovi = plan.colamovimientos
+                    self.nuevasinstruccionesinv.desplegar()
+                    
+                    for l in range(0,colamovi.tamano()):
+                        if l <= 0:
+                            mov = colamovi.primero
+                        else:
+                            mov = mov.siguiente
+                        movimientodata = mov.valor
+                        movimiento = doc.createElement('dron')
+                        tiempo.appendChild(movimiento)
+                        movimiento.setAttribute('nombre',f'{movimientodata.nombre}')
+                        movimiento.setAttribute('accion',f'{movimientodata.accion}')
+                
+                    #print(f"----Creando Movimiento {n+1}/{planmovientos.tamano()}---")
+
                 # print('\n-----------')
                 # self.nuevasinstruccionesinv.desplegar()
                 # print('-----------\n')

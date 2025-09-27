@@ -586,7 +586,7 @@ class SistemaRiegos():
             print('> Historico movimientos')
             self.InvernaderoSel.historialmovimientos.desplegar()
             print('\n'*5)
-            
+
             #Reiniciar Movimientos Drones
             colavacia = Cola()
             self.InvernaderoSel.asignarcolainstrucciones(colavacia)
@@ -615,7 +615,7 @@ class SistemaRiegos():
                     planl = planl.siguiente
                 planvalores = planl.valor
                 nommbre = planvalores.nombre
-            self.sistema_archivo_salida.crear_plan(self.numeroinverndaerosel,nommbre )
+            self.sistema_archivo_salida.crear_plan(self.numeroinverndaerosel,nommbre, self.numeroplanseleccionado )
         except Exception as e:
             print("!!! Error en CreanplanXML!!!\n",e)
     
