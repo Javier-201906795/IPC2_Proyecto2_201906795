@@ -27,6 +27,7 @@ class SistemaRiegos():
         self.Tiempomax = 0
 
         self.DronRegando = False
+        self.Colamovimientos = None
 
         self.ColaHilerasIndividual = Cola()
 
@@ -316,7 +317,27 @@ class SistemaRiegos():
         except Exception as e:
             print('!!! Error en Dron_Validar_Riego !!!\n',e)
     
-    
+    def Dron_Mover_primera_posicion(self):
+        try:
+
+            for j in range(0,self.InvListaDrones.tamano()):
+                if j <= 0:
+                    dron = self.InvListaDrones.primero
+                else:
+                    dron = dron.siguiente
+                
+                plantaactual = dron.valor.planta
+                #Mover Dron
+                plantanueva = int(plantaactual)+1
+                dron.valor.asignarPlanta(plantanueva)
+                #Almacenar movimiento
+                self.Colamovimientos.Push(Cmovimiento(dron.valor.nombre,f'Adelante (H{dron.valor.hilera}P{plantanueva})'))
+                print(f"Dron {dron.valor.nombre}  -> Avanzar (H{dron.valor.hilera}P{int(plantaactual)+1})")
+                #Imprimir nuevo valores
+                self.InvListaDrones.desplegar()
+            
+        except Exception as e:
+            print('!!! Error en Dron_Mover_primera_posicion!!!\n ',e)
 
     def Ejecutar_instruccion(self, instruccion):
         try:
@@ -324,7 +345,7 @@ class SistemaRiegos():
             planta = instruccion.planta
             banderainstruccioncompletada = False
 
-            Colamovimientos = Cola()
+            self.Colamovimientos = Cola()
             
             
             print("\n"+"-"*50)
@@ -352,6 +373,7 @@ class SistemaRiegos():
             #1.1 Primer Movimiento Drones
             if self.Tiempoactual == 1:
                 #1.1.1 Mover Todos los Drones
+                #self.Dron_Mover_primera_posicion()
                 for j in range(0,self.InvListaDrones.tamano()):
                     if j <= 0:
                         dron = self.InvListaDrones.primero
