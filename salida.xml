@@ -2,30 +2,7 @@
 <datoSalida>
  <listaInvernaderos>
   <invernadero nombre="Invernadero Zacapa">
-   <listaPlanes>
-    <plan nombre="Semana 1">
-     <tiempoOptimoSegundos>9</tiempoOptimoSegundos>
-     <aguaRequeridaLitros>5</aguaRequeridaLitros>
-     <fertilizanteRequeridoGramos>500</fertilizanteRequeridoGramos>
-     <eficienciaDronesRegadores>
-      <dron nombre="DR01" litrosAgua="2" gramosFertilizante="200"/>
-      <dron nombre="DR02" litrosAgua="2" gramosFertilizante="200"/>
-      <dron nombre="DR03" litrosAgua="1" gramosFertilizante="100"/>
-     </eficienciaDronesRegadores>
-     <instrucciones/>
-    </plan>
-    <plan nombre="Semana 2">
-     <tiempoOptimoSegundos>10</tiempoOptimoSegundos>
-     <aguaRequeridaLitros>12</aguaRequeridaLitros>
-     <fertilizanteRequeridoGramos>1200</fertilizanteRequeridoGramos>
-     <eficienciaDronesRegadores>
-      <dron nombre="DR01" litrosAgua="2" gramosFertilizante="200"/>
-      <dron nombre="DR02" litrosAgua="2" gramosFertilizante="200"/>
-      <dron nombre="DR03" litrosAgua="3" gramosFertilizante="300"/>
-     </eficienciaDronesRegadores>
-     <instrucciones/>
-    </plan>
-   </listaPlanes>
+   <listaPlanes/>
   </invernadero>
  </listaInvernaderos>
 </datoSalida>

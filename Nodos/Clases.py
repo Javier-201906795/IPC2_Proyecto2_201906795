@@ -111,6 +111,14 @@ class CInvernadero (InfoNodo):
         self.tiempoOptimo = 0
         self.aguaRequerida = 0
         self.fertilizanteRequerido = 0
+
+        self.historialmovimientos = Cola()
+    
+    def asignarcolainstrucciones(self,cola):
+        self.colainstrucciones = cola
+    
+    def asignahistorialmovimientos(self, cola):
+        self.historialmovimientos = cola
     
 
     def asignartiempoOptimo(self, tiempoO):

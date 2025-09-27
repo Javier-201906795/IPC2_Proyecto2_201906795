@@ -111,6 +111,7 @@ class SistemaRiegos():
             self.InvernaderoSel.asignartiempoOptimo(0)
             self.ultimoriegotiempo = 0
             self.InvInstrucciones = None
+        
             
         except Exception as e:
             print("!!! Error al reiniciar valores !!!",e)
@@ -128,6 +129,7 @@ class SistemaRiegos():
                 DronRData.asignaraguautilizada(0)
                 DronRData.asignarfertilizanteutilizado(0)
                 DronRData.asignarPlanta(0)
+            
         except Exception as e:
             print('!!! Error al Reinicia drones!!!',e)
 
@@ -540,9 +542,56 @@ class SistemaRiegos():
             
         except Exception as e:
             print("!!! Error al ejecutar_tiempo !!!\n",e)
+
+
+        #Guardar movimientos
+        self.Guardarenhistorialmovimientos()
         print("########################## [FIN Sistema Riegos] ############################\n\n\n")
             
+    def Guardarenhistorialmovimientos(self):
+        try:
+            print('>> Guardando valores movimientos')
+
+            #COPIA LAS INSTRUCCIONES antes que sean sobreescritas
+            instruccionesinv = self.InvernaderoSel.colainstrucciones
+            nuevasinstruccionesinv = Cola()
+            for i in range (0,instruccionesinv.tamano()):
+                if i <=0:
+                    colaL = instruccionesinv.primero
+                else:
+                    colaL = colaL.siguiente
+                tiempomovimiento = colaL.valor
+                nombretiempo = tiempomovimiento.tiemposeg
+                colainstru = tiempomovimiento.colamovimientos
+                #Crear nuevas colas
+                nuevaColainstruciones = Cola()
+                for j in range(0,colainstru.tamano()):
+                    if j <=0:
+                        instruL = colainstru.primero
+                    else:
+                        instruL = instruL.siguiente
+                    instruccion = instruL.valor
+                    accion = instruccion.accion
+                    nombre = instruccion.nombre
+                    #Agregar a nueva cola
+                    nuevaColainstruciones.Push(Cmovimiento(nombre,accion))
+                #Crea nueva cola
+                nuevasinstruccionesinv.Push(Ctiempo(nombretiempo,nuevaColainstruciones))
+
+            nuevasinstruccionesinv.desplegar()
+
+            #Almacenar
+            self.InvernaderoSel.historialmovimientos.Push(nuevasinstruccionesinv)
+            print('\n'*5)
+            print('> Historico movimientos')
+            self.InvernaderoSel.historialmovimientos.desplegar()
+            print('\n'*5)
             
+            #Reiniciar Movimientos Drones
+            colavacia = Cola()
+            self.InvernaderoSel.asignarcolainstrucciones(colavacia)
+        except Exception as e:
+            print("!!! Error en Guardarenhistorialmovimientos!!!\n",e)
     
     def CrearListainvernaderoXML(self):
         try:
