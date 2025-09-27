@@ -342,6 +342,42 @@ class SistemaRiegos():
         except Exception as e:
             print('!!! Error en Dron_Mover_primera_posicion!!!\n ',e)
     
+    def Dron_Evaluar_movimiento(self,Regando):
+        try:
+            print('> Evaluando movimiento Dron.')
+            #1.2.1 Avanzar Todos los drones
+            #1.2.2 Validar Restriccion Movimiento
+            print("No hay drones regando, -> avanzar ")
+            #Mover Drones
+            for f in range(0,self.InvListaDrones.tamano()):
+                #DRON{f}
+                if f <= 0:
+                    dron = self.InvListaDrones.primero
+                else:
+                    dron = dron.siguiente
+                nombredron2 = dron.valor.nombre
+                plantaactual = dron.valor.planta
+                hileradron = dron.valor.hilera
+                #1.2.3 Validar DRON != Posicion Riego (Aun falta para llegar)
+                if int(plantaactual) <= int(self.InvplantasXHilera.strip()):
+                    #1.2.3.1 Mover Dron (aun falta para su posicion de riego)
+                    #Buscar en hilera individuales posicion final de riego
+                    for g in range(0,int(hileradron)):
+                        if g <= 0:
+                            hilera = self.ColaHilerasIndividual.primero
+                        else:
+                            hilera = hilera.siguiente
+                        colahilera = hilera.valor
+                    #colahilera.desplegar()
+                    #obtener primera posicion
+                    if colahilera.primero != None:
+                        posiciontope = colahilera.primero.valor.planta
+                        #1.2.3.2 Obtener Posicion Riego y Validar
+                        posiciontope = int(posiciontope[1])
+                        self.Dron_Mover_adelante_esperar_atras(dron,plantaactual,posiciontope)
+        except Exception as e:
+            print('!!! Error en Dron_Evaluar_movimiento!!!\n',e)
+    
     def Dron_Mover_adelante_esperar_atras(self,dron,plantaactual,posiciontope):
         try:
             #Validar si mover o no
@@ -408,36 +444,37 @@ class SistemaRiegos():
             else:
                 #1.2 NINGUN Dron Regando
                 if self.DronRegando == False:
-                    #1.2.1 Avanzar Todos los drones
-                    #1.2.2 Validar Restriccion Movimiento
-                    print("No hay drones regando, -> avanzar ")
-                    #Mover Drones
-                    for f in range(0,self.InvListaDrones.tamano()):
-                        #DRON{f}
-                        if f <= 0:
-                            dron = self.InvListaDrones.primero
-                        else:
-                            dron = dron.siguiente
-                        nombredron2 = dron.valor.nombre
-                        plantaactual = dron.valor.planta
-                        hileradron = dron.valor.hilera
-                        #1.2.3 Validar DRON != Posicion Riego (Aun falta para llegar)
-                        if int(plantaactual) <= int(self.InvplantasXHilera.strip()):
-                            #1.2.3.1 Mover Dron (aun falta para su posicion de riego)
-                            #Buscar en hilera individuales posicion final de riego
-                            for g in range(0,int(hileradron)):
-                                if g <= 0:
-                                    hilera = self.ColaHilerasIndividual.primero
-                                else:
-                                    hilera = hilera.siguiente
-                                colahilera = hilera.valor
-                            #colahilera.desplegar()
-                            #obtener primera posicion
-                            if colahilera.primero != None:
-                                posiciontope = colahilera.primero.valor.planta
-                                #1.2.3.2 Obtener Posicion Riego y Validar
-                                posiciontope = int(posiciontope[1])
-                                self.Dron_Mover_adelante_esperar_atras(dron,plantaactual,posiciontope)
+                    self.Dron_Evaluar_movimiento(self.DronRegando)
+                    # #1.2.1 Avanzar Todos los drones
+                    # #1.2.2 Validar Restriccion Movimiento
+                    # print("No hay drones regando, -> avanzar ")
+                    # #Mover Drones
+                    # for f in range(0,self.InvListaDrones.tamano()):
+                    #     #DRON{f}
+                    #     if f <= 0:
+                    #         dron = self.InvListaDrones.primero
+                    #     else:
+                    #         dron = dron.siguiente
+                    #     nombredron2 = dron.valor.nombre
+                    #     plantaactual = dron.valor.planta
+                    #     hileradron = dron.valor.hilera
+                    #     #1.2.3 Validar DRON != Posicion Riego (Aun falta para llegar)
+                    #     if int(plantaactual) <= int(self.InvplantasXHilera.strip()):
+                    #         #1.2.3.1 Mover Dron (aun falta para su posicion de riego)
+                    #         #Buscar en hilera individuales posicion final de riego
+                    #         for g in range(0,int(hileradron)):
+                    #             if g <= 0:
+                    #                 hilera = self.ColaHilerasIndividual.primero
+                    #             else:
+                    #                 hilera = hilera.siguiente
+                    #             colahilera = hilera.valor
+                    #         #colahilera.desplegar()
+                    #         #obtener primera posicion
+                    #         if colahilera.primero != None:
+                    #             posiciontope = colahilera.primero.valor.planta
+                    #             #1.2.3.2 Obtener Posicion Riego y Validar
+                    #             posiciontope = int(posiciontope[1])
+                    #             self.Dron_Mover_adelante_esperar_atras(dron,plantaactual,posiciontope)
                                 
                                     
                     #Imprimir nuevo valores
