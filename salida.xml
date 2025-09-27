@@ -1,4 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <datoSalida>
- <listaInvernaderos/>
+ <listaInvernaderos>
+  <invernadero nombre="Invernadero Chiquimula">
+   <listaPlanes>
+    <plan nombre="Semana0">
+     <tiempoOptimoSegundos>8</tiempoOptimoSegundos>
+     <aguaRequeridaLitros>5</aguaRequeridaLitros>
+     <fertilizanteRequeridoGramos>500</fertilizanteRequeridoGramos>
+     <eficienciaDronesRegadores>
+      <dron nombre="DR0" litrosAgua="3" gramosFertilizante="0"/>
+      <dron nombre="DR1" litrosAgua="4" gramosFertilizante="100"/>
+      <dron nombre="DR2" litrosAgua="5" gramosFertilizante="200"/>
+     </eficienciaDronesRegadores>
+     <instrucciones>
+      <tiempo segundos="0">
+       <dron nombre="DR0" accion="Adelante(H0P0)"/>
+       <dron nombre="DR1" accion="Adelante(H0P1)"/>
+       <dron nombre="DR2" accion="Adelante(H0P2)"/>
+      </tiempo>
+     </instrucciones>
+    </plan>
+   </listaPlanes>
+  </invernadero>
+  <invernadero nombre="Invernadero Peten">
+   <listaPlanes>
+    <plan nombre="Semana0">
+     <tiempoOptimoSegundos>8</tiempoOptimoSegundos>
+     <aguaRequeridaLitros>5</aguaRequeridaLitros>
+     <fertilizanteRequeridoGramos>500</fertilizanteRequeridoGramos>
+     <eficienciaDronesRegadores>
+      <dron nombre="DR0" litrosAgua="3" gramosFertilizante="0"/>
+      <dron nombre="DR1" litrosAgua="4" gramosFertilizante="100"/>
+      <dron nombre="DR2" litrosAgua="5" gramosFertilizante="200"/>
+     </eficienciaDronesRegadores>
+     <instrucciones>
+      <tiempo segundos="0">
+       <dron nombre="DR0" accion="Adelante(H1P0)"/>
+       <dron nombre="DR1" accion="Adelante(H1P1)"/>
+       <dron nombre="DR2" accion="Adelante(H1P2)"/>
+      </tiempo>
+     </instrucciones>
+    </plan>
+   </listaPlanes>
+  </invernadero>
+ </listaInvernaderos>
 </datoSalida>
