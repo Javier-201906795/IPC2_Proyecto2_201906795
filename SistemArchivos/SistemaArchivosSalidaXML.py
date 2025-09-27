@@ -183,20 +183,20 @@ class SistemaArchivoSalida:
                 maxciclo =int(self.invernaderoactual.tiempoOptimo)
                 for k in range(0, maxciclo):
                     if k <=0:
-                        colaL = self.nuevasinstruccionesinv.primero
+                        NuevacolaL = self.nuevasinstruccionesinv.primero
                     else:
-                        colaL = colaL.siguiente
-                    colainstrucciones = colaL.valor
+                        NuevacolaL = NuevacolaL.siguiente
+                    Nuevacolainstrucciones = NuevacolaL.valor
                     
                     print("----Movimiento---")
-                    colainstrucciones.desplegar()
+                    Nuevacolainstrucciones.desplegar()
 
                     tiempo = doc.createElement('tiempo')
-                    tiempo.setAttribute('segundos',f'{colainstrucciones.tiemposeg}')
+                    tiempo.setAttribute('segundos',f'{Nuevacolainstrucciones.tiemposeg}')
                     instrucciones.appendChild(tiempo)
 
                     #Movimiento
-                    colamovi = colainstrucciones.colamovimientos
+                    colamovi = Nuevacolainstrucciones.colamovimientos
                     self.nuevasinstruccionesinv.desplegar()
                     
                     for l in range(0,colamovi.tamano()):
