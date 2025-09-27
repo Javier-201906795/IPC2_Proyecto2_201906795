@@ -110,6 +110,7 @@ class SistemaRiegos():
             self.ColaHilerasIndividual = Cola()
             self.InvernaderoSel.asignartiempoOptimo(0)
             self.ultimoriegotiempo = 0
+            self.InvInstrucciones = None
             
         except Exception as e:
             print("!!! Error al reiniciar valores !!!",e)
