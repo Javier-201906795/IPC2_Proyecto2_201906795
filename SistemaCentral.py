@@ -57,9 +57,22 @@ class SistemaCental:
             self.Colainvernaderos = self.sistema_riego.obtenercolainvernadero()
             #Recorrer invernaderos
             for i in range(0,self.Colainvernaderos.tamano()):
-                print(i)
-                dato = self.Colainvernaderos.Obtener(i+1)
-                dato.desplegar()
+                #obtener inverdadero
+                invernaderoS = self.Colainvernaderos.Obtener(i+1)
+                invernaderoS.desplegar()
+                #obtener planes
+                colaplanes = self.sistema_riego.ColasPlanes(str(i+1))
+                colaplanes.desplegar()
+                
+                #Obtener info
+                for j in range(0,colaplanes.tamano()):
+                    self.sistema_riego.Obtenerinformacion(i+1,j+1)
+                    self.sistema_riego.Ejecutar_tiempo(9)
+                    self.sistema_riego.CreanplanXML()
+            
+            self.sistema_riego.GuardarSalidaXML()
+
+
 
         except Exception as e:
             print('!!! Error al crear reportes xml !!!\n',e) 

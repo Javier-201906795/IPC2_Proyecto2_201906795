@@ -630,3 +630,6 @@ class SistemaRiegos():
     
     def obtenercolainvernadero(self):
         return self.colainvernaderos
+
+    def obtenerplanes(self):
+        return None
