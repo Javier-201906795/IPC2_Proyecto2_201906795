@@ -116,6 +116,47 @@ class SistemaArchivoSalida:
             print('!!! Error en btenerinstrucciones !!!',e)
 
 
+
+
+
+    def crear_movimientos_dron(self):
+        try:
+            print('> Creando movimientos dron')
+            self.nuevasinstruccionesinv.desplegar()
+            print()
+            self.obtenerinstrucciones()
+            self.nuevasinstruccionesinv.desplegar()
+            #Obtener valores
+            for i in range (0,int(self.invernaderoactual.tiempoOptimo)):
+                print('i:',i)
+                if i <=0:
+                    instruccionL = self.nuevasinstruccionesinv.primero
+                else:
+                    instruccionL = instruccionL.siguiente
+                instruccion = instruccionL.valor
+                tiempotxt = instruccion.tiemposeg
+                colainstrucciones = instruccion.colamovimientos
+                print(f'-[ {tiempotxt} ]-')
+                for h in range(0,colainstrucciones.tamano()):
+                    if h <=0:
+                        movimientoL = colainstrucciones.primero
+                    else:
+                        movimientoL = movimientoL.siguiente
+                    movimiento = movimientoL.valor
+                    nombredron = movimiento.nombre
+                    acciondron = movimiento.accion
+                    print(f'Nom: {nombredron} - Acc: {acciondron}')
+                    self.nuevasinstruccionesinv.desplegar()
+                print(f'-[FIN {tiempotxt} ]-')
+
+
+        except Exception as e:
+            print("!!! Error al crear movimientos !!!\n",e)
+
+
+
+
+
     def crear_plan(self, numeroinvernadero, nombreplan):
         try:
             doc = self.doc
@@ -175,6 +216,8 @@ class SistemaArchivoSalida:
                 #Lista instrucciones
                 instrucciones = doc.createElement('instrucciones')
                 plan.appendChild(instrucciones)
+
+                self.crear_movimientos_dron()
 
                 
 
