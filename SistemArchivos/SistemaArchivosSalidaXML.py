@@ -15,6 +15,7 @@ class SistemaArchivoSalida:
         self.listaplanes = None
 
         self.invernaderoactual = None
+        self.nuevasinstruccionesinv = None
     
     def asignarcolainvernadero(self, colainver):
         self.colainvernaderos = colainver
@@ -82,6 +83,38 @@ class SistemaArchivoSalida:
         except Exception as e:
             print("!!! Error al obtenerinvernaderactual!!!\n",e)
 
+    def obtenerinstrucciones(self):
+        try:
+            #COPIA LAS INSTRUCCIONES antes que sean sobreescritas
+            instruccionesinv = self.invernaderoactual.colainstrucciones
+            self.nuevasinstruccionesinv = Cola()
+            for i in range (0,instruccionesinv.tamano()):
+                if i <=0:
+                    colaL = instruccionesinv.primero
+                else:
+                    colaL = colaL.siguiente
+                tiempomovimiento = colaL.valor
+                nombretiempo = tiempomovimiento.tiemposeg
+                colainstru = tiempomovimiento.colamovimientos
+                #Crear nuevas colas
+                nuevaColainstruciones = Cola()
+                for j in range(0,colainstru.tamano()):
+                    if j <=0:
+                        instruL = colainstru.primero
+                    else:
+                        instruL = instruL.siguiente
+                    instruccion = instruL.valor
+                    accion = instruccion.accion
+                    nombre = instruccion.nombre
+                    #Agregar a nueva cola
+                    nuevaColainstruciones.Push(Cmovimiento(nombre,accion))
+                #Crea nueva cola
+                self.nuevasinstruccionesinv.Push(Ctiempo(nombretiempo,nuevaColainstruciones))
+
+            self.nuevasinstruccionesinv.desplegar()
+        except Exception as e:
+            print('!!! Error en btenerinstrucciones !!!',e)
+
 
     def crear_plan(self, numeroinvernadero, nombreplan):
         try:
@@ -89,6 +122,8 @@ class SistemaArchivoSalida:
             listaplanes = self.listaplanes
             #Obtner infomacion invernadero
             self.obtenerinvernaderactual(numeroinvernadero)
+            #Guardar instrucciones antes que se sobreescriban
+            self.obtenerinstrucciones()
             print(f'Creando plan el invernadero nuero: {numeroinvernadero}')
             #Modificar Invernadero
             Listainvernaderos = self.listaInvernaderos.getElementsByTagName('invernadero')
@@ -142,15 +177,19 @@ class SistemaArchivoSalida:
                 plan.appendChild(instrucciones)
 
                 #Tiempo
-                instruccionesinv = self.invernaderoactual.colainstrucciones
-                for k in range(0,int(self.invernaderoactual.tiempoOptimo)):
+                print('\n-----------')
+                self.nuevasinstruccionesinv.desplegar()
+                print('-----------\n')
+                maxciclo =int(self.invernaderoactual.tiempoOptimo)
+                for k in range(0, maxciclo):
                     if k <=0:
-                        colaL = instruccionesinv.primero
+                        colaL = self.nuevasinstruccionesinv.primero
                     else:
                         colaL = colaL.siguiente
                     colainstrucciones = colaL.valor
                     
-
+                    print("----Movimiento---")
+                    colainstrucciones.desplegar()
 
                     tiempo = doc.createElement('tiempo')
                     tiempo.setAttribute('segundos',f'{colainstrucciones.tiemposeg}')
@@ -158,6 +197,8 @@ class SistemaArchivoSalida:
 
                     #Movimiento
                     colamovi = colainstrucciones.colamovimientos
+                    self.nuevasinstruccionesinv.desplegar()
+                    
                     for l in range(0,colamovi.tamano()):
                         if l <= 0:
                             mov = colamovi.primero
@@ -168,7 +209,7 @@ class SistemaArchivoSalida:
                         tiempo.appendChild(movimiento)
                         movimiento.setAttribute('nombre',f'{movimientodata.nombre}')
                         movimiento.setAttribute('accion',f'{movimientodata.accion}')
-
+                    print("----Fin Movimiento---")
         except Exception as e:
             print("!!! Error al crear plan!!!",e)
 
