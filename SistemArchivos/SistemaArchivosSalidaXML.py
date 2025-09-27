@@ -182,17 +182,6 @@ class SistemaArchivoSalida:
                 print('-----------\n')
                 maxciclo =int(self.invernaderoactual.tiempoOptimo)
 
-                #Limpiar valores
-                for h in range(0, maxciclo):
-                    if h <=0:
-                        NuevacolaL = self.nuevasinstruccionesinv.primero
-                    else:
-                        NuevacolaL = NuevacolaL.siguiente
-                    temp = NuevacolaL.valor
-                    tempcolamovi = temp.colamovimientos
-                    tempprimero = tempcolamovi.primero.valor
-                    Nuevacolainstrucciones = 0
-
                 #Agregar valores
                 for l in range(0, maxciclo):
                     if l <=0:
