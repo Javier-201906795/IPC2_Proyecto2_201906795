@@ -26,14 +26,20 @@ for i in range(0,ColaLista.tamano()):
     nombre = ColaLista.Pop().nombre
 #Seleccion una opcion
 planselecionado = input("Numero de opcion: ")
+
+#Archivo Salida crear
+sistema_riego.CrearArchivoXML()
+sistema_riego.CrearListainvernaderoXML()
+
+
 #Obtener informacion
 sistema_riego.Obtenerinformacion(invernaderoselecionado,1)
 sistema_riego.Ejecutar_tiempo(9)
 
 sistema_riego.Obtenerinformacion(invernaderoselecionado,2)
-sistema_riego.CrearArchivoXML()
+
 sistema_riego.Ejecutar_tiempo(10)
-sistema_riego.CrearListainvernaderoXML()
+
 sistema_riego.CreanplanXML()
 sistema_riego.GuardarSalidaXML()
 
