@@ -10,7 +10,7 @@
      <eficienciaDronesRegadores>
       <dron nombre="DR01" litrosAgua="2" gramosFertilizante="200"/>
       <dron nombre="DR02" litrosAgua="2" gramosFertilizante="200"/>
-      <dron nombre="DR03" litrosAgua="3" gramosFertilizante="300"/>
+      <dron nombre="DR03" litrosAgua="1" gramosFertilizante="100"/>
      </eficienciaDronesRegadores>
      <instrucciones>
       <tiempo segundos="0">
@@ -47,8 +47,8 @@
      <fertilizanteRequeridoGramos>300</fertilizanteRequeridoGramos>
      <eficienciaDronesRegadores>
       <dron nombre="DR01" litrosAgua="1" gramosFertilizante="100"/>
-      <dron nombre="DR02" litrosAgua="1" gramosFertilizante="100"/>
-      <dron nombre="DR03" litrosAgua="2" gramosFertilizante="200"/>
+      <dron nombre="DR02" litrosAgua="2" gramosFertilizante="200"/>
+      <dron nombre="DR03" litrosAgua="0" gramosFertilizante="0"/>
      </eficienciaDronesRegadores>
      <instrucciones>
       <tiempo segundos="0">

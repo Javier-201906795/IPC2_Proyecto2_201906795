@@ -482,7 +482,30 @@ class SistemaRiegos():
             print(f"!!! Error al Ejecutar_instruccion: {instruccion} !!!\n",e)
 
 
+    def nuevohistoricoDrones(self):
+        try:
+            print('> Guardando informacion drones')
+            Coladrones = self.InvernaderoSel.ListaDrones
+            nuevaCola = Cola()
+            for i in range(0,Coladrones.tamano()):
+                Drdat = Coladrones.Obtener(i+1)
+                Drdat.desplegar()
+                #Almacenar
+                NuevoDron = CDron(Drdat.id,Drdat.nombre)
+                NuevoDron.asignarHilera(Drdat.hilera)
+                NuevoDron.asignarPlanta(Drdat.planta)
+                NuevoDron.asignarfertilizanteutilizado(Drdat.fertilizanteutilizado)
+                NuevoDron.asignaraguautilizada(Drdat.aguautilizada)
+                print('- NuevoDron')
+                NuevoDron.desplegar()
+                #Agregar a cola
+                nuevaCola.Push(NuevoDron)
+            
+            return nuevaCola
 
+        except Exception as e:
+            print('!!! Error en nuevohistoricoDrones() !!!\n',e)
+            
 
     def Ejecutar_tiempo(self,tiempo):
         print("\n\n\n########################## [Sistema Riegos] ############################")
@@ -525,6 +548,11 @@ class SistemaRiegos():
                 self.InvernaderoSel.historiatiempooptimo.Push(self.ultimoriegotiempo)
                 self.InvernaderoSel.historiaagua.Push(self.InvernaderoSel.aguaRequerida)
                 self.InvernaderoSel.historaifertilizante.Push(self.InvernaderoSel.fertilizanteRequerido)
+                #ListaDrones nuevo
+                dronesinfo = self.nuevohistoricoDrones()
+                dronesinfo.desplegar()
+                self.InvernaderoSel.historialdrones.Push(dronesinfo)
+                
 
 
                 #Cambiar variable Regar a Fin de los ultimos drones

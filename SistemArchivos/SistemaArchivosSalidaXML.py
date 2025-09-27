@@ -349,6 +349,8 @@ class SistemaArchivoSalida:
                     #Obtener ferlitianzate y agua
                     aguaopt = Inv.historiaagua.Obtener(h+1)
                     fertopt = Inv.historaifertilizante.Obtener(h+1)
+                    #Obtener lista drones
+                    ListaDronesResumen = Inv.historialdrones.Obtener(h+1)
                     
                     print('\n---[Plan info]---')
                     Planinfo.desplegar()
@@ -388,8 +390,8 @@ class SistemaArchivoSalida:
                     plan.appendChild(efiDrones)
 
                     #Dron
-                    for j in range(0,Inv.ListaDrones.tamano()):
-                        DataDron = Inv.ListaDrones.Obtener(j+1)
+                    for j in range(0,ListaDronesResumen.tamano()):
+                        DataDron = ListaDronesResumen.Obtener(j+1)
                         Dron = doc.createElement('dron')
                         efiDrones.appendChild(Dron)
                         Dron.setAttribute('nombre',f'{DataDron.nombre}')

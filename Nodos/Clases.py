@@ -116,6 +116,7 @@ class CInvernadero (InfoNodo):
         self.historiatiempooptimo = Cola()
         self.historiaagua = Cola()
         self.historaifertilizante = Cola()
+        self.historialdrones = Cola()
     
     def asignarcolainstrucciones(self,cola):
         self.colainstrucciones = cola
