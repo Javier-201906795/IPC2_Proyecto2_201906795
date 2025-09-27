@@ -7,7 +7,7 @@ class SistemaCental:
         self.ruta = None
         self.sistema_archivo = None
         self.sistema_riego = None
-        
+        self.Colanombreinvernaderos = None
     
     def asignarruta(self, ruta):
         self.ruta = ruta
@@ -51,7 +51,16 @@ class SistemaCental:
 
         self.sistema_riego.GuardarSalidaXML()
 
-        
+    def crearReportesXML(self):
+        try:
+            #Obtener cola invernaderos
+            self.Colanombreinvernaderos = self.sistema_riego.ColasInvernaderos()
+            #Recorrer invernaderos
+            for i in range(0,self.Colanombreinvernaderos.tamano()):
+                print(i)
+
+        except Exception as e:
+            print('!!! Error al crear reportes xml !!!\n',e) 
 
 
 
@@ -62,7 +71,9 @@ sistema_central.asignarruta('G:\\2020\\2020_USAC\\Semestre14(2025)\\IPC2\\1_Labo
 #Extraer informacion del archivo XML
 sistema_central.extraerinformacionXML()
 #Seleccionar invernadero
-sistema_central.seleccionarinvernaderoconsola()
+#sistema_central.seleccionarinvernaderoconsola()
+#Crear Reporte XML
+sistema_central.crearReportesXML()
 
 
 
