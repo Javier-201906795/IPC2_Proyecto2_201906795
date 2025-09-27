@@ -521,6 +521,9 @@ class SistemaRiegos():
                 self.InvernaderoSel.asignartiempoOptimo(self.ultimoriegotiempo)
                 print('Tiempo optimo -> ',self.InvernaderoSel.tiempoOptimo)
 
+                #Almacenar tiempo optimo
+                self.InvernaderoSel.historiatiempooptimo.Push(self.ultimoriegotiempo)
+
 
                 #Cambiar variable Regar a Fin de los ultimos drones
                 completado = self.Ejecutar_instruccion(CAsignacionPlan('H0','P0'))

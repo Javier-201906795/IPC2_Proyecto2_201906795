@@ -331,15 +331,33 @@ class SistemaArchivoSalida:
                 invernadero = doc.createElement('invernadero')
                 invernadero.setAttribute("nombre", f"{Inv.nombre}")
                 self.listaInvernaderos.appendChild(invernadero)
+                print('> creando invernadero: ',Inv.nombre)
 
                 #Lista Planes
                 listaplanes = doc.createElement('listaPlanes')
                 invernadero.appendChild(listaplanes)
 
-                for h in range(0,1):
+                for h in range(0,Inv.ListaPlanes.tamano()):
+                    #Obtener informacion del historico movimientos
+                    Movmientos = Inv.historialmovimientos.Obtener(h+1)
+                    #Obtener informacion de Lista plantes
+                    Planinfo = Inv.ListaPlanes.Obtener(h+1)
+                    #Obtener tiempo optimo
+                    TiempooptimoInv = Inv.historiatiempooptimo.Obtener(h+1)
+                    
+                    print('\n---[Plan info]---')
+                    Planinfo.desplegar()
+                    print('---[Fin Plan info]---\n')
+
+                    print('\n---[Movimientos]---')
+                    Movmientos.desplegar()
+                    print('---[Fin Movimientos]---\n')
+
+
+
                     #Datos Planes
                     plan = doc.createElement('plan')
-                    plan.setAttribute('nombre',f'Semana{h}')
+                    plan.setAttribute('nombre',f'{Planinfo.nombre}')
                     listaplanes.appendChild(plan)
 
                     #Tiempo optimo
