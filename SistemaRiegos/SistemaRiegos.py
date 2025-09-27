@@ -462,87 +462,9 @@ class SistemaRiegos():
                 #1.2 NINGUN Dron Regando
                 if self.DronRegando == False:
                     self.Dron_Evaluar_movimiento(self.DronRegando,instruccion)
-                    # #1.2.1 Avanzar Todos los drones
-                    # #1.2.2 Validar Restriccion Movimiento
-                    # print("No hay drones regando, -> avanzar ")
-                    # #Mover Drones
-                    # for f in range(0,self.InvListaDrones.tamano()):
-                    #     #DRON{f}
-                    #     if f <= 0:
-                    #         dron = self.InvListaDrones.primero
-                    #     else:
-                    #         dron = dron.siguiente
-                    #     nombredron2 = dron.valor.nombre
-                    #     plantaactual = dron.valor.planta
-                    #     hileradron = dron.valor.hilera
-                    #     #1.2.3 Validar DRON != Posicion Riego (Aun falta para llegar)
-                    #     if int(plantaactual) <= int(self.InvplantasXHilera.strip()):
-                    #         #1.2.3.1 Mover Dron (aun falta para su posicion de riego)
-                    #         #Buscar en hilera individuales posicion final de riego
-                    #         for g in range(0,int(hileradron)):
-                    #             if g <= 0:
-                    #                 hilera = self.ColaHilerasIndividual.primero
-                    #             else:
-                    #                 hilera = hilera.siguiente
-                    #             colahilera = hilera.valor
-                    #         #colahilera.desplegar()
-                    #         #obtener primera posicion
-                    #         if colahilera.primero != None:
-                    #             posiciontope = colahilera.primero.valor.planta
-                    #             #1.2.3.2 Obtener Posicion Riego y Validar
-                    #             posiciontope = int(posiciontope[1])
-                    #             self.Dron_Mover_adelante_esperar_atras(dron,plantaactual,posiciontope)
-                                
-                                    
-                    #Imprimir nuevo valores
                     self.InvListaDrones.desplegar()
                 elif self.DronRegando == True:
                     self.Dron_Evaluar_movimiento(self.DronRegando,instruccion)
-                    # #1.3.1 Avanzar Drones menos el que esta Regando
-                    # #1.3.2 Validar Restriccion Movimiento
-                    # print(f"Dron  regando. - {instruccion.hilera} - {instruccion.planta}")
-                    # #Drones
-                    # for f in range(0,self.InvListaDrones.tamano()):
-                    #     #DRON{f}
-                    #     if f <= 0:
-                    #         dron = self.InvListaDrones.primero
-                    #     else:
-                    #         dron = dron.siguiente
-                    #     nombredron2 = dron.valor.nombre
-                    #     plantaactual = dron.valor.planta
-                    #     hileradron = dron.valor.hilera
-                    #     #1.3.3 No mover Dron Regando
-                    #     hileranotocar = instruccion.hilera[1]
-                    #     if int(hileradron) == int(hileranotocar):
-                    #         print(f'Dron Regando. -> Regar    (H{dron.valor.hilera}P{int(plantaactual)})')
-                    #         self.ManejarAguayFertilizante(dron.valor.hilera,int(plantaactual),dron.valor)
-                    #         #Almacenar movimiento
-                    #         self.Colamovimientos.Push(Cmovimiento(dron.valor.nombre,f'Regar    (H{dron.valor.hilera}P{int(plantaactual)})'))
-                    #     else:
-                    #         #Valida no sobrepasa numero de plantas
-                    #         if int(plantaactual) <= int(self.InvplantasXHilera.strip()):
-                    #             #1.3.4 Validar si llego a su poiscion de Riego
-                    #             #Buscar en hilera individuales posicion final de riego
-                    #             for p in range(0,int(hileradron)):
-                    #                 if p <= 0:
-                    #                     hilera = self.ColaHilerasIndividual.primero
-                    #                 else:
-                    #                     hilera = hilera.siguiente
-                    #                 colahilera = hilera.valor
-                    #             #colahilera.desplegar()
-                    #             if colahilera.primero != None:
-                    #                 #1.3.4.1 Obtener Posicion Riego y Validar
-                    #                 posiciontope = colahilera.primero.valor.planta
-                    #                 posiciontope = int(posiciontope[1])
-                    #                 self.Dron_Mover_adelante_esperar_atras(dron,plantaactual,posiciontope)
-                    #             else:
-                    #                 #1.4 Fin (ya no hay instrucciones para es hilera)
-                    #                 print(f"Fin para Dron {nombredron2}")
-                    #                 #Almacenar movimiento
-                    #                 self.Colamovimientos.Push(Cmovimiento(dron.valor.nombre,f'FIN      (H{dron.valor.hilera}P{int(plantaactual)})'))
-                    #                 #Almacenar movimiento
-                                    
-                                        
                     #Imprimir nuevo valores
                     self.InvListaDrones.desplegar()
 
