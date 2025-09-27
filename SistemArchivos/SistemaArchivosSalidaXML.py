@@ -181,8 +181,21 @@ class SistemaArchivoSalida:
                 self.nuevasinstruccionesinv.desplegar()
                 print('-----------\n')
                 maxciclo =int(self.invernaderoactual.tiempoOptimo)
-                for k in range(0, maxciclo):
-                    if k <=0:
+
+                #Limpiar valores
+                for h in range(0, maxciclo):
+                    if h <=0:
+                        NuevacolaL = self.nuevasinstruccionesinv.primero
+                    else:
+                        NuevacolaL = NuevacolaL.siguiente
+                    temp = NuevacolaL.valor
+                    tempcolamovi = temp.colamovimientos
+                    tempprimero = tempcolamovi.primero.valor
+                    Nuevacolainstrucciones = 0
+
+                #Agregar valores
+                for l in range(0, maxciclo):
+                    if l <=0:
                         NuevacolaL = self.nuevasinstruccionesinv.primero
                     else:
                         NuevacolaL = NuevacolaL.siguiente
@@ -191,7 +204,7 @@ class SistemaArchivoSalida:
                     print("----Movimiento---")
                     Nuevacolainstrucciones.desplegar()
 
-                    tiempo = doc.createElement('tiempo')
+                    tiempo = self.doc.createElement('tiempo')
                     tiempo.setAttribute('segundos',f'{Nuevacolainstrucciones.tiemposeg}')
                     instrucciones.appendChild(tiempo)
 

@@ -53,11 +53,6 @@
        <dron nombre="DR02" accion="FIN      (H2P2)"/>
        <dron nombre="DR03" accion="FIN      (H3P3)"/>
       </tiempo>
-      <tiempo segundos="9">
-       <dron nombre="DR01" accion="FIN      (H1P4)"/>
-       <dron nombre="DR02" accion="FIN      (H2P2)"/>
-       <dron nombre="DR03" accion="FIN      (H3P3)"/>
-      </tiempo>
      </instrucciones>
     </plan>
     <plan nombre="Semana 2">
@@ -114,11 +109,6 @@
        <dron nombre="DR01" accion="FIN      (H1P4)"/>
        <dron nombre="DR02" accion="FIN      (H2P2)"/>
        <dron nombre="DR03" accion="FIN      (H3P3)"/>
-      </tiempo>
-      <tiempo segundos="1">
-       <dron nombre="DR01" accion="Adelante (H1P1)"/>
-       <dron nombre="DR02" accion="Adelante (H2P1)"/>
-       <dron nombre="DR03" accion="Adelante (H3P1)"/>
       </tiempo>
      </instrucciones>
     </plan>
