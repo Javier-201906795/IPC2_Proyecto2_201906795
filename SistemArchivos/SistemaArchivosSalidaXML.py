@@ -234,11 +234,7 @@ class SistemaArchivoSalida:
                     print("------\n")
 
                 for n in range(0,int(planmovientos.tamano())):    
-                    if n <=0:
-                        planL = planmovientos.primero
-                    else:
-                        planL = planL.siguiente
-                    plan = planL.valor
+                    plan = planmovientos.Obtener(n+1)
                     
                     tiempo = self.doc.createElement('tiempo')
                     tiempo.setAttribute('segundos',f'{plan.tiemposeg}')
@@ -246,6 +242,9 @@ class SistemaArchivoSalida:
 
                     #Movimiento
                     colamovi = plan.colamovimientos
+                    print(f'> XML agregando Tiempo: {plan.tiemposeg}')
+                    colamovi.desplegar()
+                    print()
                     self.nuevasinstruccionesinv.desplegar()
                     
                     for l in range(0,colamovi.tamano()):

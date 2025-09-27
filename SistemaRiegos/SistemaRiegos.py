@@ -519,7 +519,7 @@ class SistemaRiegos():
                 self.ultimoriegotiempo = int(self.Tiempoactual) + 1
                 print(self.InvernaderoSel.tiempoOptimo)
                 self.InvernaderoSel.asignartiempoOptimo(self.ultimoriegotiempo)
-                print(self.InvernaderoSel.tiempoOptimo)
+                print('Tiempo optimo -> ',self.InvernaderoSel.tiempoOptimo)
 
 
                 #Cambiar variable Regar a Fin de los ultimos drones
