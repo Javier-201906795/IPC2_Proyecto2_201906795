@@ -363,7 +363,7 @@ class SistemaArchivoSalida:
                     #Tiempo optimo
                     tiempoOptimo = doc.createElement('tiempoOptimoSegundos')
                     plan.appendChild(tiempoOptimo)
-                    txt= doc.createTextNode('8')
+                    txt= doc.createTextNode(f'{TiempooptimoInv}')
                     tiempoOptimo.appendChild(txt)
 
                     #aguaRequeridaLitros
