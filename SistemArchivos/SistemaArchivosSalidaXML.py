@@ -403,17 +403,21 @@ class SistemaArchivoSalida:
                     plan.appendChild(instrucciones)
 
                     #Tiempo
-                    for k in range(0,1):
+                    for k in range(0,Movmientos.tamano()):
+                        movdata = Movmientos.Obtener(k+1)
+
                         tiempo = doc.createElement('tiempo')
-                        tiempo.setAttribute('segundos',f'{k}')
+                        tiempo.setAttribute('segundos',f'{movdata.tiemposeg}')
                         instrucciones.appendChild(tiempo)
 
                         #Movimiento
-                        for l in range(0,3):
+                        listamovimientos = movdata.colamovimientos
+                        for l in range(0,listamovimientos.tamano()):
+                            movi = listamovimientos.Obtener(l+1)
                             movimiento = doc.createElement('dron')
                             tiempo.appendChild(movimiento)
-                            movimiento.setAttribute('nombre',f'DR{l}')
-                            movimiento.setAttribute('accion',f'Adelante(H{i}P{l})')
+                            movimiento.setAttribute('nombre',f'{movi.nombre}')
+                            movimiento.setAttribute('accion',f'{movi.accion}')
 
             
             #Modificar Invernadero
