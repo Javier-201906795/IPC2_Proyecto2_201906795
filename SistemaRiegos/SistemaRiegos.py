@@ -274,28 +274,11 @@ class SistemaRiegos():
             print("!!! Error al ObtenerPlantaAguayFertilizante!!!",e)
 
 
-    def Ejecutar_instruccion(self, instruccion):
+
+    def Dron_Validar_Riego(self,hilera, planta):
         try:
-            hilera = instruccion.hilera
-            planta = instruccion.planta
-            banderainstruccioncompletada = False
-
-            Colamovimientos = Cola()
-            
-            
-            print("\n"+"-"*50)
-            print(f">> Instruccion: {hilera} - {planta}")
-
-            #Aumentar tiempo
-            self.Tiempoactual +=1
-            print(f'>>> Tiempo Actual: {self.Tiempoactual} - Tiempo Maximo: {self.Tiempomax}')
-            print()
-            
-            #Restricciones
-            #Un dron riega a la vez
-            #Sigue el orden de riego
-
-            #0----------- [ Validar si hay riego o no ] --------------
+            #Si hay dron regando lo saca da listas inidivuales hileras (tope)
+            print('---- [ Validanado Riego ]------')
             #0.1 Buscar Dron/Hilera comparo posicion Planta = Planta dron
             for i in range(0,self.InvListaDrones.tamano()):
                 #DRON{i}
@@ -329,6 +312,35 @@ class SistemaRiegos():
                         #Dron Evaluado no esta en posicion de riego
                         self.DronRegando = False
 
+            print('---- [ FIN Validanado Riego ]------')
+        except Exception as e:
+            print('!!! Error en Dron_Validar_Riego !!!\n',e)
+    
+    
+
+    def Ejecutar_instruccion(self, instruccion):
+        try:
+            hilera = instruccion.hilera
+            planta = instruccion.planta
+            banderainstruccioncompletada = False
+
+            Colamovimientos = Cola()
+            
+            
+            print("\n"+"-"*50)
+            print(f">> Instruccion: {hilera} - {planta}")
+
+            #Aumentar tiempo
+            self.Tiempoactual +=1
+            print(f'>>> Tiempo Actual: {self.Tiempoactual} - Tiempo Maximo: {self.Tiempomax}')
+            print()
+            
+            #Restricciones
+            #Un dron riega a la vez
+            #Sigue el orden de riego
+
+            #0----------- [ Validar si hay riego o no ] --------------
+            self.Dron_Validar_Riego(hilera,planta)
 
             print(f'Dron Regando: {self.DronRegando}')
             #0----------- [ FIN Validar si hay riego o no ] --------------
