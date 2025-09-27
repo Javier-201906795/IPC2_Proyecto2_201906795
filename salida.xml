@@ -1,76 +1,126 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <datoSalida>
  <listaInvernaderos>
-  <invernadero nombre="Invernadero Chiquimula">
-   <listaPlanes/>
-  </invernadero>
-  <invernadero nombre="Invernadero Jutiapa">
+  <invernadero nombre="Invernadero Zacapa">
    <listaPlanes>
     <plan nombre="Semana 1">
-     <tiempoOptimoSegundos>6</tiempoOptimoSegundos>
-     <aguaRequeridaLitros>0</aguaRequeridaLitros>
-     <fertilizanteRequeridoGramos>0</fertilizanteRequeridoGramos>
+     <tiempoOptimoSegundos>9</tiempoOptimoSegundos>
+     <aguaRequeridaLitros>5</aguaRequeridaLitros>
+     <fertilizanteRequeridoGramos>500</fertilizanteRequeridoGramos>
      <eficienciaDronesRegadores>
-      <dron nombre="DR01" litrosAgua="0" gramosFertilizante="0"/>
-      <dron nombre="DR02" litrosAgua="0" gramosFertilizante="0"/>
-      <dron nombre="DR03" litrosAgua="0" gramosFertilizante="0"/>
+      <dron nombre="DR01" litrosAgua="2" gramosFertilizante="200"/>
+      <dron nombre="DR02" litrosAgua="2" gramosFertilizante="200"/>
+      <dron nombre="DR03" litrosAgua="1" gramosFertilizante="100"/>
      </eficienciaDronesRegadores>
-     <instrucciones/>
+     <instrucciones>
+      <tiempo segundos="1">
+       <dron nombre="DR01" accion="Adelante (H1P1)"/>
+       <dron nombre="DR02" accion="Adelante (H2P1)"/>
+       <dron nombre="DR03" accion="Adelante (H3P1)"/>
+      </tiempo>
+      <tiempo segundos="2">
+       <dron nombre="DR01" accion="Adelante (H1P2)"/>
+       <dron nombre="DR02" accion="Esperar  (H2P1)"/>
+       <dron nombre="DR03" accion="Adelante (H3P2)"/>
+      </tiempo>
+      <tiempo segundos="3">
+       <dron nombre="DR01" accion="Regar    (H1P2)"/>
+       <dron nombre="DR02" accion="Esperar  (H2P1)"/>
+       <dron nombre="DR03" accion="Adelante (H3P3)"/>
+      </tiempo>
+      <tiempo segundos="4">
+       <dron nombre="DR01" accion="Adelante (H1P3)"/>
+       <dron nombre="DR02" accion="Regar    (H2P1)"/>
+       <dron nombre="DR03" accion="Esperar  (H3P3)"/>
+      </tiempo>
+      <tiempo segundos="5">
+       <dron nombre="DR01" accion="Adelante (H1P4)"/>
+       <dron nombre="DR02" accion="Adelante (H2P2)"/>
+       <dron nombre="DR03" accion="Esperar  (H3P3)"/>
+      </tiempo>
+      <tiempo segundos="6">
+       <dron nombre="DR01" accion="Esperar  (H1P4)"/>
+       <dron nombre="DR02" accion="Regar    (H2P2)"/>
+       <dron nombre="DR03" accion="Esperar  (H3P3)"/>
+      </tiempo>
+      <tiempo segundos="7">
+       <dron nombre="DR01" accion="Esperar  (H1P4)"/>
+       <dron nombre="DR02" accion="FIN      (H2P2)"/>
+       <dron nombre="DR03" accion="Regar    (H3P3)"/>
+      </tiempo>
+      <tiempo segundos="8">
+       <dron nombre="DR01" accion="Regar    (H1P4)"/>
+       <dron nombre="DR02" accion="FIN      (H2P2)"/>
+       <dron nombre="DR03" accion="FIN      (H3P3)"/>
+      </tiempo>
+      <tiempo segundos="9">
+       <dron nombre="DR01" accion="FIN      (H1P4)"/>
+       <dron nombre="DR02" accion="FIN      (H2P2)"/>
+       <dron nombre="DR03" accion="FIN      (H3P3)"/>
+      </tiempo>
+     </instrucciones>
     </plan>
     <plan nombre="Semana 2">
-     <tiempoOptimoSegundos>8</tiempoOptimoSegundos>
-     <aguaRequeridaLitros>0</aguaRequeridaLitros>
-     <fertilizanteRequeridoGramos>0</fertilizanteRequeridoGramos>
+     <tiempoOptimoSegundos>10</tiempoOptimoSegundos>
+     <aguaRequeridaLitros>12</aguaRequeridaLitros>
+     <fertilizanteRequeridoGramos>1200</fertilizanteRequeridoGramos>
      <eficienciaDronesRegadores>
-      <dron nombre="DR01" litrosAgua="0" gramosFertilizante="0"/>
-      <dron nombre="DR02" litrosAgua="0" gramosFertilizante="0"/>
-      <dron nombre="DR03" litrosAgua="0" gramosFertilizante="0"/>
+      <dron nombre="DR01" litrosAgua="2" gramosFertilizante="200"/>
+      <dron nombre="DR02" litrosAgua="2" gramosFertilizante="200"/>
+      <dron nombre="DR03" litrosAgua="3" gramosFertilizante="300"/>
      </eficienciaDronesRegadores>
-     <instrucciones/>
-    </plan>
-    <plan nombre="Semana 3">
-     <tiempoOptimoSegundos>6</tiempoOptimoSegundos>
-     <aguaRequeridaLitros>0</aguaRequeridaLitros>
-     <fertilizanteRequeridoGramos>0</fertilizanteRequeridoGramos>
-     <eficienciaDronesRegadores>
-      <dron nombre="DR01" litrosAgua="0" gramosFertilizante="0"/>
-      <dron nombre="DR02" litrosAgua="0" gramosFertilizante="0"/>
-      <dron nombre="DR03" litrosAgua="0" gramosFertilizante="0"/>
-     </eficienciaDronesRegadores>
-     <instrucciones/>
-    </plan>
-    <plan nombre="Semana 3">
-     <tiempoOptimoSegundos>6</tiempoOptimoSegundos>
-     <aguaRequeridaLitros>0</aguaRequeridaLitros>
-     <fertilizanteRequeridoGramos>0</fertilizanteRequeridoGramos>
-     <eficienciaDronesRegadores>
-      <dron nombre="DR01" litrosAgua="0" gramosFertilizante="0"/>
-      <dron nombre="DR02" litrosAgua="0" gramosFertilizante="0"/>
-      <dron nombre="DR03" litrosAgua="0" gramosFertilizante="0"/>
-     </eficienciaDronesRegadores>
-     <instrucciones/>
-    </plan>
-    <plan nombre="Semana 4">
-     <tiempoOptimoSegundos>8</tiempoOptimoSegundos>
-     <aguaRequeridaLitros>0</aguaRequeridaLitros>
-     <fertilizanteRequeridoGramos>0</fertilizanteRequeridoGramos>
-     <eficienciaDronesRegadores>
-      <dron nombre="DR01" litrosAgua="0" gramosFertilizante="0"/>
-      <dron nombre="DR02" litrosAgua="0" gramosFertilizante="0"/>
-      <dron nombre="DR03" litrosAgua="0" gramosFertilizante="0"/>
-     </eficienciaDronesRegadores>
-     <instrucciones/>
-    </plan>
-    <plan nombre="Semana 4">
-     <tiempoOptimoSegundos>8</tiempoOptimoSegundos>
-     <aguaRequeridaLitros>0</aguaRequeridaLitros>
-     <fertilizanteRequeridoGramos>0</fertilizanteRequeridoGramos>
-     <eficienciaDronesRegadores>
-      <dron nombre="DR01" litrosAgua="0" gramosFertilizante="0"/>
-      <dron nombre="DR02" litrosAgua="0" gramosFertilizante="0"/>
-      <dron nombre="DR03" litrosAgua="0" gramosFertilizante="0"/>
-     </eficienciaDronesRegadores>
-     <instrucciones/>
+     <instrucciones>
+      <tiempo segundos="1">
+       <dron nombre="DR01" accion="Adelante (H1P1)"/>
+       <dron nombre="DR02" accion="Adelante (H2P1)"/>
+       <dron nombre="DR03" accion="Adelante (H3P1)"/>
+      </tiempo>
+      <tiempo segundos="2">
+       <dron nombre="DR01" accion="Adelante (H1P2)"/>
+       <dron nombre="DR02" accion="Adelante (H2P2)"/>
+       <dron nombre="DR03" accion="Regar    (H3P1)"/>
+      </tiempo>
+      <tiempo segundos="3">
+       <dron nombre="DR01" accion="Adelante (H1P3)"/>
+       <dron nombre="DR02" accion="Adelante (H2P3)"/>
+       <dron nombre="DR03" accion="Adelante (H3P2)"/>
+      </tiempo>
+      <tiempo segundos="4">
+       <dron nombre="DR01" accion="Regar    (H1P3)"/>
+       <dron nombre="DR02" accion="Adelante (H2P4)"/>
+       <dron nombre="DR03" accion="Adelante (H3P3)"/>
+      </tiempo>
+      <tiempo segundos="5">
+       <dron nombre="DR01" accion="Retrocede(H1P3)"/>
+       <dron nombre="DR02" accion="Regar    (H2P4)"/>
+       <dron nombre="DR03" accion="Adelante (H3P4)"/>
+      </tiempo>
+      <tiempo segundos="6">
+       <dron nombre="DR01" accion="Retrocede(H1P2)"/>
+       <dron nombre="DR02" accion="Retrocede(H2P4)"/>
+       <dron nombre="DR03" accion="Regar    (H3P4)"/>
+      </tiempo>
+      <tiempo segundos="7">
+       <dron nombre="DR01" accion="Esperar  (H1P1)"/>
+       <dron nombre="DR02" accion="Regar    (H2P3)"/>
+       <dron nombre="DR03" accion="Retrocede(H3P4)"/>
+      </tiempo>
+      <tiempo segundos="8">
+       <dron nombre="DR01" accion="Regar    (H1P1)"/>
+       <dron nombre="DR02" accion="FIN      (H2P3)"/>
+       <dron nombre="DR03" accion="Retrocede(H3P3)"/>
+      </tiempo>
+      <tiempo segundos="9">
+       <dron nombre="DR01" accion="FIN      (H1P1)"/>
+       <dron nombre="DR02" accion="FIN      (H2P3)"/>
+       <dron nombre="DR03" accion="Regar    (H3P2)"/>
+      </tiempo>
+      <tiempo segundos="10">
+       <dron nombre="DR01" accion="FIN      (H1P1)"/>
+       <dron nombre="DR02" accion="FIN      (H2P3)"/>
+       <dron nombre="DR03" accion="FIN      (H3P2)"/>
+      </tiempo>
+     </instrucciones>
     </plan>
    </listaPlanes>
   </invernadero>

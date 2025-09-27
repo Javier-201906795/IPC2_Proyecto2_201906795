@@ -28,6 +28,7 @@ class SistemaRiegos():
 
         self.DronRegando = False
         self.Colamovimientos = None
+        self.banderainstruccioncompletada = False
 
         self.ColaHilerasIndividual = Cola()
 
@@ -296,7 +297,7 @@ class SistemaRiegos():
                     if plandron == planta:
                         print(f'>>>> Dron Regando, {nombredron}')
                         self.DronRegando = True
-                        banderainstruccioncompletada = True
+                        self.banderainstruccioncompletada = True
                         #Eliminar instruccion de cola individual
                         #Buscar en hileras
                         for h in range(1,int(hildron[1])+1):
@@ -340,12 +341,36 @@ class SistemaRiegos():
             
         except Exception as e:
             print('!!! Error en Dron_Mover_primera_posicion!!!\n ',e)
+    
+    def Dron_Mover_adelante_esperar_atras(self,dron,plantaactual,posiciontope):
+        try:
+            #Validar si mover o no
+            if plantaactual < posiciontope:
+                ##1.2.3.3 Mover Dron 
+                dron.valor.asignarPlanta(int(plantaactual)+1)
+                #Almacenar movimiento
+                self.Colamovimientos.Push(Cmovimiento(dron.valor.nombre,f'Adelante (H{dron.valor.hilera}P{int(plantaactual)+1})'))
+                print(f"Dron {dron.valor.nombre}  -> Avanzar (H{dron.valor.hilera}P{int(plantaactual)+1})")
+            elif plantaactual == posiciontope:
+                #1.3.4.2 Esperar Dron
+                print(f"Dron {dron.valor.nombre} llego a posicion -> esperar (H{dron.valor.hilera}P{int(plantaactual)})")
+                #Almacenar movimiento
+                self.Colamovimientos.Push(Cmovimiento(dron.valor.nombre,f'Esperar  (H{dron.valor.hilera}P{int(plantaactual)})'))
+            elif plantaactual > posiciontope:
+                print('Dron tiene que regresar')
+                #1.3.4.2 Mover Dron
+                dron.valor.asignarPlanta(int(plantaactual)-1)
+                print(f"Dron {dron.valor.nombre}  -> regresar1 (H{dron.valor.hilera}P{int(plantaactual)-1})")
+                #Almacenar movimiento
+                self.Colamovimientos.Push(Cmovimiento(dron.valor.nombre,f'Retrocede(H{dron.valor.hilera}P{int(plantaactual)})'))
+        except Exception as e:
+            print("!!! Error en Dron_Mover_adelante_esperar_atras !!!\n",e)
 
     def Ejecutar_instruccion(self, instruccion):
         try:
             hilera = instruccion.hilera
             planta = instruccion.planta
-            banderainstruccioncompletada = False
+            self.banderainstruccioncompletada = False
 
             self.Colamovimientos = Cola()
             
@@ -412,25 +437,26 @@ class SistemaRiegos():
                                 posiciontope = colahilera.primero.valor.planta
                                 #1.2.3.2 Obtener Posicion Riego y Validar
                                 posiciontope = int(posiciontope[1])
-                                #Validar si mover o no
-                                if plantaactual < posiciontope:
-                                    ##1.2.3.3 Mover Dron 
-                                    dron.valor.asignarPlanta(int(plantaactual)+1)
-                                    #Almacenar movimiento
-                                    Colamovimientos.Push(Cmovimiento(dron.valor.nombre,f'Adelante (H{dron.valor.hilera}P{int(plantaactual)+1})'))
-                                    print(f"Dron {nombredron2}  -> Avanzar (H{dron.valor.hilera}P{int(plantaactual)+1})")
-                                elif plantaactual == posiciontope:
-                                    #1.3.4.2 Esperar Dron
-                                    print(f"Dron {nombredron2} llego a posicion -> esperar (H{dron.valor.hilera}P{int(plantaactual)})")
-                                    #Almacenar movimiento
-                                    Colamovimientos.Push(Cmovimiento(dron.valor.nombre,f'Esperar  (H{dron.valor.hilera}P{int(plantaactual)})'))
-                                elif plantaactual > posiciontope:
-                                    print('Dron tiene que regresar')
-                                    #1.3.4.2 Mover Dron
-                                    dron.valor.asignarPlanta(int(plantaactual)-1)
-                                    print(f"Dron {nombredron2}  -> regresar1 (H{dron.valor.hilera}P{int(plantaactual)-1})")
-                                    #Almacenar movimiento
-                                    Colamovimientos.Push(Cmovimiento(dron.valor.nombre,f'Retrocede(H{dron.valor.hilera}P{int(plantaactual)})'))
+                                self.Dron_Mover_adelante_esperar_atras(dron,plantaactual,posiciontope)
+                                # #Validar si mover o no
+                                # if plantaactual < posiciontope:
+                                #     ##1.2.3.3 Mover Dron 
+                                #     dron.valor.asignarPlanta(int(plantaactual)+1)
+                                #     #Almacenar movimiento
+                                #     Colamovimientos.Push(Cmovimiento(dron.valor.nombre,f'Adelante (H{dron.valor.hilera}P{int(plantaactual)+1})'))
+                                #     print(f"Dron {nombredron2}  -> Avanzar (H{dron.valor.hilera}P{int(plantaactual)+1})")
+                                # elif plantaactual == posiciontope:
+                                #     #1.3.4.2 Esperar Dron
+                                #     print(f"Dron {nombredron2} llego a posicion -> esperar (H{dron.valor.hilera}P{int(plantaactual)})")
+                                #     #Almacenar movimiento
+                                #     Colamovimientos.Push(Cmovimiento(dron.valor.nombre,f'Esperar  (H{dron.valor.hilera}P{int(plantaactual)})'))
+                                # elif plantaactual > posiciontope:
+                                #     print('Dron tiene que regresar')
+                                #     #1.3.4.2 Mover Dron
+                                #     dron.valor.asignarPlanta(int(plantaactual)-1)
+                                #     print(f"Dron {nombredron2}  -> regresar1 (H{dron.valor.hilera}P{int(plantaactual)-1})")
+                                #     #Almacenar movimiento
+                                #     Colamovimientos.Push(Cmovimiento(dron.valor.nombre,f'Retrocede(H{dron.valor.hilera}P{int(plantaactual)})'))
                                     
                     #Imprimir nuevo valores
                     self.InvListaDrones.desplegar()
@@ -454,7 +480,7 @@ class SistemaRiegos():
                             print(f'Dron Regando. -> Regar    (H{dron.valor.hilera}P{int(plantaactual)})')
                             self.ManejarAguayFertilizante(dron.valor.hilera,int(plantaactual),dron.valor)
                             #Almacenar movimiento
-                            Colamovimientos.Push(Cmovimiento(dron.valor.nombre,f'Regar    (H{dron.valor.hilera}P{int(plantaactual)})'))
+                            self.Colamovimientos.Push(Cmovimiento(dron.valor.nombre,f'Regar    (H{dron.valor.hilera}P{int(plantaactual)})'))
                         else:
                             #Valida no sobrepasa numero de plantas
                             if int(plantaactual) <= int(self.InvplantasXHilera.strip()):
@@ -471,29 +497,30 @@ class SistemaRiegos():
                                     #1.3.4.1 Obtener Posicion Riego y Validar
                                     posiciontope = colahilera.primero.valor.planta
                                     posiciontope = int(posiciontope[1])
-                                    #Validar si mover o no
-                                    if plantaactual < posiciontope:
-                                        #1.3.4.2 Mover Dron
-                                        dron.valor.asignarPlanta(int(plantaactual)+1)
-                                        #Almacenar movimiento
-                                        Colamovimientos.Push(Cmovimiento(dron.valor.nombre,f'Adelante (H{dron.valor.hilera}P{int(plantaactual)+1})'))
-                                        print(f"Dron {nombredron2}  -> Avanzar (H{dron.valor.hilera}P{int(plantaactual)+1})")
-                                    elif plantaactual == posiciontope:
-                                        #1.3.4.2 Esperar Dron
-                                        print(f"Dron {nombredron2} llego a posicion -> esperar (H{dron.valor.hilera}P{int(plantaactual)})")
-                                        #Almacenar movimiento
-                                        Colamovimientos.Push(Cmovimiento(dron.valor.nombre,f'Esperar  (H{dron.valor.hilera}P{int(plantaactual)})'))
-                                    elif plantaactual > posiciontope:
-                                        print('Dron tiene que regresar')
-                                        #1.3.4.2 Mover Dron
-                                        dron.valor.asignarPlanta(int(plantaactual)-1)
-                                        print(f"Dron {nombredron2}  -> regresar1 (H{dron.valor.hilera}P{int(plantaactual)-1})")
-                                        Colamovimientos.Push(Cmovimiento(dron.valor.nombre,f'Retrocede(H{dron.valor.hilera}P{int(plantaactual)-1})'))
+                                    self.Dron_Mover_adelante_esperar_atras(dron,plantaactual,posiciontope)
+                                    # #Validar si mover o no
+                                    # if plantaactual < posiciontope:
+                                    #     #1.3.4.2 Mover Dron
+                                    #     dron.valor.asignarPlanta(int(plantaactual)+1)
+                                    #     #Almacenar movimiento
+                                    #     Colamovimientos.Push(Cmovimiento(dron.valor.nombre,f'Adelante (H{dron.valor.hilera}P{int(plantaactual)+1})'))
+                                    #     print(f"Dron {nombredron2}  -> Avanzar (H{dron.valor.hilera}P{int(plantaactual)+1})")
+                                    # elif plantaactual == posiciontope:
+                                    #     #1.3.4.2 Esperar Dron
+                                    #     print(f"Dron {nombredron2} llego a posicion -> esperar (H{dron.valor.hilera}P{int(plantaactual)})")
+                                    #     #Almacenar movimiento
+                                    #     Colamovimientos.Push(Cmovimiento(dron.valor.nombre,f'Esperar  (H{dron.valor.hilera}P{int(plantaactual)})'))
+                                    # elif plantaactual > posiciontope:
+                                    #     print('Dron tiene que regresar')
+                                    #     #1.3.4.2 Mover Dron
+                                    #     dron.valor.asignarPlanta(int(plantaactual)-1)
+                                    #     print(f"Dron {nombredron2}  -> regresar1 (H{dron.valor.hilera}P{int(plantaactual)-1})")
+                                    #     Colamovimientos.Push(Cmovimiento(dron.valor.nombre,f'Retrocede(H{dron.valor.hilera}P{int(plantaactual)-1})'))
                                 else:
                                     #1.4 Fin (ya no hay instrucciones para es hilera)
                                     print(f"Fin para Dron {nombredron2}")
                                     #Almacenar movimiento
-                                    Colamovimientos.Push(Cmovimiento(dron.valor.nombre,f'FIN      (H{dron.valor.hilera}P{int(plantaactual)})'))
+                                    self.Colamovimientos.Push(Cmovimiento(dron.valor.nombre,f'FIN      (H{dron.valor.hilera}P{int(plantaactual)})'))
                                     #Almacenar movimiento
                                     
                                         
@@ -508,7 +535,7 @@ class SistemaRiegos():
             
             print("-"*50)
             print()
-            return banderainstruccioncompletada
+            return self.banderainstruccioncompletada
 
         except Exception as e:
             print(f"!!! Error al Ejecutar_instruccion: {instruccion} !!!\n",e)
