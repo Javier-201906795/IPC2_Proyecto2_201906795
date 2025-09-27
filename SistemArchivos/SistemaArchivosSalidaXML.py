@@ -159,6 +159,8 @@ class SistemaArchivoSalida:
 
     def crear_plan(self, numeroinvernadero, nombreplan, numeroplan):
         try:
+            print('#'*10+" [Crear PLAN ]"+"#"*10)
+            print(f'numeroinvernadero: {numeroinvernadero} - numeroplan: {numeroplan} - nombreplan: {nombreplan}')
             doc = self.doc
             listaplanes = self.listaplanes
             #Obtner infomacion invernadero
@@ -318,10 +320,10 @@ class SistemaArchivoSalida:
             self.listaInvernaderos = doc.createElement('listaInvernaderos')
             root.appendChild(self.listaInvernaderos)
 
-            self.agregarinvernaderos()
+            #self.agregarinvernaderos()
 
 
-
+            
             # #Lista invernaderos
             # for i in range(0,2):
             #     #Datos invernadero

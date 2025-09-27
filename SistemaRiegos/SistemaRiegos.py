@@ -586,6 +586,20 @@ class SistemaRiegos():
         except Exception as e:
             print("!!! Error en Guardarenhistorialmovimientos!!!\n",e)
     
+
+
+
+    def AlmacenarContenidoXML(self):
+        try:
+            #Iniciar
+            self.sistema_archivo_salida.asignarcolainvernadero(self.colainvernaderos)
+            self.sistema_archivo_salida.segmentar_archivo_XML()
+        except Exception as e:
+            print("!!! Error en AlmacenarContenidoXML !!!\n",e)
+    
+
+
+
     def CrearListainvernaderoXML(self):
         try:
             print(">> Creando archivo xml")
@@ -597,7 +611,7 @@ class SistemaRiegos():
         except Exception as e:
             print("!!! Error al CrearListainvernaderoXML !!!",e)
     
-    def CreanplanXML(self):
+    def CrearXML(self):
         try:
             numopcion = self.numeroplanseleccionado
             nombre = '0'
