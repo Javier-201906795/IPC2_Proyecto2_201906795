@@ -176,42 +176,44 @@ class SistemaArchivoSalida:
                 instrucciones = doc.createElement('instrucciones')
                 plan.appendChild(instrucciones)
 
-                #Tiempo
-                print('\n-----------')
-                self.nuevasinstruccionesinv.desplegar()
-                print('-----------\n')
-                maxciclo =int(self.invernaderoactual.tiempoOptimo)
+                
 
-                #Agregar valores
-                for l in range(0, maxciclo):
-                    if l <=0:
-                        NuevacolaL = self.nuevasinstruccionesinv.primero
-                    else:
-                        NuevacolaL = NuevacolaL.siguiente
-                    Nuevacolainstrucciones = NuevacolaL.valor
+                # #Tiempo
+                # print('\n-----------')
+                # self.nuevasinstruccionesinv.desplegar()
+                # print('-----------\n')
+                # maxciclo =int(self.invernaderoactual.tiempoOptimo)
+
+                # #Agregar valores
+                # for l in range(0, maxciclo):
+                #     if l <=0:
+                #         NuevacolaL = self.nuevasinstruccionesinv.primero
+                #     else:
+                #         NuevacolaL = NuevacolaL.siguiente
+                #     Nuevacolainstrucciones = NuevacolaL.valor
                     
-                    print("----Movimiento---")
-                    Nuevacolainstrucciones.desplegar()
+                #     print("----Movimiento---")
+                #     Nuevacolainstrucciones.desplegar()
 
-                    tiempo = self.doc.createElement('tiempo')
-                    tiempo.setAttribute('segundos',f'{Nuevacolainstrucciones.tiemposeg}')
-                    instrucciones.appendChild(tiempo)
+                #     tiempo = self.doc.createElement('tiempo')
+                #     tiempo.setAttribute('segundos',f'{Nuevacolainstrucciones.tiemposeg}')
+                #     instrucciones.appendChild(tiempo)
 
-                    #Movimiento
-                    colamovi = Nuevacolainstrucciones.colamovimientos
-                    self.nuevasinstruccionesinv.desplegar()
+                #     #Movimiento
+                #     colamovi = Nuevacolainstrucciones.colamovimientos
+                #     self.nuevasinstruccionesinv.desplegar()
                     
-                    for l in range(0,colamovi.tamano()):
-                        if l <= 0:
-                            mov = colamovi.primero
-                        else:
-                            mov = mov.siguiente
-                        movimientodata = mov.valor
-                        movimiento = doc.createElement('dron')
-                        tiempo.appendChild(movimiento)
-                        movimiento.setAttribute('nombre',f'{movimientodata.nombre}')
-                        movimiento.setAttribute('accion',f'{movimientodata.accion}')
-                    print("----Fin Movimiento---")
+                #     for l in range(0,colamovi.tamano()):
+                #         if l <= 0:
+                #             mov = colamovi.primero
+                #         else:
+                #             mov = mov.siguiente
+                #         movimientodata = mov.valor
+                #         movimiento = doc.createElement('dron')
+                #         tiempo.appendChild(movimiento)
+                #         movimiento.setAttribute('nombre',f'{movimientodata.nombre}')
+                #         movimiento.setAttribute('accion',f'{movimientodata.accion}')
+                #     print("----Fin Movimiento---")
         except Exception as e:
             print("!!! Error al crear plan!!!",e)
 
