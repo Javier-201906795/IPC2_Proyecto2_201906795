@@ -1,13 +1,17 @@
 from SistemArchivos.SistemaArchivoXML import SistemaArchivo
 from SistemArchivos.SistemaArchivosSalidaXML import SistemaArchivoSalida
 from SistemaRiegos.SistemaRiegos import SistemaRiegos
+from SistemArchivos.SistemaArchivoSalidaHTML import SistemaArchivoHTML
 
 class SistemaCental:
     def __init__(self):
         self.ruta = None
         self.sistema_archivo = None
         self.sistema_riego = None
+        self.sistema_archivoHTML = None
         self.Colainvernaderos = None
+
+
     
     def asignarruta(self, ruta):
         self.ruta = ruta
@@ -85,6 +89,14 @@ class SistemaCental:
             print('!!! Error al crear reportes xml !!!\n',e) 
 
 
+    def crearArchivoHTML(self):
+        #Incializar
+        self.sistema_archivoHTML = SistemaArchivoHTML(self.Colainvernaderos)
+        #Crear archivo
+        self.sistema_archivoHTML.creararchivoHTML()
+
+
+
 
 #Iniciar sitema cental
 sistema_central = SistemaCental()
@@ -94,7 +106,8 @@ sistema_central.asignarruta('G:\\2020\\2020_USAC\\Semestre14(2025)\\IPC2\\1_Labo
 sistema_central.extraerinformacionXML()
 #Crear Reporte XML
 sistema_central.crearReportesXML()
-
+#Crear Reporte HTML
+sistema_central.crearArchivoHTML()
 
 
 
