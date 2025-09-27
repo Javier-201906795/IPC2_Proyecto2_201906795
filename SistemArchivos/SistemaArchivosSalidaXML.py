@@ -344,6 +344,9 @@ class SistemaArchivoSalida:
                     Planinfo = Inv.ListaPlanes.Obtener(h+1)
                     #Obtener tiempo optimo
                     TiempooptimoInv = Inv.historiatiempooptimo.Obtener(h+1)
+                    #Obtener ferlitianzate y agua
+                    aguaopt = Inv.historiaagua.Obtener(h+1)
+                    fertopt = Inv.historaifertilizante.Obtener(h+1)
                     
                     print('\n---[Plan info]---')
                     Planinfo.desplegar()
@@ -369,13 +372,13 @@ class SistemaArchivoSalida:
                     #aguaRequeridaLitros
                     aguaRequerida = doc.createElement('aguaRequeridaLitros')
                     plan.appendChild(aguaRequerida)
-                    txt= doc.createTextNode('5')
+                    txt= doc.createTextNode(f'{aguaopt}')
                     aguaRequerida.appendChild(txt)
 
                     #Fertilizante
                     fertilizanteReq = doc.createElement('fertilizanteRequeridoGramos')
                     plan.appendChild(fertilizanteReq)
-                    txt= doc.createTextNode('500')
+                    txt= doc.createTextNode(f'{fertopt}')
                     fertilizanteReq.appendChild(txt)
 
                     #Lista Eficiencia Drones

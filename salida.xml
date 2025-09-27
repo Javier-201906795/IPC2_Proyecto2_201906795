@@ -4,7 +4,7 @@
   <invernadero nombre="Invernadero Chiquimula">
    <listaPlanes>
     <plan nombre="Semana 1">
-     <tiempoOptimoSegundos>8</tiempoOptimoSegundos>
+     <tiempoOptimoSegundos>9</tiempoOptimoSegundos>
      <aguaRequeridaLitros>5</aguaRequeridaLitros>
      <fertilizanteRequeridoGramos>500</fertilizanteRequeridoGramos>
      <eficienciaDronesRegadores>
@@ -21,9 +21,9 @@
      </instrucciones>
     </plan>
     <plan nombre="Semana 2">
-     <tiempoOptimoSegundos>8</tiempoOptimoSegundos>
-     <aguaRequeridaLitros>5</aguaRequeridaLitros>
-     <fertilizanteRequeridoGramos>500</fertilizanteRequeridoGramos>
+     <tiempoOptimoSegundos>10</tiempoOptimoSegundos>
+     <aguaRequeridaLitros>12</aguaRequeridaLitros>
+     <fertilizanteRequeridoGramos>1200</fertilizanteRequeridoGramos>
      <eficienciaDronesRegadores>
       <dron nombre="DR0" litrosAgua="3" gramosFertilizante="0"/>
       <dron nombre="DR1" litrosAgua="4" gramosFertilizante="100"/>
@@ -42,9 +42,9 @@
   <invernadero nombre="Invernadero Peten">
    <listaPlanes>
     <plan nombre="Semana 3">
-     <tiempoOptimoSegundos>8</tiempoOptimoSegundos>
-     <aguaRequeridaLitros>5</aguaRequeridaLitros>
-     <fertilizanteRequeridoGramos>500</fertilizanteRequeridoGramos>
+     <tiempoOptimoSegundos>7</tiempoOptimoSegundos>
+     <aguaRequeridaLitros>3</aguaRequeridaLitros>
+     <fertilizanteRequeridoGramos>300</fertilizanteRequeridoGramos>
      <eficienciaDronesRegadores>
       <dron nombre="DR0" litrosAgua="3" gramosFertilizante="0"/>
       <dron nombre="DR1" litrosAgua="4" gramosFertilizante="100"/>
@@ -59,9 +59,9 @@
      </instrucciones>
     </plan>
     <plan nombre="Semana 4">
-     <tiempoOptimoSegundos>8</tiempoOptimoSegundos>
-     <aguaRequeridaLitros>5</aguaRequeridaLitros>
-     <fertilizanteRequeridoGramos>500</fertilizanteRequeridoGramos>
+     <tiempoOptimoSegundos>7</tiempoOptimoSegundos>
+     <aguaRequeridaLitros>7</aguaRequeridaLitros>
+     <fertilizanteRequeridoGramos>700</fertilizanteRequeridoGramos>
      <eficienciaDronesRegadores>
       <dron nombre="DR0" litrosAgua="3" gramosFertilizante="0"/>
       <dron nombre="DR1" litrosAgua="4" gramosFertilizante="100"/>
