@@ -109,6 +109,7 @@ class SistemaRiegos():
             self.DronRegando = False
             self.ColaHilerasIndividual = Cola()
             self.InvernaderoSel.asignartiempoOptimo(0)
+            self.ultimoriegotiempo = 0
             
         except Exception as e:
             print("!!! Error al reiniciar valores !!!",e)
@@ -519,8 +520,11 @@ class SistemaRiegos():
             #Ya no hay instrucciones pero si tiempo
             if Colainstrucciones.tamano() <= 0:
                 #Guardar tiempo ultimo riego
-                self.ultimoriegotiempo = self.Tiempoactual
+                self.ultimoriegotiempo = int(self.Tiempoactual) + 1
+                print(self.InvernaderoSel.tiempoOptimo)
                 self.InvernaderoSel.asignartiempoOptimo(self.ultimoriegotiempo)
+                print(self.InvernaderoSel.tiempoOptimo)
+
 
                 #Cambiar variable Regar a Fin de los ultimos drones
                 completado = self.Ejecutar_instruccion(CAsignacionPlan('H0','P0'))
@@ -552,7 +556,16 @@ class SistemaRiegos():
     
     def CreanplanXML(self):
         try:
-            self.sistema_archivo_salida.crear_plan(self.numeroinverndaerosel,self.nombreplan )
+            numopcion = self.numeroplanseleccionado
+            nombre = '0'
+            for i in range(0,int(self.numeroplanseleccionado)):
+                if i <=0:
+                    planl = self.InvernaderoSel.ListaPlanes.primero
+                else:
+                    planl = planl.siguiente
+                planvalores = planl.valor
+                nommbre = planvalores.nombre
+            self.sistema_archivo_salida.crear_plan(self.numeroinverndaerosel,nommbre )
         except Exception as e:
             print("!!! Error en CreanplanXML!!!\n",e)
     

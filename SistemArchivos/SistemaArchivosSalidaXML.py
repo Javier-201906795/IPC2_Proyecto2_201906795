@@ -103,7 +103,7 @@ class SistemaArchivoSalida:
                 #Tiempo optimo
                 tiempoOptimo = doc.createElement('tiempoOptimoSegundos')
                 plan.appendChild(tiempoOptimo)
-                txt= doc.createTextNode(str(self.invernaderoactual.tiempoOptimo -1))
+                txt= doc.createTextNode(str(self.invernaderoactual.tiempoOptimo))
                 tiempoOptimo.appendChild(txt)
 
                 #aguaRequeridaLitros
@@ -185,7 +185,7 @@ class SistemaArchivoSalida:
     
     def segmentar_archivo_XML(self):
         try:
-            self.creararchivoDOC()
+            #self.creararchivoDOC()
             doc = self.doc
             root = self.root
             

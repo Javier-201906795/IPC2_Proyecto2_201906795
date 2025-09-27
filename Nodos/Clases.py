@@ -111,6 +111,7 @@ class CInvernadero (InfoNodo):
         self.tiempoOptimo = 0
         self.aguaRequerida = 0
         self.fertilizanteRequerido = 0
+    
 
     def asignartiempoOptimo(self, tiempoO):
         self.tiempoOptimo = tiempoO
