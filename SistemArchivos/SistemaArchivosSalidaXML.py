@@ -388,12 +388,13 @@ class SistemaArchivoSalida:
                     plan.appendChild(efiDrones)
 
                     #Dron
-                    for j in range(0,3):
+                    for j in range(0,Inv.ListaDrones.tamano()):
+                        DataDron = Inv.ListaDrones.Obtener(j+1)
                         Dron = doc.createElement('dron')
                         efiDrones.appendChild(Dron)
-                        Dron.setAttribute('nombre',f'DR{j}')
-                        Dron.setAttribute('litrosAgua',f'{j+3}')
-                        Dron.setAttribute('gramosFertilizante',f'{j*100}')
+                        Dron.setAttribute('nombre',f'{DataDron.nombre}')
+                        Dron.setAttribute('litrosAgua',f'{DataDron.aguautilizada}')
+                        Dron.setAttribute('gramosFertilizante',f'{DataDron.fertilizanteutilizado}')
 
                     #Lista instrucciones
                     instrucciones = doc.createElement('instrucciones')

@@ -37,7 +37,7 @@ class CDron (InfoNodo):
         self.hilera = hilera
     
     def desplegar(self):
-        print(f"ID: {self.id} - Nombre: {self.nombre} - Hilera Asignada: {self.hilera} - Planta: P{self.planta}")
+        print(f"ID: {self.id} - Nombre: {self.nombre} - Hilera Asignada: {self.hilera} - Planta: P{self.planta} - Fertilizanteutilizado:{self.fertilizanteutilizado} - aguautilizada:{self.aguautilizada}")
 
     def EsIgualALLave(self, id):
         return self.id == id
