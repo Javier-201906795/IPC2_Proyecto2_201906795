@@ -139,6 +139,7 @@ class CInvernadero (InfoNodo):
     def desplegar(self):
         print("/"*120)
         print(f'nombre: {self.nombre} - numero hileras: {self.numeroHilera} - plantas por hilera: {self.plantasXHilera}')
+        print(f'tiempo Optimo: {self.tiempoOptimo} - agua requerida: {self.aguaRequerida} - fertilizante requerido: {self.fertilizanteRequerido}')
         print("-------------- [Lista Plantas] --------------")
         self.ListaPlantas.desplegar()
         print("-------------- [Fin Lista Plantas] --------------")

@@ -331,6 +331,8 @@ class SistemaArchivoSalida:
                 invernadero = doc.createElement('invernadero')
                 invernadero.setAttribute("nombre", f"{Inv.nombre}")
                 self.listaInvernaderos.appendChild(invernadero)
+                Inv.desplegar()
+                print()
                 print('> creando invernadero: ',Inv.nombre)
 
                 #Lista Planes
