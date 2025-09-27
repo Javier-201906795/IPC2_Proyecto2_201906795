@@ -336,6 +336,8 @@ class SistemaRiegos():
                 #Imprimir nuevo valores
                 self.InvListaDrones.desplegar()
             
+            print('\n'*2)
+            
         except Exception as e:
             print('!!! Error en Dron_Mover_primera_posicion!!!\n ',e)
 
@@ -373,22 +375,11 @@ class SistemaRiegos():
             #1.1 Primer Movimiento Drones
             if self.Tiempoactual == 1:
                 #1.1.1 Mover Todos los Drones
-                #self.Dron_Mover_primera_posicion()
-                for j in range(0,self.InvListaDrones.tamano()):
-                    if j <= 0:
-                        dron = self.InvListaDrones.primero
-                    else:
-                        dron = dron.siguiente
-                    
-                    plantaactual = dron.valor.planta
-                    #Mover Dron
-                    plantanueva = int(plantaactual)+1
-                    dron.valor.asignarPlanta(plantanueva)
-                    #Almacenar movimiento
-                    Colamovimientos.Push(Cmovimiento(dron.valor.nombre,f'Adelante (H{dron.valor.hilera}P{plantanueva})'))
-                    print(f"Dron {dron.valor.nombre}  -> Avanzar (H{dron.valor.hilera}P{int(plantaactual)+1})")
+                self.Dron_Mover_primera_posicion()
+                
                 #Imprimir nuevo valores
                 self.InvListaDrones.desplegar()
+                print()
             else:
                 #1.2 NINGUN Dron Regando
                 if self.DronRegando == False:
@@ -511,9 +502,9 @@ class SistemaRiegos():
 
             print('\n'+'*'*10+" [ Tiempo ] "+"*"*10)        
             #Almacenar instruccion
-            self.InvInstrucciones.Push(Ctiempo(self.Tiempoactual, Colamovimientos))
+            self.InvInstrucciones.Push(Ctiempo(self.Tiempoactual, self.Colamovimientos))
             self.InvInstrucciones.desplegar()
-            print('*'*35)     
+            print('\n'+'*'*10+" [ FIN Tiempo ] "+"*"*10)
             
             print("-"*50)
             print()
