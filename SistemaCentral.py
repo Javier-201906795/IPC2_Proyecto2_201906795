@@ -72,7 +72,7 @@ class SistemaCental:
     def crearTDA(self, tiempo):
         print('> Crear TDA en Tiempo: ',tiempo)
         self.sistema_TDAs = SistemaTDAs()
-        self.sistema_TDAs.crearTDAs()
+        self.sistema_TDAs.crearTDAs(tiempo)
 
 
 #Iniciar sitema cental

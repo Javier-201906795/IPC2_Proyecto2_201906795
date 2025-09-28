@@ -13,9 +13,9 @@ class SistemaTDAs:
         
    
     
-    def crearTDAs(self):
+    def crearTDAs(self, tiempo):
         try:
-            print('>> Creando TDAs')
+            print('>> Creando TDAs para T: ',tiempo)
             #Crear contenido
             self.crearContenidoDot()
             #Crear archivo
