@@ -88,13 +88,14 @@ class SistemaCental:
                 self.sistema_riego.Obtenerinformacion(i+1,j+1)
                 self.sistema_riego.Ejecutar_tiempo(tiempo)
 
-        #Impirmi nuevo valores
+        #Imprimir nuevo valores
         self.sistema_riego.InvernaderoSel.desplegar()
+        self.sistema_riego.InvernaderoSel.historialmovimientos.desplegar()
 
 
         #Imprimir TDAs
-        self.sistema_TDAs = SistemaTDAs()
-        self.sistema_TDAs.crearTDAs(tiempo)
+        #self.sistema_TDAs = SistemaTDAs()
+        #self.sistema_TDAs.crearTDAs(tiempo)
 
 
 #Iniciar sitema cental
