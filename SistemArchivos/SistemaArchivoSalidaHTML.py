@@ -9,6 +9,7 @@ class SistemaArchivoHTML:
         self.colainvernaderos = colainvernaderos
         self.ruta = None
         self.txthtml = ''
+        self.idmovimientos = 1
     
     def creararchivoHTML(self):
         try:
@@ -124,54 +125,51 @@ class SistemaArchivoHTML:
                 movimiento = colamovimientos.Obtener(i+1)
                 nombre = movimiento.tiemposeg 
                 mov = movimiento.colamovimientos
+                self.idmovimientos += 1
+                #Titulos tiempo
                 self.txthtml += f'''
                     <!-- tiempo 1 -->
                     <div class="accordion-item">
-                        <h2 class="accordion-header" id="heading{i+1}-Peten">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{i+1}-Peten">
+                        <h2 class="accordion-header" id="heading{self.idmovimientos}-Peten">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{self.idmovimientos}-Peten">
                             Tiempo — {nombre} s
                         </button>
                         </h2>
-                        <div id="collapse{i+1}-Peten" class="accordion-collapse collapse" data-bs-parent="#accordionInstrucciones-Peten">
+                        <div id="collapse{self.idmovimientos}-Peten" class="accordion-collapse collapse" data-bs-parent="#accordionInstrucciones-Peten">
                         <div class="accordion-body">
 
+                    '''
+                #Movmientos
+                self.txthtml += f'''
                             <div class="row gy-2">
-                            <div class="col-md-4">
-                                <div class="card card-sm">
-                                <div class="card-body p-2 d-flex justify-content-between align-items-center">
-                                    <div>
-                                    <div class="small text-muted">DR01</div>
-                                    <div class="fw-bold">Adelante (H1P1)</div>
+                            
+                    '''
+                for j in range(0,mov.tamano()):
+                    dron = mov.Obtener(j+1)
+                    dronnombre = dron.nombre
+                    dronaccion = dron.accion
+                    tamanobloq = int(12/mov.tamano())
+                    self.txthtml += f'''
+                                <div class="col-md-{tamanobloq}">
+                                    <div class="card card-sm">
+                                    <div class="card-body p-2 d-flex justify-content-between align-items-center">
+                                        <div>
+                                        <div class="small text-muted">{dronnombre}</div>
+                                        <div class="fw-bold">{dronaccion}</div>
+                                        </div>
+                                        <span class="badge bg-info drone-badge text-wrap">1 s</span>
                                     </div>
-                                    <span class="badge bg-info drone-badge text-wrap">1 s</span>
+                                    </div>
                                 </div>
-                                </div>
-                            </div>
 
-                            <div class="col-md-4">
-                                <div class="card card-sm">
-                                <div class="card-body p-2 d-flex justify-content-between align-items-center">
-                                    <div>
-                                    <div class="small text-muted">DR02</div>
-                                    <div class="fw-bold">Adelante (H2P1)</div>
-                                    </div>
-                                    <span class="badge bg-info drone-badge text-wrap">1 s</span>
-                                </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4">
-                                <div class="card card-sm">
-                                <div class="card-body p-2 d-flex justify-content-between align-items-center">
-                                    <div>
-                                    <div class="small text-muted">DR03</div>
-                                    <div class="fw-bold">Adelante (H3P1)</div>
-                                    </div>
-                                    <span class="badge bg-info drone-badge text-wrap">1 s</span>
-                                </div>
-                                </div>
-                            </div>
+                        '''
+                    
+                self.txthtml += f'''
+                            
                             </div><!-- /.row -->
+                    '''
+                #Final
+                self.txthtml += f'''
                         </div>
                         </div>
                     </div>
