@@ -19,6 +19,15 @@ class SistemaArchivoHTML:
             self.HTMLencabezado()
 
             #Contenido invernaderos
+            for i in range(0,self.colainvernaderos.tamano()):
+                invernadero = self.colainvernaderos.Obtener(i+1)
+                #obtener numero plan
+                planes = invernadero.ListaPlanes
+
+                #Recorre invernadero y Planes
+                maxplanes = planes.tamano()
+                for j in range(0,maxplanes):
+                    self.crearinvernadero(invernadero, j+1)
 
 
 
@@ -40,6 +49,47 @@ class SistemaArchivoHTML:
             print(">> Archivo creado o sobrescrito correctamente.\n")
         except Exception as e:
             print("!!! Error al crear el archivo DOC!!!\n",e)
+
+    
+
+    def crearinvernadero(self,Inv, numero):
+        try:
+            Inv.desplegar()
+            print('>>> Creando invernadero')
+            #Inicio
+            self.txthtml +='''\n  <div id="invernaderos">\n   <div class="invernadero">
+            
+            '''
+            #Titulo
+            nombreInv = Inv.nombre
+            #Planes
+            plannombre = Inv.ListaPlanes.Obtener(numero).nombre
+
+
+            self.txthtml +=f'''      <header class="hero d-flex align-items-center bg-white border-bottom rounded-top">
+          <div class="container">
+            <div class="row align-items-center">
+              <div class="col-md-8">
+                <h1 class="h2 mb-1"><span class="text-primary">{nombreInv}</span></h1>
+                <p class="mb-0 text-muted">Resumen visual del <strong>Plan: {plannombre}</strong></p>
+              </div>
+              <div class="col-md-4 text-md-end mt-3 mt-md-0">
+              </div>
+            </div>
+          </div>
+        </header>'''
+
+
+
+            #Final
+            self.txthtml += '\n   </div>\n  </div>'
+
+        except Exception as e:
+            print('!!! Error en crearinvernadero !!!\n',e)
+
+
+
+
     
     def HTMLencabezado(self):
         print('>>> Creando Encabezado html')
@@ -50,7 +100,7 @@ class SistemaArchivoHTML:
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Invernaderos — Plan Semana 3</title>
 
-  <!-- Bootstrap CSS (CDN solicitado) -->
+  <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
     /* Pequeños ajustes estéticos */
@@ -90,7 +140,7 @@ class SistemaArchivoHTML:
     </div>
   </nav>
 
-  <!-- CONTENEDOR PRINCIPAL: aquí puedes añadir más invernaderos duplicando el bloque .invernadero -->
+  
   <main class="container py-4">"""
         
     def HTMLpie(self):
@@ -106,7 +156,7 @@ class SistemaArchivoHTML:
     </div>
   </footer>
 
-  <!-- Bootstrap JS (CDNs solicitados) -->
+  <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
 </body>
