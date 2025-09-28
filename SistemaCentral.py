@@ -72,6 +72,10 @@ class SistemaCental:
     def crearTDA(self, tiempo,numInv,numPlan):
         print('> Crear TDA en Tiempo: ',tiempo)
 
+        #Extraer informacion del archivo XML
+        self.extraerinformacionXML()
+
+        ########################################################################
         #Obtener cola invernaderos
         self.Colainvernaderos = self.sistema_riego.obtenercolainvernadero()
         #Recorrer invernaderos
@@ -83,11 +87,16 @@ class SistemaCental:
             colaplanes = self.sistema_riego.ColasPlanes(str(i+1))
             colaplanes.desplegar()
             
-            #Obtener info
+            #Ejecutar plan
             for j in range(0,numPlan):
                 self.sistema_riego.Obtenerinformacion(i+1,j+1)
                 self.sistema_riego.Ejecutar_tiempo(tiempo)
 
+        
+        ########################################################################
+
+
+     
         #Imprimir nuevo valores
         self.sistema_riego.InvernaderoSel.desplegar()
         self.sistema_riego.InvernaderoSel.historialmovimientos.desplegar()
