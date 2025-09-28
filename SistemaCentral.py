@@ -106,8 +106,9 @@ class SistemaCental:
 
 
         #Imprimir TDAs
-        #self.sistema_TDAs = SistemaTDAs()
-        #self.sistema_TDAs.crearTDAs(tiempo)
+        self.sistema_TDAs = SistemaTDAs()
+        self.sistema_TDAs.asignarcolainstrucciones(colainstrucciones)
+        self.sistema_TDAs.crearTDAs(tiempo)
 
 
 #Iniciar sitema cental

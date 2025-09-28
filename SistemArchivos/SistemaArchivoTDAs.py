@@ -10,12 +10,24 @@ from Nodos.Clases import *
 class SistemaTDAs:
     def __init__(self):
         self.dot_text = ''
+        self.colainstrucciones = None
+    
+    def asignarcolainstrucciones(self, cola):
+        try:
+            self.colainstrucciones = cola
+            print('>>> TDAs Recibiendo cola instrucciones')
+            print()
+            self.colainstrucciones.desplegar()
+            print()
+        except Exception as e:
+            print('!!! Error en  asignarcolainstrucciones!!!\n',e)
+
         
    
     
     def crearTDAs(self, tiempo):
         try:
-            print('>> Creando TDAs para T: ',tiempo)
+            print('>> TDAs Creando TDAs para T: ',tiempo)
             #Crear contenido
             self.crearContenidoDot()
             #Crear archivo
@@ -25,7 +37,7 @@ class SistemaTDAs:
     
     def crearContenidoDot(self):
         try:
-            print('>> Creando archivo')
+            print('>> TDAs Creando archivo')
             self.dot_text += '''digraph ColaPacientes {
     graph [rankdir=LR];
     node [shape=box, style=filled, fillcolor=lightyellow, fontname="Helvetica"];
