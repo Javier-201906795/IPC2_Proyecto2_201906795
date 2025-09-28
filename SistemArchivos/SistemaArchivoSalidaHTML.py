@@ -20,8 +20,7 @@ class SistemaArchivoHTML:
             self.HTMLencabezado()
 
             #Contenido invernaderos
-            # for i in range(0,self.colainvernaderos.tamano()):
-            for i in range(0,1):
+            for i in range(0,self.colainvernaderos.tamano()):
                 invernadero = self.colainvernaderos.Obtener(i+1)
                 #obtener numero plan
                 planes = invernadero.ListaPlanes
@@ -157,7 +156,6 @@ class SistemaArchivoHTML:
                                         <div class="small text-muted">{dronnombre}</div>
                                         <div class="fw-bold">{dronaccion}</div>
                                         </div>
-                                        <span class="badge bg-info drone-badge text-wrap">1 s</span>
                                     </div>
                                     </div>
                                 </div>
