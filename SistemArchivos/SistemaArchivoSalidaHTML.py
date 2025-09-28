@@ -15,8 +15,14 @@ class SistemaArchivoHTML:
             print("\n"+'#'*10+"[ sistema HTML ]"+"*"*10)
             self.colainvernaderos.desplegar()
             print('\n>> Creando archivo HTML')
+            #incio documento html
             self.HTMLencabezado()
 
+            #Contenido invernaderos
+
+
+
+            #pie de pagina 
             self.HTMLpie()
 
             print('\n>> guardando en salidaH.html')
