@@ -26,10 +26,17 @@ app.config['sistema_central']  = SistemaCental()
 
 
 
-@app.route('/',  methods=['GET'])
+@app.route('/',   methods=['GET','POST'])
 def inicio():
-    print('>>> banderaArchivonuevo: ',app.config['banderaArchivonuevo'])
-    return '<h1>Invernaderos</h1>'
+    try:
+        print('>>> banderaArchivonuevo: ',app.config['banderaArchivonuevo'])
+        if request.method == 'GET':
+            return render_template('index.html')
+        elif request.method == 'POST':
+            print('Post')
+            return 'POST'
+    except Exception as e:
+        print('!!! Error FLASK inicio() !!!\n',e)
 
 @app.route('/resumen', methods=['GET'])
 def resumen():
