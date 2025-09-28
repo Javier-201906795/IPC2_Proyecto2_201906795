@@ -74,6 +74,13 @@ def corresistemacentral():
     #Extraer informacion del archivo XML
     sistema_central.extraerinformacionXML()
     print('>>> sistema central2')
+    #Crear Reporte XML
+    sistema_central.crearReportesXML()
+    #Crear Reporte HTML
+    sistema_central.crearArchivoHTML('templates\\salidaH.html')
+
+    #Crear TDA
+    sistema_central.crearTDA(5,1,1)
 
 
 @app.route('/ejecutarprograma', methods=['GET'])
