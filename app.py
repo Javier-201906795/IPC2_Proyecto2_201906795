@@ -1,6 +1,6 @@
 
 
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, redirect, url_for
 from flask_cors import CORS
 from flask.json import jsonify
 
@@ -21,6 +21,11 @@ def resumen():
 def subirarchivo():
     try:
         print('> /subirarchivo')
+        if request.method == 'POST':
+            print('>> Reciviendo archivo')
+            return redirect(url_for('inicio'))
+        elif request.method == 'GET':
+            return render_template('subirArchivo.html')
     except Exception as e:
         print('!!! Error en subirarchivo() !!!\n',e)
 
