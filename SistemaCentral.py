@@ -2,6 +2,7 @@ from SistemArchivos.SistemaArchivoXML import SistemaArchivo
 from SistemArchivos.SistemaArchivosSalidaXML import SistemaArchivoSalida
 from SistemaRiegos.SistemaRiegos import SistemaRiegos
 from SistemArchivos.SistemaArchivoSalidaHTML import SistemaArchivoHTML
+from SistemArchivos.SistemaArchivoTDAs import SistemaTDAs
 
 class SistemaCental:
     def __init__(self):
@@ -9,6 +10,7 @@ class SistemaCental:
         self.sistema_archivo = None
         self.sistema_riego = None
         self.sistema_archivoHTML = None
+        self.sistema_TDAs = None
         self.Colainvernaderos = None
 
 
@@ -95,7 +97,10 @@ class SistemaCental:
         #Crear archivo
         self.sistema_archivoHTML.creararchivoHTML()
 
-
+    def crearTDA(self, tiempo):
+        print('> Crear TDA en Tiempo: ',tiempo)
+        self.sistema_TDAs = SistemaTDAs()
+        self.sistema_TDAs.hola
 
 
 #Iniciar sitema cental
@@ -108,6 +113,9 @@ sistema_central.extraerinformacionXML()
 sistema_central.crearReportesXML()
 #Crear Reporte HTML
 sistema_central.crearArchivoHTML()
+
+#Crear TDA
+sistema_central.crearTDA(5)
 
 
 
