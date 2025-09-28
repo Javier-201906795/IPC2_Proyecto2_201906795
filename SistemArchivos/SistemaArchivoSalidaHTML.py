@@ -10,6 +10,7 @@ class SistemaArchivoHTML:
         self.ruta = None
         self.txthtml = ''
         self.idmovimientos = 1
+        self.idacordion = 1
     
     def creararchivoHTML(self):
         try:
@@ -106,14 +107,15 @@ class SistemaArchivoHTML:
         try:
             print('>>> Lista movimientos')
 
+            self.idacordion += 1
             #Inicio
-            self.txthtml += '''          <div class="col-12">
+            self.txthtml += f'''          <div class="col-12">
             <div class="card shadow-sm">
               <div class="card-body">
                 <h5 class="card-title mb-3">Instrucciones por tiempo</h5>
                 <p class="text-muted small mb-3">Acciones planificadas por segundo</p>
 
-                <div class="accordion" id="accordionInstrucciones-Peten">
+                <div class="accordion" id="accordionInstrucciones{self.idacordion}-Peten">
 
 '''
 
@@ -134,7 +136,7 @@ class SistemaArchivoHTML:
                             Tiempo — {nombre} s
                         </button>
                         </h2>
-                        <div id="collapse{self.idmovimientos}-Peten" class="accordion-collapse collapse" data-bs-parent="#accordionInstrucciones-Peten">
+                        <div id="collapse{self.idmovimientos}-Peten" class="accordion-collapse collapse" data-bs-parent="#accordionInstrucciones{self.idacordion}-Peten">
                         <div class="accordion-body">
 
                     '''
