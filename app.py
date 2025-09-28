@@ -33,8 +33,27 @@ def inicio():
         if request.method == 'GET':
             return render_template('index.html')
         elif request.method == 'POST':
-            print('Post')
-            return 'POST'
+            print('>> inicio() reciviendo form')
+            print('>> Reciviendo archivo')
+            #Evaluar Archivo
+            mensaje = ''
+            if 'archivo' not in request.files:
+                mensaje = '!! No se encontro el archivo !! '
+                print(mensaje)
+            #Archivo
+            archivo = request.files['archivo']
+            if archivo.filename == '':
+                mensaje = '!! No se selecciono ningun archivo !!'
+                print(mensaje)
+            
+            #Comprobar
+            if mensaje == '':
+                #Guardar Archivo
+                ruta_archivo = os.path.join(os.getcwd(),'entrada.xml')
+                archivo.save(ruta_archivo)
+                print('>>> Se subio el archivo correctamente.')
+                app.config['banderaArchivonuevo'] = True
+            return render_template('index.html')
     except Exception as e:
         print('!!! Error FLASK inicio() !!!\n',e)
 
