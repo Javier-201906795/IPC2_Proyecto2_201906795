@@ -121,8 +121,8 @@ def ejecutarprograma():
         #Ejecutar
         corresistemacentral()
         
-
-        return '<h1>Ejecutando Programa</h1>'
+        archivoProcesado = True
+        return render_template('index.html', archivoProcesado=archivoProcesado)
     except Exception as e:
         print('!!! Error en ejecutarprograma() !!!\n',e)
 

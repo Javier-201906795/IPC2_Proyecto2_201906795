@@ -34,9 +34,17 @@
 
 
           <!-- Botones secundarios -->
+          <div class=" justify-content-sm-center">
+            <a id ="btnProcesar" class="btn btn-primary" href="/ejecutarprograma" role="button">Procesar</a>
+          </div>
+          <br>
           <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-            <button id="btnSummarize" class="btn btn-primary me-sm-2">Hacer resúmenes</button>
-            <button id="btnSelect" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modalSelect">Seleccionar invernadero</button>
+            <a id="btnSummarize" class="btn btn-primary me-sm-2">Ver resúmenes</a>
+            <a id="btnSelect" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modalSelect">Seleccionar invernadero</a>
+          </div>
+          <br>
+          <div class=" justify-content-sm-center">
+            <a id ="btnProcesar" class="btn btn-primary" href="/" role="button">Inicio</a>
           </div>
 
           <!-- Mensaje de advertencia o éxito -->
@@ -45,6 +53,11 @@
             {% if baneraArchivo %}
             <div class="alert alert-success" role="alert" id="alertMessage">
                 Archivo cargado con éxito
+            </div>
+            {% endif %}
+            {% if archivoProcesado %}
+            <div class="alert alert-success" role="alert" id="alertMessage">
+                Archivo procesado en sistema central
             </div>
             {% endif %}
           </div>
