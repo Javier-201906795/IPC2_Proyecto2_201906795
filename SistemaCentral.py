@@ -71,7 +71,7 @@ class SistemaCental:
                 #Obtener info
                 for j in range(0,colaplanes.tamano()):
                     self.sistema_riego.Obtenerinformacion(i+1,j+1)
-                    self.sistema_riego.Ejecutar_tiempo(12)
+                    self.sistema_riego.Ejecutar_tiempo(50)
 
             #Archivo Salida crear
             self.sistema_riego.CrearArchivoXML()
