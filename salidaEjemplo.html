@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Invernaderos — Plan Semana 3</title>
+
+  <!-- Bootstrap CSS (CDN solicitado) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Pequeños ajustes estéticos */
+    .hero {
+      height: 28vh;
+      min-height: 160px;
+    }
+    .metric {
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+    .drone-badge {
+      min-width: 72px;
+      display:inline-block;
+    }
+
+    /* Separador entre invernaderos */
+    .invernadero {
+      margin-bottom: 1.5rem;
+    }
+  </style>
+</head>
+<body class="bg-light">
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container">
+      <a class="navbar-brand" href="#">Invernaderos</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMain">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><span class="nav-link disabled">Plan: Semana 3</span></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- CONTENEDOR PRINCIPAL: aquí puedes añadir más invernaderos duplicando el bloque .invernadero -->
+  <main class="container py-4">
+    <div id="invernaderos">
+
+      <!-- INVERNADERO: Invernadero Petén (está envuelto en div.invernadero) -->
+      <div class="invernadero" data-nombre="Invernadero Peten">
+        <!-- HERO -->
+        <header class="hero d-flex align-items-center bg-white border-bottom rounded-top">
+          <div class="container">
+            <div class="row align-items-center">
+              <div class="col-md-8">
+                <h1 class="h2 mb-1">Invernadero <span class="text-primary">Petén</span></h1>
+                <p class="mb-0 text-muted">Resumen visual del <strong>Plan: Semana 3</strong></p>
+              </div>
+              <div class="col-md-4 text-md-end mt-3 mt-md-0">
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <!-- TARJETAS Y DATOS -->
+        <section class="row g-4 mt-3">
+          <!-- METRICAS PRINCIPALES -->
+          <div class="col-lg-4">
+            <div class="card shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title">Parámetros del plan</h5>
+                <div class="d-flex flex-column gap-2 mt-3">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                      <div class="text-muted small">Tiempo óptimo (s)</div>
+                      <div class="metric">7</div>
+                    </div>
+                    <div><span class="badge bg-secondary">tiempo</span></div>
+                  </div>
+
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                      <div class="text-muted small">Agua requerida (L)</div>
+                      <div class="metric">3 L</div>
+                    </div>
+                    <div><span class="badge bg-primary">agua</span></div>
+                  </div>
+
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                      <div class="text-muted small">Fertilizante requerido (g)</div>
+                      <div class="metric">300 g</div>
+                    </div>
+                    <div><span class="badge bg-warning text-dark">fertilizante</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EFICIENCIA DRONES -->
+          <div class="col-lg-8">
+            <div class="card shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title">Eficiencia — Drones regadores</h5>
+                <p class="text-muted small mb-3">Litros de agua y gramos de fertilizante por dron</p>
+
+                <div class="table-responsive">
+                  <table class="table table-sm align-middle">
+                    <thead class="table-light">
+                      <tr>
+                        <th>Dron</th>
+                        <th class="text-end">Litros de agua</th>
+                        <th class="text-end">Fertilizante (g)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>DR01</td>
+                        <td class="text-end">1</td>
+                        <td class="text-end">100</td>
+                      </tr>
+                      <tr>
+                        <td>DR02</td>
+                        <td class="text-end">2</td>
+                        <td class="text-end">200</td>
+                      </tr>
+                      <tr>
+                        <td>DR03</td>
+                        <td class="text-end">0</td>
+                        <td class="text-end">0</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div class="mt-3">
+                  <h5 class="text-start" style="margin-left: 12rem;">
+                    Suma agua: <strong>3 L</strong> — Suma fertilizante: <strong>300 g</strong>
+                  </h5>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- INSTRUCCIONES (ACCORDION) -->
+          <div class="col-12">
+            <div class="card shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title mb-3">Instrucciones por tiempo</h5>
+                <p class="text-muted small mb-3">Acciones planificadas por segundo</p>
+
+                <div class="accordion" id="accordionInstrucciones-Peten">
+
+                  <!-- tiempo 1 -->
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="heading1-Peten">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1-Peten">
+                        Tiempo — 1 s
+                      </button>
+                    </h2>
+                    <div id="collapse1-Peten" class="accordion-collapse collapse" data-bs-parent="#accordionInstrucciones-Peten">
+                      <div class="accordion-body">
+                        <div class="row gy-2">
+                          <div class="col-md-4">
+                            <div class="card card-sm">
+                              <div class="card-body p-2 d-flex justify-content-between align-items-center">
+                                <div>
+                                  <div class="small text-muted">DR01</div>
+                                  <div class="fw-bold">Adelante (H1P1)</div>
+                                </div>
+                                <span class="badge bg-info drone-badge text-wrap">1 s</span>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-md-4">
+                            <div class="card card-sm">
+                              <div class="card-body p-2 d-flex justify-content-between align-items-center">
+                                <div>
+                                  <div class="small text-muted">DR02</div>
+                                  <div class="fw-bold">Adelante (H2P1)</div>
+                                </div>
+                                <span class="badge bg-info drone-badge text-wrap">1 s</span>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-md-4">
+                            <div class="card card-sm">
+                              <div class="card-body p-2 d-flex justify-content-between align-items-center">
+                                <div>
+                                  <div class="small text-muted">DR03</div>
+                                  <div class="fw-bold">Adelante (H3P1)</div>
+                                </div>
+                                <span class="badge bg-info drone-badge text-wrap">1 s</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div><!-- /.row -->
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- tiempo 2 -->
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="heading2-Peten">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2-Peten">
+                        Tiempo — 2 s
+                      </button>
+                    </h2>
+                    <div id="collapse2-Peten" class="accordion-collapse collapse" data-bs-parent="#accordionInstrucciones-Peten">
+                      <div class="accordion-body">
+                        <div class="row gy-2">
+                          <div class="col-md-4">
+                            <div class="card card-sm">
+                              <div class="card-body p-2 d-flex justify-content-between align-items-center">
+                                <div>
+                                  <div class="small text-muted">DR01</div>
+                                  <div class="fw-bold">Adelante (H1P2)</div>
+                                </div>
+                                <span class="badge bg-warning drone-badge">2 s</span>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-md-4">
+                            <div class="card card-sm">
+                              <div class="card-body p-2 d-flex justify-content-between align-items-center">
+                                <div>
+                                  <div class="small text-muted">DR02</div>
+                                  <div class="fw-bold">Esperar (H2P1)</div>
+                                </div>
+                                <span class="badge bg-warning drone-badge">2 s</span>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-md-4">
+                            <div class="card card-sm">
+                              <div class="card-body p-2 d-flex justify-content-between align-items-center">
+                                <div>
+                                  <div class="small text-muted">DR03</div>
+                                  <div class="fw-bold">FIN (H3P1)</div>
+                                </div>
+                                <span class="badge bg-secondary drone-badge">FIN</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div><!-- /.row -->
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- tiempo 3 -->
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="heading3-Peten">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3-Peten">
+                        Tiempo — 3 s
+                      </button>
+                    </h2>
+                    <div id="collapse3-Peten" class="accordion-collapse collapse" data-bs-parent="#accordionInstrucciones-Peten">
+                      <div class="accordion-body">
+                        <div class="row gy-2">
+                          <div class="col-md-4">
+                            <div class="card card-sm">
+                              <div class="card-body p-2 d-flex justify-content-between align-items-center">
+                                <div>
+                                  <div class="small text-muted">DR01</div>
+                                  <div class="fw-bold">FIN (H1P2)</div>
+                                </div>
+                                <span class="badge bg-secondary drone-badge">FIN</span>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-md-4">
+                            <div class="card card-sm">
+                              <div class="card-body p-2 d-flex justify-content-between align-items-center">
+                                <div>
+                                  <div class="small text-muted">DR02</div>
+                                  <div class="fw-bold">FIN (H2P2)</div>
+                                </div>
+                                <span class="badge bg-secondary drone-badge">FIN</span>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="col-md-4">
+                            <div class="card card-sm">
+                              <div class="card-body p-2 d-flex justify-content-between align-items-center">
+                                <div>
+                                  <div class="small text-muted">DR03</div>
+                                  <div class="fw-bold">FIN (H3P1)</div>
+                                </div>
+                                <span class="badge bg-secondary drone-badge">FIN</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div><!-- /.row -->
+                      </div>
+                    </div>
+                  </div>
+
+                </div><!-- /.accordion -->
+              </div>
+            </div>
+          </div>
+
+        </section>
+      </div>
+      <!-- /INVERNADERO: Invernadero Petén -->
+    
+      
+
+    </div><!-- /#invernaderos -->
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-white border-top py-3">
+    <div class="container d-flex justify-content-between">
+      <small class="text-muted">Javier Ricardo Yllescas Barrios - <strong>201906795</strong></small>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS (CDNs solicitados) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
