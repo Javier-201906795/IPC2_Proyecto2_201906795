@@ -63,11 +63,11 @@ class SistemaCental:
             print('!!! Error al crear reportes xml !!!\n',e) 
 
 
-    def crearArchivoHTML(self):
+    def crearArchivoHTML(self,rutahtml):
         #Incializar
         self.sistema_archivoHTML = SistemaArchivoHTML(self.Colainvernaderos)
         #Crear archivo
-        self.sistema_archivoHTML.creararchivoHTML()
+        self.sistema_archivoHTML.creararchivoHTML(rutahtml)
 
     def crearTDA(self, tiempo,numInv,numPlan):
         print('> Crear TDA en Tiempo: ',tiempo)
@@ -120,7 +120,7 @@ sistema_central.extraerinformacionXML()
 #Crear Reporte XML
 sistema_central.crearReportesXML()
 #Crear Reporte HTML
-sistema_central.crearArchivoHTML()
+sistema_central.crearArchivoHTML('templates\\salidaH.html')
 
 #Crear TDA
 sistema_central.crearTDA(5,1,1)

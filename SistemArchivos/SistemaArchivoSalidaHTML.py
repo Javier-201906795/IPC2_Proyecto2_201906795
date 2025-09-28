@@ -12,8 +12,10 @@ class SistemaArchivoHTML:
         self.idmovimientos = 1
         self.idacordion = 1
     
-    def creararchivoHTML(self):
+    def creararchivoHTML(self,ruta):
         try:
+            self.ruta = ruta
+
             print("\n"+'#'*10+"[ sistema HTML ]"+"*"*10)
             self.colainvernaderos.desplegar()
             print('\n>> Creando archivo HTML')
@@ -37,15 +39,15 @@ class SistemaArchivoHTML:
             self.HTMLpie()
 
             print('\n>> guardando en salidaH.html')
-            self.guardarHTML('holamundo')
+            print(f'{self.ruta}')
+            self.guardarHTML()
             print("#"*30)
         except Exception as e:
             print('!!! Error al crear archivo HTML!!!\n',e)
         
-    def guardarHTML(self,contenido):
+    def guardarHTML(self):
         try:
             print('>> Guardando HTML')
-            self.ruta = 'templates\\salidaH.html'
             with open(self.ruta, 'wb') as archivo:
                 archivo.write(self.txthtml.encode('utf-8'))
             print(">> Archivo creado o sobrescrito correctamente.\n")
