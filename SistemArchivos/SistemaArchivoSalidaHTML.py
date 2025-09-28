@@ -85,6 +85,14 @@ class SistemaArchivoHTML:
             #Resumen invernadero
             self.HTMLTitulosResumen(Inv,numero)
 
+            
+        
+            self.HTMLDronesResumen(Inv,numero)
+
+
+            
+
+
 
 
             #Final
@@ -92,6 +100,60 @@ class SistemaArchivoHTML:
 
         except Exception as e:
             print('!!! Error en crearinvernadero !!!\n',e)
+
+    def HTMLDronesResumen(self,Inv,numero):
+        try:
+            print('Lista drones')
+
+            self.txthtml += '''<div class="col-lg-8">
+            <div class="card shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title">Eficiencia — Drones regadores</h5>
+                <p class="text-muted small mb-3">Litros de agua y gramos de fertilizante por dron</p>
+
+                <div class="table-responsive">
+                  <table class="table table-sm align-middle">
+                    <thead class="table-light">
+                      <tr>
+                        <th>Dron</th>
+                        <th class="text-end">Litros de agua</th>
+                        <th class="text-end">Fertilizante (g)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>DR01</td>
+                        <td class="text-end">1</td>
+                        <td class="text-end">100</td>
+                      </tr>
+                      <tr>
+                        <td>DR02</td>
+                        <td class="text-end">2</td>
+                        <td class="text-end">200</td>
+                      </tr>
+                      <tr>
+                        <td>DR03</td>
+                        <td class="text-end">0</td>
+                        <td class="text-end">0</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div class="mt-3">
+                  <h5 class="text-start" style="margin-left: 12rem;">
+                    Suma agua: <strong>3 L</strong> — Suma fertilizante: <strong>300 g</strong>
+                  </h5>
+                </div>
+              </div>
+            </div>
+          </div>'''
+        
+            
+
+            
+        except Exception as e:
+            print('!!! Error en HTMLDronesResumen !!!\n',e)
 
 
     def HTMLTitulosResumen(self,Inv,numero):
