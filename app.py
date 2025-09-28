@@ -4,6 +4,8 @@ from flask import Flask, request, render_template, redirect, url_for
 from flask_cors import CORS
 from flask.json import jsonify
 
+from SistemaCentral import SistemaCental
+
 
 
 #Crear app
@@ -16,6 +18,7 @@ cors = CORS(app)
 
 #Variables Globales
 app.config['banderaArchivonuevo'] = False
+app.config['sistema_central'] = None
 
 
 
@@ -61,7 +64,31 @@ def subirarchivo():
     except Exception as e:
         print('!!! Error en subirarchivo() !!!\n',e)
 
+def corresistemacentral():
+    print('>>> Inicio sistema central')
+    
+    sistema_central = app.config['sistema_central']
+    #Asignar Ruta
+    sistema_central.asignarruta('G:\\2020\\2020_USAC\\Semestre14(2025)\\IPC2\\1_Laboratorio\\8_PROYECTO2\\IPC2_Proyecto2_201906795\\entrada.xml')
+    print('>>> sistema central1')
+    #Extraer informacion del archivo XML
+    sistema_central.extraerinformacionXML()
+    print('>>> sistema central2')
 
+
+@app.route('/ejecutarprograma', methods=['GET'])
+def ejecutarprograma():
+    try:
+        print('>>>> Ejecutando programa')
+        #Iniciar sitema cental
+        app.config['sistema_central']  = SistemaCental()
+        #Ejecutar
+        corresistemacentral()
+        
+
+        return '<h1>Ejecutando Programa</h1>'
+    except Exception as e:
+        print('!!! Error en ejecutarprograma() !!!\n',e)
 
 
 #Ejecutar
