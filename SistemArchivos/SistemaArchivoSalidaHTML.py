@@ -89,6 +89,7 @@ class SistemaArchivoHTML:
         
             self.HTMLDronesResumen(Inv,numero)
 
+            self.HTMLListamovimientos(Inv,numero)
 
             
 
@@ -101,7 +102,85 @@ class SistemaArchivoHTML:
         except Exception as e:
             print('!!! Error en crearinvernadero !!!\n',e)
 
-    
+    def HTMLListamovimientos(self, Inv, numero):
+        try:
+            print('>>> Lista movimientos')
+
+            #Inicio
+            self.txthtml += '''          <div class="col-12">
+            <div class="card shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title mb-3">Instrucciones por tiempo</h5>
+                <p class="text-muted small mb-3">Acciones planificadas por segundo</p>
+
+                <div class="accordion" id="accordionInstrucciones-Peten">
+
+'''
+
+            #Intermedio
+            for i in range(0,3):
+                self.txthtml += '''
+                    <!-- tiempo 1 -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading1-Peten">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1-Peten">
+                            Tiempo — 1 s
+                        </button>
+                        </h2>
+                        <div id="collapse1-Peten" class="accordion-collapse collapse" data-bs-parent="#accordionInstrucciones-Peten">
+                        <div class="accordion-body">
+                            <div class="row gy-2">
+                            <div class="col-md-4">
+                                <div class="card card-sm">
+                                <div class="card-body p-2 d-flex justify-content-between align-items-center">
+                                    <div>
+                                    <div class="small text-muted">DR01</div>
+                                    <div class="fw-bold">Adelante (H1P1)</div>
+                                    </div>
+                                    <span class="badge bg-info drone-badge text-wrap">1 s</span>
+                                </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="card card-sm">
+                                <div class="card-body p-2 d-flex justify-content-between align-items-center">
+                                    <div>
+                                    <div class="small text-muted">DR02</div>
+                                    <div class="fw-bold">Adelante (H2P1)</div>
+                                    </div>
+                                    <span class="badge bg-info drone-badge text-wrap">1 s</span>
+                                </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="card card-sm">
+                                <div class="card-body p-2 d-flex justify-content-between align-items-center">
+                                    <div>
+                                    <div class="small text-muted">DR03</div>
+                                    <div class="fw-bold">Adelante (H3P1)</div>
+                                    </div>
+                                    <span class="badge bg-info drone-badge text-wrap">1 s</span>
+                                </div>
+                                </div>
+                            </div>
+                            </div><!-- /.row -->
+                        </div>
+                        </div>
+                    </div>
+                    '''
+            
+            #Final
+            self.txthtml += '''
+            
+                </div><!-- /.accordion -->
+              </div>
+            </div>
+          </div>'''
+
+        except Exception as e:
+            print('!!! Error en HTMLListamovimientos !!!\n',e)
 
     def HTMLDronesResumen(self,Inv,numero):
         try:
