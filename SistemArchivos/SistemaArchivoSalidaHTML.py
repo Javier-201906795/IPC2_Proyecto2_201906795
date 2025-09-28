@@ -118,17 +118,23 @@ class SistemaArchivoHTML:
 '''
 
             #Intermedio
-            for i in range(0,3):
-                self.txthtml += '''
+            colamovimientos = Inv.historialmovimientos.Obtener(numero)
+            for i in range(0,colamovimientos.tamano()):
+            #for i in range(0,1):
+                movimiento = colamovimientos.Obtener(i+1)
+                nombre = movimiento.tiemposeg 
+                mov = movimiento.colamovimientos
+                self.txthtml += f'''
                     <!-- tiempo 1 -->
                     <div class="accordion-item">
-                        <h2 class="accordion-header" id="heading1-Peten">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1-Peten">
-                            Tiempo — 1 s
+                        <h2 class="accordion-header" id="heading{i+1}-Peten">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{i+1}-Peten">
+                            Tiempo — {nombre} s
                         </button>
                         </h2>
-                        <div id="collapse1-Peten" class="accordion-collapse collapse" data-bs-parent="#accordionInstrucciones-Peten">
+                        <div id="collapse{i+1}-Peten" class="accordion-collapse collapse" data-bs-parent="#accordionInstrucciones-Peten">
                         <div class="accordion-body">
+
                             <div class="row gy-2">
                             <div class="col-md-4">
                                 <div class="card card-sm">
