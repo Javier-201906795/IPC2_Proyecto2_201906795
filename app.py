@@ -31,6 +31,7 @@ def inicio():
     try:
         print('>>> banderaArchivonuevo: ',app.config['banderaArchivonuevo'])
         if request.method == 'GET':
+            baneraArchivo = app.config['banderaArchivonuevo']
             return render_template('index.html')
         elif request.method == 'POST':
             print('>> inicio() reciviendo form')
@@ -53,7 +54,8 @@ def inicio():
                 archivo.save(ruta_archivo)
                 print('>>> Se subio el archivo correctamente.')
                 app.config['banderaArchivonuevo'] = True
-            return render_template('index.html')
+                baneraArchivo = app.config['banderaArchivonuevo']
+            return render_template('index.html', baneraArchivo=baneraArchivo)
     except Exception as e:
         print('!!! Error FLASK inicio() !!!\n',e)
 
