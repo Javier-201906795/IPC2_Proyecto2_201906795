@@ -13,6 +13,10 @@ cors = CORS(app)
 def inicio():
     return '<h1>Invernaderos</h1>'
 
+@app.route('/resumen', methods=['GET'])
+def resumen():
+    return render_template('salidaH.html')
+
 
 
 
