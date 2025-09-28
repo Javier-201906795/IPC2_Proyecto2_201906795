@@ -69,8 +69,30 @@ class SistemaCental:
         #Crear archivo
         self.sistema_archivoHTML.creararchivoHTML()
 
-    def crearTDA(self, tiempo):
+    def crearTDA(self, tiempo,numInv,numPlan):
         print('> Crear TDA en Tiempo: ',tiempo)
+
+        #Obtener cola invernaderos
+        self.Colainvernaderos = self.sistema_riego.obtenercolainvernadero()
+        #Recorrer invernaderos
+        for i in range(0,numInv):
+            #obtener inverdadero
+            invernaderoS = self.Colainvernaderos.Obtener(i+1)
+            invernaderoS.desplegar()
+            #obtener planes
+            colaplanes = self.sistema_riego.ColasPlanes(str(i+1))
+            colaplanes.desplegar()
+            
+            #Obtener info
+            for j in range(0,numPlan):
+                self.sistema_riego.Obtenerinformacion(i+1,j+1)
+                self.sistema_riego.Ejecutar_tiempo(tiempo)
+
+        #Impirmi nuevo valores
+        self.sistema_riego.InvernaderoSel.desplegar()
+
+
+        #Imprimir TDAs
         self.sistema_TDAs = SistemaTDAs()
         self.sistema_TDAs.crearTDAs(tiempo)
 
@@ -78,7 +100,7 @@ class SistemaCental:
 #Iniciar sitema cental
 sistema_central = SistemaCental()
 #Asignar Ruta
-sistema_central.asignarruta('G:\\2020\\2020_USAC\\Semestre14(2025)\\IPC2\\1_Laboratorio\\8_PROYECTO2\\IPC2_Proyecto2_201906795\\entrada.xml')
+sistema_central.asignarruta('G:\\2020\\2020_USAC\\Semestre14(2025)\\IPC2\\1_Laboratorio\\8_PROYECTO2\\IPC2_Proyecto2_201906795\\entrada1.xml')
 #Extraer informacion del archivo XML
 sistema_central.extraerinformacionXML()
 #Crear Reporte XML
@@ -87,7 +109,7 @@ sistema_central.crearReportesXML()
 sistema_central.crearArchivoHTML()
 
 #Crear TDA
-sistema_central.crearTDA(5)
+sistema_central.crearTDA(5,1,1)
 
 
 

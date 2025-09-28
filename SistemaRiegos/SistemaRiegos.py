@@ -110,7 +110,7 @@ class SistemaRiegos():
             self.Tiempomax = 0
             self.DronRegando = False
             self.ColaHilerasIndividual = Cola()
-            self.InvernaderoSel.asignartiempoOptimo(0)
+            
             self.ultimoriegotiempo = 0
             self.InvInstrucciones = None
         
@@ -140,6 +140,7 @@ class SistemaRiegos():
             print('> Reiniciando valores agua y fertilizante')
             self.InvernaderoSel.asignarAguaRequerida(0)
             self.InvernaderoSel.asignarFerilizanteRequerido(0)
+            self.InvernaderoSel.asignartiempoOptimo(0)
         except Exception as e:
             print('!!! Error en ReiniciarOtros!!!\n',e)
 
@@ -232,6 +233,7 @@ class SistemaRiegos():
             print("\n -------[nuevas colas de hileras ]-------")
             print(f'> Numero colas hileras: {self.ColaHilerasIndividual.tamano()}')
             self.ColaHilerasIndividual.desplegar()
+            print()
                         
             
 
@@ -559,7 +561,9 @@ class SistemaRiegos():
                 self.InvernaderoSel.historaifertilizante.Push(self.InvernaderoSel.fertilizanteRequerido)
                 #ListaDrones nuevo
                 dronesinfo = self.nuevohistoricoDrones()
+                print()
                 dronesinfo.desplegar()
+                print()
                 self.InvernaderoSel.historialdrones.Push(dronesinfo)
                 
 
