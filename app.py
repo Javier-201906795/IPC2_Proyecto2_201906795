@@ -11,8 +11,19 @@ app = Flask(__name__)
 #CORS
 cors = CORS(app)
 
+
+
+
+#Variables Globales
+app.config['banderaArchivonuevo'] = False
+
+
+
+
+
 @app.route('/',  methods=['GET'])
 def inicio():
+    print('>>> banderaArchivonuevo: ',app.config['banderaArchivonuevo'])
     return '<h1>Invernaderos</h1>'
 
 @app.route('/resumen', methods=['GET'])
@@ -42,6 +53,7 @@ def subirarchivo():
                 ruta_archivo = os.path.join(os.getcwd(),'entrada.xml')
                 archivo.save(ruta_archivo)
                 print('>>> Se subio el archivo correctamente.')
+                app.config['banderaArchivonuevo'] = True
             
             return redirect(url_for('inicio'))
         elif request.method == 'GET':
