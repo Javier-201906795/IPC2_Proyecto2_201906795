@@ -26,34 +26,6 @@ class SistemaCental:
         #iniciar sistem riegos
         self.sistema_riego = SistemaRiegos(invernaderos)
         
-    
-    # def seleccionarinvernaderoconsola(self):
-    #     print('>')
-    #     #Selecciona un invernadero
-    #     Colanombreinvernaderos = self.sistema_riego.ColasInvernaderos()
-    #     #Imprime invernaderos
-    #     for i in range(0,Colanombreinvernaderos.tamano()):
-    #         nombre = Colanombreinvernaderos.Pop().nombre
-    #     #Seleccion una opcion
-    #     invernaderoselecionado = input("Numero de opcion: ")
-    #     print(invernaderoselecionado)
-    #     #Listar Planes
-    #     ColaLista = self.sistema_riego.ColasPlanes(invernaderoselecionado)
-    #     #Imprime Planes
-    #     for i in range(0,ColaLista.tamano()):
-    #         nombre = ColaLista.Pop().nombre
-    #     #Seleccion una opcion
-    #     planselecionado = input("Numero de opcion: ")
-    #     #Obtener informacion
-    #     self.sistema_riego.Obtenerinformacion(invernaderoselecionado,1)
-    #     self.sistema_riego.Ejecutar_tiempo(9)
-    #     self.sistema_riego.CreanplanXML()
-
-    #     self.sistema_riego.Obtenerinformacion(invernaderoselecionado,2)
-    #     self.sistema_riego.Ejecutar_tiempo(10)
-    #     self.sistema_riego.CreanplanXML()
-
-    #     self.sistema_riego.GuardarSalidaXML()
 
     def crearReportesXML(self):
         try:
