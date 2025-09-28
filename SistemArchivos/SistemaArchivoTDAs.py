@@ -44,7 +44,8 @@ class SistemaTDAs:
 
     
 '''
-
+            #Ciclos
+            
             self.dot_text += '''
     n1 [label="H1-P2"];
     n2 [label="H2-P1"];
@@ -62,7 +63,7 @@ class SistemaTDAs:
     n4 -> n5;
 
 '''
-
+            #FIN Ciclos
             self.dot_text += '''
 }
 '''
