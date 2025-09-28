@@ -135,6 +135,13 @@ class SistemaRiegos():
         except Exception as e:
             print('!!! Error al Reinicia drones!!!',e)
 
+    def ReiniciarAguayFertilizante(self):
+        try:
+            print('> Reiniciando valores agua y fertilizante')
+            self.InvernaderoSel.asignarAguaRequerida(0)
+            self.InvernaderoSel.asignarFerilizanteRequerido(0)
+        except Exception as e:
+            print('!!! Error en ReiniciarOtros!!!\n',e)
 
     def Obtenerinformacion(self, numinv, numplan):
         try:
@@ -184,6 +191,8 @@ class SistemaRiegos():
 
             #Reiniciar Valores Drones
             self.ReiniciarDrones()
+            #Reiniciar otros valores
+            self.ReiniciarAguayFertilizante()
 
 
             #Colas por Hilera Individual
