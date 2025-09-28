@@ -100,6 +100,9 @@ class SistemaCental:
         #Imprimir nuevo valores
         self.sistema_riego.InvernaderoSel.desplegar()
         self.sistema_riego.InvernaderoSel.historialmovimientos.desplegar()
+        print('>>>> Obtener instrucciones pendientes')
+        colainstrucciones = self.sistema_riego.obtenerColainstrucciones()
+        colainstrucciones.desplegar()
 
 
         #Imprimir TDAs

@@ -34,6 +34,8 @@ class SistemaRiegos():
 
         self.rutaSalida = 'G:\\2020\\2020_USAC\\Semestre14(2025)\\IPC2\\1_Laboratorio\\8_PROYECTO2\\IPC2_Proyecto2_201906795\\salida.xml'
         self.sistema_archivo_salida = SistemaArchivoSalida(self.rutaSalida)
+
+        self.Colainstrucciones = None
     
     def obtenercolainvernaderos(self):
         return self.colainvernaderos
@@ -113,6 +115,7 @@ class SistemaRiegos():
             
             self.ultimoriegotiempo = 0
             self.InvInstrucciones = None
+            self.Colainstrucciones = None
         
             
         except Exception as e:
@@ -531,8 +534,8 @@ class SistemaRiegos():
             print()
 
             #Ejecutar instrucciones
-            Colainstrucciones = self.PlanSel.colaplan
-            max = Colainstrucciones.tamano()
+            self.Colainstrucciones = self.PlanSel.colaplan
+            max = self.Colainstrucciones.tamano()
             ultimoriegotiempo = 0
             for i in range(0,max):
                 #VALIDAR TIEMPO
@@ -540,7 +543,7 @@ class SistemaRiegos():
                     break
                 
                 #Instruccion a ejecutar
-                instruccion = Colainstrucciones.Pop()
+                instruccion = self.Colainstrucciones.Pop()
                 #Ejecutar hasta completar
                 completado = False
                 while completado == False and (self.Tiempoactual) < int(self.Tiempomax):
@@ -548,7 +551,7 @@ class SistemaRiegos():
                     print(f'tiempoa: {self.Tiempoactual} - tiempmax: {self.Tiempomax} - completado: {completado}')
                 
             #Ya no hay instrucciones pero si tiempo
-            if Colainstrucciones.tamano() <= 0:
+            if self.Colainstrucciones.tamano() <= 0:
                 #Guardar tiempo ultimo riego
                 self.ultimoriegotiempo = int(self.Tiempoactual) + 1
                 print(self.InvernaderoSel.tiempoOptimo)
@@ -576,6 +579,7 @@ class SistemaRiegos():
                 for h in range(self.Tiempoactual, self.Tiempomax):
                     self.Tiempoactual += 1
                     print(f"\n\n>>>> Se completaron todos los riegos, tiempoA: {self.Tiempoactual} - tiempmax: {self.Tiempomax} - tiempo ultimo riego: {ultimoriegotiempo}\n\n")
+
             
                 
             
@@ -586,7 +590,11 @@ class SistemaRiegos():
         #Guardar movimientos
         self.Guardarenhistorialmovimientos()
         print("########################## [FIN Sistema Riegos] ############################\n\n\n")
-            
+
+    def obtenerColainstrucciones(self):
+        print('>> Obteniendo cola instrucciones')
+        return self.Colainstrucciones
+
     def Guardarenhistorialmovimientos(self):
         try:
             print('>> Guardando valores movimientos')
