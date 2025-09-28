@@ -45,24 +45,27 @@ class SistemaTDAs:
     
 '''
             #Ciclos
+            nodos =''
+            apuntadoresnodos=''
+            for k in range(0,self.colainstrucciones.tamano()):
+                instruccion = self.colainstrucciones.Obtener(k+1)
+                hilera = instruccion.hilera
+                posicion = instruccion.planta
+                texto = f'{hilera}-{posicion}'
+                
+                nodos += f'''
+        n{k+1} [label="{texto}"];
+
+    '''
+                if k >= 1:
+                    apuntadoresnodos += f'''
+            n{k} -> n{k+1};
+        '''
             
-            self.dot_text += '''
-    n1 [label="H1-P2"];
-    n2 [label="H2-P1"];
-    n3 [label="H2-P2"];
-    n4 [label="H3-P3"];
-    n5 [label="H1-P4"];
-
-
-'''
-
-            self.dot_text += '''
-    n1 -> n2;
-    n2 -> n3;
-    n3 -> n4;
-    n4 -> n5;
-
-'''
+            #Unir
+            self.dot_text += nodos
+            self.dot_text += apuntadoresnodos
+            
             #FIN Ciclos
             self.dot_text += '''
 }
