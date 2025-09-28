@@ -17,6 +17,13 @@ def inicio():
 def resumen():
     return render_template('salidaH.html')
 
+@app.route('/subirarchivo', methods=['GET','POST'])
+def subirarchivo():
+    try:
+        print('> /subirarchivo')
+    except Exception as e:
+        print('!!! Error en subirarchivo() !!!\n',e)
+
 
 
 
