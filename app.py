@@ -19,6 +19,8 @@ cors = CORS(app)
 #Variables Globales
 app.config['banderaArchivonuevo'] = False
 app.config['sistema_central'] = None
+#Iniciar sitema cental
+app.config['sistema_central']  = SistemaCental()
 
 
 
@@ -87,8 +89,7 @@ def corresistemacentral():
 def ejecutarprograma():
     try:
         print('>>>> Ejecutando programa')
-        #Iniciar sitema cental
-        app.config['sistema_central']  = SistemaCental()
+        
         #Ejecutar
         corresistemacentral()
         
