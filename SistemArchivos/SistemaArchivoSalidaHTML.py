@@ -19,7 +19,8 @@ class SistemaArchivoHTML:
             self.HTMLencabezado()
 
             #Contenido invernaderos
-            for i in range(0,self.colainvernaderos.tamano()):
+            # for i in range(0,self.colainvernaderos.tamano()):
+            for i in range(0,1):
                 invernadero = self.colainvernaderos.Obtener(i+1)
                 #obtener numero plan
                 planes = invernadero.ListaPlanes
@@ -65,7 +66,7 @@ class SistemaArchivoHTML:
             #Planes
             plannombre = Inv.ListaPlanes.Obtener(numero).nombre
 
-
+            #Titulo
             self.txthtml +=f'''      <header class="hero d-flex align-items-center bg-white border-bottom rounded-top">
           <div class="container">
             <div class="row align-items-center">
@@ -77,18 +78,68 @@ class SistemaArchivoHTML:
               </div>
             </div>
           </div>
-        </header>'''
+        </header>
+
+        <section class="row g-4 mt-3">'''
+            
+            #Resumen invernadero
+            self.HTMLTitulosResumen(Inv,numero)
 
 
 
             #Final
-            self.txthtml += '\n   </div>\n  </div>'
+            self.txthtml += '\n      </section>\n   </div>\n  </div>'
 
         except Exception as e:
             print('!!! Error en crearinvernadero !!!\n',e)
 
 
+    def HTMLTitulosResumen(self,Inv,numero):
+        try:
+            print(f'>>> Creando Titulos resumen invernadero {Inv.nombre}')
+            #Resumen invernadero
+            tiempooptimo = Inv.historiatiempooptimo.Obtener(numero)
+            aguareq = Inv.historiaagua.Obtener(numero)
+            fertilreq = Inv.historaifertilizante.Obtener(numero)
 
+
+            self.txthtml += f'''          <div class="col-lg-4">
+            <div class="card shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title">Parámetros del plan</h5>
+                <div class="d-flex flex-column gap-2 mt-3">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                      <div class="text-muted small">Tiempo óptimo (s)</div>
+                      <div class="metric">{tiempooptimo}</div>
+                    </div>
+                    <div><span class="badge bg-secondary">tiempo</span></div>
+                  </div>
+
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                      <div class="text-muted small">Agua requerida (L)</div>
+                      <div class="metric">{aguareq} L</div>
+                    </div>
+                    <div><span class="badge bg-primary">agua</span></div>
+                  </div>
+
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                      <div class="text-muted small">Fertilizante requerido (g)</div>
+                      <div class="metric">{fertilreq} g</div>
+                    </div>
+                    <div><span class="badge bg-warning text-dark">fertilizante</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>'''
+
+
+        
+        except Exception as e:
+            print('!!! Error en HTMLTitulosResumen!!!\n',e)
 
     
     def HTMLencabezado(self):
