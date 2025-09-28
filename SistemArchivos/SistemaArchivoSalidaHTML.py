@@ -45,7 +45,7 @@ class SistemaArchivoHTML:
     def guardarHTML(self,contenido):
         try:
             print('>> Guardando HTML')
-            self.ruta = 'salidaH.html'
+            self.ruta = 'templates\\salidaH.html'
             with open(self.ruta, 'wb') as archivo:
                 archivo.write(self.txthtml.encode('utf-8'))
             print(">> Archivo creado o sobrescrito correctamente.\n")
