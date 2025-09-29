@@ -101,10 +101,14 @@ def ejecutarprograma():
 def selinvernadero():
     try:
         print('>>>> Seleccionando invernadero')
+        print('>>>>> Meotdo recivido: ',request.method)
         if request.method == 'GET':
-            baneraArchivo = app.config['banderaArchivonuevo']
             return render_template('selInver.html')
         elif request.method == 'POST':
+            invernadero = request.form.get("invernadero")  # o request.form["invernadero"]
+            plan = request.form.get("plan")
+            print("Invernadero:", invernadero)
+            print("Plan:", plan)
             return render_template('index.html')
     except Exception as e:
         print('!!! Error en selinvernadero !!!\n',e)
