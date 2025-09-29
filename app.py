@@ -21,6 +21,7 @@ app.config['banderaArchivonuevo'] = False
 app.config['sistema_central'] = None
 #Iniciar sitema cental
 app.config['sistema_central']  = SistemaCental()
+app.config['invsel'] = None
 
 
 
@@ -115,10 +116,20 @@ def selinvernadero():
             return render_template('selInver.html', nombreInv=nombreInv)
         elif request.method == 'POST':
             invernadero = request.form.get("invernadero")  # o request.form["invernadero"]
+            app.config['invsel'] = invernadero
             print("Invernadero:", invernadero)
-            return render_template('selfplan.html')
+            #return render_template('selfplan.html')
+            return redirect(url_for('selplan'))
     except Exception as e:
         print('!!! Error en selinvernadero !!!\n',e)
+
+def listaplanes():
+    sistema_central = app.config['sistema_central']
+    print(sistema_central)
+    numinv = int(app.config['invsel'])
+    print('>>>> Inv sel',numinv)
+    listaplan = sistema_central.Listaplanes(numinv)
+    return listaplan
 
 @app.route('/selplan',   methods=['GET','POST'])
 def selplan():
@@ -126,10 +137,15 @@ def selplan():
         print('>>>> Seleccionando invernadero')
         print('>>>>> Meotdo recivido: ',request.method)
         if request.method == 'GET':
-            return render_template('selfplan.html')
+            
+            lista = listaplanes()
+            print(lista)
+            return render_template('selfplan.html', lista=lista)
         elif request.method == 'POST':
-            invernadero = request.form.get("invernadero")  # o request.form["invernadero"]
-            print("Invernadero:", invernadero)
+            plan = request.form.get("plan")  
+            tiempo = request.form.get("tiempo")
+            print("Plan:", plan)
+            print("Tiempo:", tiempo)
             return render_template('index.html')
     except Exception as e:
         print('!!! Error en selinvernadero !!!\n',e)

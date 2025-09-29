@@ -85,11 +85,16 @@ class SistemaCental:
     
     def Listaplanes(self,numinv):
         try:
-            print('> Listando nombres invernaderos para flask')
+            print('> Listando nombres planes para flask')
             NomPlan = []
-            for i in range(0,self.Colainvernaderos.tamano()):
+            for i in range(0,numinv):
                 inverna = self.Colainvernaderos.Obtener(i+1)
-                nombreinverna = inverna.nombre
+                inverna.ListaPlanes
+                for i in range(0,inverna.ListaPlanes.tamano()):
+                    plan = inverna.ListaPlanes.Obtener(i+1)
+                    nombreplan = plan.nombre
+                    NomPlan.append(nombreplan)
+
                 #Añadir
             return  NomPlan
         except Exception as e:
@@ -150,8 +155,11 @@ sistema_central.crearArchivoHTML('templates\\salidaH.html')
 
 #ObtenerNombresinvernaderos
 lista = sistema_central.ListarnombresInvernaderos()
+#OBTENEPLANES
+listaplan = sistema_central.Listaplanes(1)
+print(lista)
 #Crear TDA
-sistema_central.crearTDA(5,1,1)
+#sistema_central.crearTDA(5,1,1)
 
 
 
