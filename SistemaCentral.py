@@ -159,7 +159,7 @@ lista = sistema_central.ListarnombresInvernaderos()
 listaplan = sistema_central.Listaplanes(1)
 print(lista)
 #Crear TDA
-sistema_central.crearTDA(5,1,1)
+#sistema_central.crearTDA(5,1,1)
 
 
 

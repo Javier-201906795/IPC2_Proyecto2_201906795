@@ -86,6 +86,7 @@ class SistemaTDAs:
             try:
                 os.system(f"dot -Tpng 1_Grafica.dot -o 1_TDAs.png")
                 print(f">>Imagen 1_TDAs.png generada")
+                os.startfile("1_TDAs.png")
             except:
                 print("!! Error al crear imagen ¡¡¡")
         
