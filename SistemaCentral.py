@@ -90,12 +90,12 @@ class SistemaCental:
             for i in range(0,numinv):
                 inverna = self.Colainvernaderos.Obtener(i+1)
                 inverna.ListaPlanes
-                for i in range(0,inverna.ListaPlanes.tamano()):
-                    plan = inverna.ListaPlanes.Obtener(i+1)
-                    nombreplan = plan.nombre
-                    NomPlan.append(nombreplan)
+            
+            for j in range(0,inverna.ListaPlanes.tamano()):
+                plan = inverna.ListaPlanes.Obtener(i+1)
+                nombreplan = plan.nombre
+                NomPlan.append(nombreplan)
 
-                #Añadir
             return  NomPlan
         except Exception as e:
             print('!!! Error en Listarnombres!!!\n',e)
@@ -159,7 +159,7 @@ lista = sistema_central.ListarnombresInvernaderos()
 listaplan = sistema_central.Listaplanes(1)
 print(lista)
 #Crear TDA
-#sistema_central.crearTDA(5,1,1)
+sistema_central.crearTDA(5,1,1)
 
 
 

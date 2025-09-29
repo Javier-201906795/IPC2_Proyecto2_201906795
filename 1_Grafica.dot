@@ -4,22 +4,7 @@ digraph ColaPacientes {
 
     
 
-        n1 [label="H2-P1"];
+        n1 [label="H3-P4"];
 
     
-        n2 [label="H2-P2"];
-
-    
-        n3 [label="H3-P3"];
-
-    
-        n4 [label="H1-P4"];
-
-    
-            n1 -> n2;
-        
-            n2 -> n3;
-        
-            n3 -> n4;
-        
 }
