@@ -22,6 +22,8 @@ app.config['sistema_central'] = None
 #Iniciar sitema cental
 app.config['sistema_central']  = SistemaCental()
 app.config['invsel'] = None
+app.config['plansel'] = None
+app.config['tiempo']=None
 
 
 
@@ -131,6 +133,17 @@ def listaplanes():
     listaplan = sistema_central.Listaplanes(numinv)
     return listaplan
 
+
+def crearTDA(tiempo,plan):
+    print('>> Creando TDAs')
+    sistema_central = app.config['sistema_central']
+    numinv = int(app.config['invsel'])
+    print('>>>> Inv sel',numinv)
+    listaplan = sistema_central.Listaplanes(numinv)
+    print('creando tdad')
+    sistema_central.crearTDA(int(tiempo),int(numinv),int(plan))
+    print('creando tdad')
+
 @app.route('/selplan',   methods=['GET','POST'])
 def selplan():
     try:
@@ -146,6 +159,9 @@ def selplan():
             tiempo = request.form.get("tiempo")
             print("Plan:", plan)
             print("Tiempo:", tiempo)
+            app.config['plansel'] = plan
+            app.config['tiempo']=tiempo
+            crearTDA(tiempo,plan)
             return render_template('index.html')
     except Exception as e:
         print('!!! Error en selinvernadero !!!\n',e)
