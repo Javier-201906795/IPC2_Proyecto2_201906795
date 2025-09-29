@@ -92,7 +92,7 @@ class SistemaCental:
                 inverna.ListaPlanes
             
             for j in range(0,inverna.ListaPlanes.tamano()):
-                plan = inverna.ListaPlanes.Obtener(i+1)
+                plan = inverna.ListaPlanes.Obtener(j+1)
                 nombreplan = plan.nombre
                 NomPlan.append(nombreplan)
 
