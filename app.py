@@ -116,9 +116,24 @@ def selinvernadero():
         elif request.method == 'POST':
             invernadero = request.form.get("invernadero")  # o request.form["invernadero"]
             print("Invernadero:", invernadero)
+            return render_template('selfplan.html')
+    except Exception as e:
+        print('!!! Error en selinvernadero !!!\n',e)
+
+@app.route('/selplan',   methods=['GET','POST'])
+def selplan():
+    try:
+        print('>>>> Seleccionando invernadero')
+        print('>>>>> Meotdo recivido: ',request.method)
+        if request.method == 'GET':
+            return render_template('selfplan.html')
+        elif request.method == 'POST':
+            invernadero = request.form.get("invernadero")  # o request.form["invernadero"]
+            print("Invernadero:", invernadero)
             return render_template('index.html')
     except Exception as e:
         print('!!! Error en selinvernadero !!!\n',e)
+
 
 
 #Ejecutar

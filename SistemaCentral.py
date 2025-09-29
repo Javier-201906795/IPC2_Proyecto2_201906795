@@ -82,6 +82,18 @@ class SistemaCental:
             return  NomInvernaderos
         except Exception as e:
             print('!!! Error en Listarnombres!!!\n',e)
+    
+    def Listaplanes(self,numinv):
+        try:
+            print('> Listando nombres invernaderos para flask')
+            NomPlan = []
+            for i in range(0,self.Colainvernaderos.tamano()):
+                inverna = self.Colainvernaderos.Obtener(i+1)
+                nombreinverna = inverna.nombre
+                #Añadir
+            return  NomPlan
+        except Exception as e:
+            print('!!! Error en Listarnombres!!!\n',e)
 
     def crearTDA(self, tiempo,numInv,numPlan):
         print('> Crear TDA en Tiempo: ',tiempo)
