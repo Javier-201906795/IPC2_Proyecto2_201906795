@@ -97,6 +97,19 @@ def ejecutarprograma():
         print('!!! Error en ejecutarprograma() !!!\n',e)
 
 
+@app.route('/selinvernadero',   methods=['GET','POST'])
+def selinvernadero():
+    try:
+        print('>>>> Seleccionando invernadero')
+        if request.method == 'GET':
+            baneraArchivo = app.config['banderaArchivonuevo']
+            return render_template('selInver.html')
+        elif request.method == 'POST':
+            return render_template('index.html')
+    except Exception as e:
+        print('!!! Error en selinvernadero !!!\n',e)
+
+
 #Ejecutar
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port = 4000, debug=True)
