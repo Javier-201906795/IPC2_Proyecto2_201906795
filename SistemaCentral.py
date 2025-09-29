@@ -69,6 +69,20 @@ class SistemaCental:
         #Crear archivo
         self.sistema_archivoHTML.creararchivoHTML(rutahtml)
 
+    
+    def ListarnombresInvernaderos(self):
+        try:
+            print('> Listando nombres invernaderos para flask')
+            NomInvernaderos = []
+            for i in range(0,self.Colainvernaderos.tamano()):
+                inverna = self.Colainvernaderos.Obtener(i+1)
+                nombreinverna = inverna.nombre
+                #Añadir
+                NomInvernaderos.append(nombreinverna)
+            return  NomInvernaderos
+        except Exception as e:
+            print('!!! Error en Listarnombres!!!\n',e)
+
     def crearTDA(self, tiempo,numInv,numPlan):
         print('> Crear TDA en Tiempo: ',tiempo)
 
@@ -122,6 +136,8 @@ sistema_central.crearReportesXML()
 #Crear Reporte HTML
 sistema_central.crearArchivoHTML('templates\\salidaH.html')
 
+#ObtenerNombresinvernaderos
+lista = sistema_central.ListarnombresInvernaderos()
 #Crear TDA
 sistema_central.crearTDA(5,1,1)
 

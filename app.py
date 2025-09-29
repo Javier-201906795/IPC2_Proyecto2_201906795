@@ -97,18 +97,25 @@ def ejecutarprograma():
         print('!!! Error en ejecutarprograma() !!!\n',e)
 
 
+def listanombres():
+    sistema_central = app.config['sistema_central']
+    print(sistema_central)
+    listainvernaderos = sistema_central.ListarnombresInvernaderos()
+    print(listainvernaderos)
+    return listainvernaderos
+
 @app.route('/selinvernadero',   methods=['GET','POST'])
 def selinvernadero():
     try:
         print('>>>> Seleccionando invernadero')
         print('>>>>> Meotdo recivido: ',request.method)
         if request.method == 'GET':
-            return render_template('selInver.html')
+            nombreInv = listanombres()
+            print(nombreInv)
+            return render_template('selInver.html', nombreInv=nombreInv)
         elif request.method == 'POST':
             invernadero = request.form.get("invernadero")  # o request.form["invernadero"]
-            plan = request.form.get("plan")
             print("Invernadero:", invernadero)
-            print("Plan:", plan)
             return render_template('index.html')
     except Exception as e:
         print('!!! Error en selinvernadero !!!\n',e)

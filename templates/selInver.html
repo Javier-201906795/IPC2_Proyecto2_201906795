@@ -27,21 +27,17 @@
               <label for="invernadero" class="form-label">Invernadero</label>
               <select class="form-select" id="invernadero" name="invernadero" required>
                 <option value="" disabled selected>Seleccione un invernadero</option>
-                <option value="Invernadero Peten">Invernadero Peten</option>
-                <option value="Invernadero Izabal">Invernadero Izabal</option>
-                <option value="Invernadero Quetzaltenango">Invernadero Quetzaltenango</option>
+                {% for inv in nombreInv %}
+                    <option value="{{ loop.index }}">{{inv}}</option>
+                {% endfor %}
+                
               </select>
+            </div>
+            <div>
+                <p>Numeor de opciones: {{ nombreInv|length }}</p>
             </div>
 
-            <div class="mb-4">
-              <label for="plan" class="form-label">Plan</label>
-              <select class="form-select" id="plan" name="plan" required>
-                <option value="" disabled selected>Seleccione un plan</option>
-                <option value="Semana 1">Semana 1</option>
-                <option value="Semana 2">Semana 2</option>
-                <option value="Semana 3">Semana 3</option>
-              </select>
-            </div>
+            
 
             <div class="d-grid">
               <button type="submit" class="btn btn-primary">Enviar</button>
